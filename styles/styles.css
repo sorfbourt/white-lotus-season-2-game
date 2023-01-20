@@ -1,0 +1,136 @@
+body {
+    padding: 0;
+    text-align: left;
+    background-image: url(https://www.sky.at/static/img/serienhighlights/sky_22-10_the_white_lotus_S2_sub_l.jpg);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    background-color: #F3740D;
+    font-family: 'Roboto';font-size: 22px;
+
+
+
+    border: 1px solid black;
+    
+  }
+  
+  div, section, footer {
+    border: 1px solid black;
+  }
+
+
+
+
+/* SHARED */
+
+  
+  #game-splash, #game, #game-over, #game-intro {
+    width:600px;
+    height:500px;
+    padding: 20% 10%;
+    margin: 0 auto;
+  }
+
+  #footer{
+    width:600px;
+    height:80px;
+    /* padding: 20px 10px; */
+    margin: 0 auto;
+  }
+
+  #footer p{
+    font-size:10px;
+    text-align: center;
+  }
+
+  #section-header, #section-main{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100%;
+
+}
+
+/* SPLASH */
+
+    .logo {
+    width: 150px;
+    padding:30px;
+    margin: 0 auto;
+  }
+
+  #header-image-ctn{
+    width:200px;
+    padding:10px;
+  }
+
+  #name-of-game{
+    padding:20px;
+  }
+  
+  #name-of-game{
+    width: 100%;
+    background-color: #5CD2A1;
+  }
+  
+  #instructions{
+    width:400px;
+    padding:20px;
+    background-color: #f28735;
+  }
+
+  #main-image-ctn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  #game-splash p {
+    font-size: 12px;
+    font-family: "Verdana"
+  }
+  
+ 
+
+
+
+  #keyboard-arrows-img {
+    width: 150px;
+    
+  }
+
+
+  #section-footer{
+    display:flex;
+    justify-content: space-between;
+  }
+
+
+/* GAME INTRO */
+
+#intro-image-ctn{
+     /* background-image: url("https://www.sky.at/static/img/serienhighlights/sky_22-10_the_white_lotus_S2_sub_l.jpg") */
+     background-image: url("https://im2.ezgif.com/tmp/ezgif-2-ba55348d5b.webp")
+    background-size:100%;
+    background-repeat: none;
+    height:100%;
+    width:100%;
+
+    
+}
+  
+  body button {
+    font-size: 15px;
+    background-color: #5CD2A1;
+    color: #fff;
+    padding: 10px 20px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .toggle {
+    background-color: #138C7F;
+  }
+  
