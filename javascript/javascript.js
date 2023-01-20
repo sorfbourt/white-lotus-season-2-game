@@ -33,6 +33,10 @@ const mainImageCtn = document.querySelector('#main-image-ctn img').src
 //game variables
 let animateId
 //let gameOver = false
+isMovingLeft = false
+isMovingRight = false
+isMovingUp = false
+isMovingDown = false
 
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
@@ -45,7 +49,7 @@ gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3d
 const playerImg = new Image()
 playerImg.src = '../images/player-tanya.png'
 
-const playerWidth = 40
+const playerWidth = 60
 const playerHeight = 80
 
 let playerX = 40
@@ -70,11 +74,17 @@ const animate = () => {
 
 
     
-    if (/* isMovingLeft && */ playerX > canvasBorder) {
+    if (isMovingLeft && playerX > canvasBorder) {
         playerX -= 5
     }
-    if (/*isMovingRight && carX <  */canvas.width - canvasBorder - playerWidth) {
+    if (isMovingRight && playerX <  canvas.width - canvasBorder - playerWidth) {
         playerX += 5
+    }
+    if (isMovingUp && playerY > canvasBorder) {
+        playerY -= 5
+    }
+    if (isMovingDown && playerY <  canvas.height - canvasBorder - playerWidth) {
+        playerY += 5
     }
 
     if (gameOver === true) {
@@ -115,27 +125,57 @@ window.addEventListener('load', () => {
 
 //add key event listeners here
 
-//arow keys
+//arrow keys
+//keydown
     document.addEventListener('keydown',event => {
         if(event.key === "ArrowRight"){
-        console.log("right", event)
+        isMovingRight = true
+        console.log("right", "isMovingRight:", isMovingRight, event)
         }
-    })
-    document.addEventListener('keydown',event => {
         if(event.key === "ArrowLeft"){
-        console.log("left", event)
+        isMovingLeft = true
+        console.log("left", "isMovingLeft:", isMovingLeft, event)
+        }
+        if(event.key === "ArrowUp"){
+        isMovingUp = true
+        console.log("right", "isMovingUp:", isMovingUp, event)
+        }
+        if(event.key === "ArrowDown"){
+        isMovingDown = true
+        console.log("left", "isMovingDown:", isMovingDown, event)
         }
     })
-    document.addEventListener('keydown',event => {
+//keyup
+    document.addEventListener('keyup',event => {
+        if(event.key === "ArrowRight"){
+            isMovingRight = false
+            console.log("right", "isMovingRight:", isMovingRight, event)
+            }
+            if(event.key === "ArrowLeft"){
+            isMovingLeft = false
+            console.log("left", "isMovingLeft:", isMovingLeft, event)
+            }
+            if(event.key === "ArrowUp"){
+            isMovingUp = false
+            console.log("right", "isMovingUp:", isMovingUp, event)
+            }
+            if(event.key === "ArrowDown"){
+            isMovingDown = false
+            console.log("left", "isMovingDown:", isMovingDown, event)
+            }
+    })
+ /*    document.addEventListener('keydown',event => {
         if(event.key === "ArrowUp"){
-        console.log("up", event)
+        isMovingUp = true
+        console.log("up", "isMovingUp:", isMovingUp, event)
         }
     })
     document.addEventListener('keydown',event => {
         if(event.key === "ArrowDown"){
-        console.log("down", event)
+        isMovingDown = true
+        console.log("down", "isMovingDown:", isMovingDown, event)
         }
-    })
+    }) */
 
 
 
