@@ -8,26 +8,21 @@ gameIntro.style.display ="none"
 gameOverScreen.style.display ="none"
 
 let animateId
+let gameOver = false
+
 let livesLeft = 3
 let scoring = 0
 let extraPointsScoring = 0
 let gameNotes = ""
-
-let gameOver = false
-
 let nameForHighestScore = document.forms["nameForHighestScore"]["name"].value
     
-
-
 const btnStart = document.querySelector('#btnStart')
 const btnRestart = document.querySelector('#btnRestart')
 const btnToggleSpoilerVersion = document.querySelector('#btnToggleSpoilerVersion')
 
-
 //audio
 /* const audioIntro = new Audio('./audio/please-these-gays-are-trying-to-murder-me.mp3')
 audioIntro.preload */
-
 
 
 //Spoiler version variables
@@ -41,20 +36,19 @@ const mainImageCtn = document.querySelector('#main-image-ctn img').src
 
 
 //game variables
-
-
 isMovingLeft = false
 isMovingRight = false
 isMovingUp = false
 isMovingDown = false
 
+//image declarations
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
 const gameBackground = new Image()
 gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
 const gameBackgroundSpoiler = new Image()
-gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
+gameBackgroundSpoiler.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
 
 const playerImg = new Image()
 playerImg.src = '../images/player-tanya.png'
@@ -62,11 +56,20 @@ playerImg.src = '../images/player-tanya.png'
 const attacker1Img = new Image()
 attacker1Img.src = '../images/attacker-quentin.png'
 
+const attacker2Img = new Image()
+attacker2Img.src = '../images/attacker-didier.jpg'
+
+const attacker3Img = new Image()
+attacker3Img.src = '../images/attacker-matteo.jpg'
+
 const lifeline1Img = new Image()
 lifeline1Img.src = 'https://img.nauticexpo.com/images_ne/photo-g/21536-12316846.jpg'
 
 const extraPoints1Img = new Image()
 extraPoints1Img.src = 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-with-Meat-Sauce-Recipe-1-1200.jpg'
+
+//player variables
+let canvasBorder = 20
 
 const playerWidth = 60
 const playerHeight = 80
@@ -74,14 +77,13 @@ const playerHeight = 80
 let playerX = canvas.width / 2 - playerWidth
 let playerY = 400
 
-let canvasBorder = 20
-
-
-//Attackers
 let attackers = []
+let attackers2 = []
+let attackers3 = []
 let lifelines = []
 let extraPoints = []
 
+//Attackers - Quentin
 class Attackers {
   constructor(xPos, yPos, width, height, speed) {
     this.xPos = xPos
@@ -93,7 +95,6 @@ class Attackers {
   }
 
   draw() {
-
     ctx.beginPath()
     ctx.drawImage(attacker1Img, this.xPos, this.yPos, this.width, this.height)
     this.xPos -= this.speed
@@ -102,9 +103,9 @@ class Attackers {
 
   checkCollision() {
     if (
-        playerX < this.xPos + this.width &&
-        playerX + playerWidth > this.xPos &&
-        playerY < this.yPos + this.height &&
+      playerX < this.xPos + this.width &&
+      playerX + playerWidth > this.xPos &&
+      playerY < this.yPos + this.height &&
       playerHeight + playerY > this.yPos
     ) {
         this.collided = true    
@@ -116,24 +117,92 @@ class Attackers {
             playerImg.src = '../images/player-tanya.png'
             gameNotes = ""}, 1000)
         
-    if(livesLeft === 0){
-        console.log("YOU ARE DEAD")
+      if(livesLeft === 0){
         gameOver = true
-    }
-
+      }
     }
   }
 }
 
+//Attackers - Didier
+class Attackers2 extends Attackers {
+  constructor(xPos, yPos, width, height, speed) {
+    super(xPos, yPos, width, height, speed)
+  }
 
+  draw() {
+    ctx.beginPath()
+    ctx.drawImage(attacker2Img, this.xPos, this.yPos, this.width, this.height)
+    this.xPos -= this.speed
+    ctx.closePath()
+  }
+
+  checkCollision() {
+    if (
+      playerX < this.xPos + this.width &&
+      playerX + playerWidth > this.xPos &&
+      playerY < this.yPos + this.height &&
+      playerHeight + playerY > this.yPos
+    ) {
+        this.collided = true    
+        attackers2 = attackers2.filter(attackers => attackers.collided === false) 
+        livesLeft = livesLeft - 1
+        gameNotes = "OUCH!!! Be careful!"
+        playerImg.src = 'https://thumbs.dreamstime.com/b/ouch-red-rubber-stamp-over-white-background-88001039.jpg'
+        setTimeout(()=>{
+            playerImg.src = '../images/player-tanya.png'
+            gameNotes = ""}, 1000)
+        
+      if(livesLeft === 0){
+          console.log("YOU ARE DEAD")
+          gameOver = true
+      }
+    }
+  }
+}
+//Attackers - Matteo
+class Attackers3 extends Attackers {
+  constructor(xPos, yPos, width, height, speed) {
+    super(xPos, yPos, width, height, speed)
+  }
+
+  draw() {
+    ctx.beginPath()
+    ctx.drawImage(attacker3Img, this.xPos, this.yPos, this.width, this.height)
+    this.xPos -= this.speed
+    ctx.closePath()
+  }
+
+  checkCollision() {
+    if (
+      playerX < this.xPos + this.width &&
+      playerX + playerWidth > this.xPos &&
+      playerY < this.yPos + this.height &&
+      playerHeight + playerY > this.yPos
+    ) {
+        this.collided = true    
+        attackers3 = attackers3.filter(attackers => attackers.collided === false) 
+        livesLeft = livesLeft - 1
+        gameNotes = "OUCH!!! Be careful!"
+        playerImg.src = 'https://thumbs.dreamstime.com/b/ouch-red-rubber-stamp-over-white-background-88001039.jpg'
+        setTimeout(()=>{
+            playerImg.src = '../images/player-tanya.png'
+            gameNotes = ""}, 1000)
+        
+      if(livesLeft === 0){
+          console.log("YOU ARE DEAD")
+          gameOver = true
+      }
+    }
+  }
+}
+//Lifelines - ladders
 class Lifelines extends Attackers {
     constructor(xPos, yPos, width, height, speed) {
         super(xPos, yPos, width, height, speed)
-
     }
   
     draw() {
-  
       ctx.beginPath()
       ctx.drawImage(lifeline1Img, this.xPos, this.yPos, this.width, this.height)
       this.yPos += this.speed
@@ -142,9 +211,9 @@ class Lifelines extends Attackers {
   
     checkCollision() {
       if (
-          playerX < this.xPos + this.width &&
-          playerX + playerWidth > this.xPos &&
-          playerY < this.yPos + this.height &&
+        playerX < this.xPos + this.width &&
+        playerX + playerWidth > this.xPos &&
+        playerY < this.yPos + this.height &&
         playerHeight + playerY > this.yPos
       ) {
           this.collided = true    
@@ -155,82 +224,52 @@ class Lifelines extends Attackers {
           setTimeout(()=>{
               playerImg.src = '../images/player-tanya.png'
               gameNotes = ""}, 1000)
-        
-  
       }
     }
   }
 
-  class ExtraPoints extends Lifelines {
-    constructor(xPos, yPos, width, height, speed) {
-        super(xPos, yPos, width, height, speed)
-
-    }
-  
-    draw() {
-  
-      ctx.beginPath()
-      ctx.drawImage(extraPoints1Img, this.xPos, this.yPos, this.width, this.height)
-      this.yPos += this.speed
-      ctx.closePath()
-    }
-  
-    checkCollision() {
-      if (
-          playerX < this.xPos + this.width &&
-          playerX + playerWidth > this.xPos &&
-          playerY < this.yPos + this.height &&
-        playerHeight + playerY > this.yPos
-      ) {
-          this.collided = true    
-          extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
-          extraPointsScoring = extraPointsScoring + 1000
-          gameNotes = "YAY, you got some xxxxxxx! you get an extra 1000 points"
-          playerImg.src = 'https://media.istockphoto.com/id/1341530063/de/vektor/yay-vektor-schriftzug-banner.jpg?s=612x612&w=0&k=20&c=9zJgLD7bhUqptpVWnVwoNBx6c90hutxsMePi5_bJ-wo='
-          setTimeout(()=>{
-              playerImg.src = '../images/player-tanya.png'
-              gameNotes = ""}, 1000)
-        
-  
-      }
-    }
+//Extra points - spaghetti
+class ExtraPoints extends Lifelines {
+  constructor(xPos, yPos, width, height, speed) {
+      super(xPos, yPos, width, height, speed)
   }
 
+  draw() {
+    ctx.beginPath()
+    ctx.drawImage(extraPoints1Img, this.xPos, this.yPos, this.width, this.height)
+    this.yPos += this.speed
+    ctx.closePath()
+  }
+
+  checkCollision() {
+    if (
+      playerX < this.xPos + this.width &&
+      playerX + playerWidth > this.xPos &&
+      playerY < this.yPos + this.height &&
+      playerHeight + playerY > this.yPos
+    ) {
+        this.collided = true    
+        extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
+        extraPointsScoring = extraPointsScoring + 1000
+        gameNotes = "YAY, you got some xxxxxxx! you get an extra 1000 points"
+        playerImg.src = 'https://media.istockphoto.com/id/1341530063/de/vektor/yay-vektor-schriftzug-banner.jpg?s=612x612&w=0&k=20&c=9zJgLD7bhUqptpVWnVwoNBx6c90hutxsMePi5_bJ-wo='
+        setTimeout(()=>{
+            playerImg.src = '../images/player-tanya.png'
+            gameNotes = ""}, 1000)
+    }
+  }
+}
 
 
-
-
+//ANIMATION
 const animate = () => {
+  //draw player, background
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(gameBackground, 0, 0, canvas.width, canvas.height)
-
     ctx.drawImage(playerImg, playerX, playerY, playerWidth, playerHeight)
 
-    attackers.forEach(attacker => {
-        attacker.draw()
-        attacker.checkCollision()
-      })
-    
-      attackers = attackers.filter(attackers => attackers.xPos > 0)
-      
-
-      lifelines.forEach(lifeline => {
-        lifeline.draw()
-        lifeline.checkCollision()
-      })
-    
-      lifelines = lifelines.filter(lifelines => lifelines.yPos < canvas.height)
-      
-
-      extraPoints.forEach(extraPoint => {
-        extraPoint.draw()
-        extraPoint.checkCollision()
-      })
-    
-      extraPoints = extraPoints.filter(extraPoints => extraPoints.yPos < canvas.height)
-      
-
-    
+    //player controls
+        
     if (isMovingLeft && playerX > canvasBorder) {
         playerX -= 5
     }
@@ -244,38 +283,114 @@ const animate = () => {
         playerY += 5
     }
 
-//ATTACKERS
-    //in first 2000 frames
+
+    // draw obstacles and objects
+    attackers.forEach(attacker => {
+      attacker.draw()
+      attacker.checkCollision()
+    })
+  
+    attackers = attackers.filter(attackers => attackers.xPos > 0)
+    
+    attackers2.forEach(attacker => {
+      attacker.draw()
+      attacker.checkCollision()
+    })
+  
+    attackers2 = attackers2.filter(attackers => attackers.xPos > 0)
+    
+    attackers3.forEach(attacker => {
+      attacker.draw()
+      attacker.checkCollision()
+    })
+  
+    attackers3 = attackers3.filter(attackers => attackers.xPos > 0) 
+
+    lifelines.forEach(lifeline => {
+      lifeline.draw()
+      lifeline.checkCollision()
+    })
+    
+    lifelines = lifelines.filter(lifelines => lifelines.yPos < canvas.height)
+    
+    extraPoints.forEach(extraPoint => {
+      extraPoint.draw()
+      extraPoint.checkCollision()
+    })
+    
+    extraPoints = extraPoints.filter(extraPoints => extraPoints.yPos < canvas.height)
+    
+    //console.log(attackers)
+    //console.log(attackers2)
+    //console.log(lifelines)
+    //console.log(animateId)
+
+//ATTACKERS timings
+
     if (animateId > 0 && animateId < 2000) {
-        //every 200 frames, add random attacker at speed 1
-        
-        if (animateId % 200 === 0) {
-            attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 1))
-        }
-    
-  
+      
+      if (animateId % 500 === 0) {
+        attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 50, 50, 1))
+      }
+
+      if (animateId % 200 === 0) {
+        attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 50, 50, 1))
+      }
     }
-     //in next 2000 frames
-     if (animateId > 2000 && animateId < 4000) {
-        //every 200 frames, add random attacker at speed 2
+
+    if (animateId > 499 && animateId < 2000) {
+      
+      if (animateId % 500 === 0) {
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 1))
+      }
+    }
+    
+    if (animateId > 2000 && animateId < 4000) {
+
+      gameNotes = "Uh oh! These high-end gays are coming in faster!"
+
+      if (animateId % 150 === 0) {
+        attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 50, 50, 2))
+      }
+
+      if (animateId % 300 === 0) {
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 2))
+      }
+
+      if (animateId % 300 === 0) {
+        attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 50, 50, 2))
+      }
+    }
+
+    if (animateId > 4000 && animateId < 6000) {
+      gameNotes = "Oh my gosh! Here they come!!!!"
+      if (animateId % 100 === 0) {
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 3))
+      }
+
+      if (animateId % 300 === 0) {
+        attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 50, 50, 3))
+      }
+    }
+
+    if (animateId > 6000 && animateId < 50000) {
         gameNotes = "Uh oh! These high-end gays are coming in faster!"
+
         if (animateId % 150 === 0) {
-            attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 2))
+          attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 50, 50, 5))
         }
-    
-  
+        if (animateId % 300 === 0) {
+          attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 5))
+        }   
+        if (animateId % 700 === 0) {
+          attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 50, 50, 8))
+        }   
+        if (animateId % 1000 === 0) {
+          attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 50, 50, 12))
+        }      
     }
-      //in next 2000 frames
-      if (animateId > 4000 && animateId < 6000) {
-        //every 200 frames, add random attacker at speed 3
-        gameNotes = "Oh my gosh! Here they come!!!!"
-        if (animateId % 100 === 0) {
-            attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 3))
-        }
     
-  
-    }
-//LIFELINES
+//LIFELINES timings
 
 if (animateId === 1000 || animateId % 2000 === 0) {
     lifelines.push(new Lifelines(canvas.width * Math.random(), 0, 30, 50, 8))
@@ -283,7 +398,7 @@ if (animateId === 1000 || animateId % 2000 === 0) {
 }
 
 
-//EXTRA POINTS
+//EXTRA POINTS timings
 
 if (animateId === 500 || animateId % 1000 === 0) {
     extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 4))
@@ -291,33 +406,30 @@ if (animateId === 500 || animateId % 1000 === 0) {
 }
 
 
-    //game notes
-    document.querySelector('#gameNotes').innerText = gameNotes
+  //game notes
+  document.querySelector('#gameNotes').innerText = gameNotes
 
-    //score bar
-    document.querySelector('#score').innerText = scoring
-    document.querySelector('#lives').innerText = livesLeft
-    document.querySelector('#extraPoints').innerText = extraPointsScoring
-    scoring = parseInt(animateId * 0.1)
+  //score bar
+  document.querySelector('#score').innerText = scoring
+  document.querySelector('#lives').innerText = livesLeft
+  document.querySelector('#extraPoints').innerText = extraPointsScoring
+  scoring = parseInt(animateId * 0.1)
 
-    //game over
-     /* document.querySelector('#nameForHighestScore') = "5" */
+  //game over - local storage
+/*   document.querySelector('#nameForHighestScore') = "5"
     
-/*     const person = {
-        name: "Obaseki Nosa",
-        location: "Lagos",
-    }
+  const person = {
+    name: "Obaseki Nosa",
+    location: "Lagos",
+  }
     
 
-    window.localStorage.setItem('user', JSON.stringify(person));
-https://blog.logrocket.com/localstorage-javascript-complete-guide/
- */
+  window.localStorage.setItem('user', JSON.stringify(person));
+  https://blog.logrocket.com/localstorage-javascript-complete-guide/
+  */
 
     
-    //console.log(attackers)
-     //console.log(lifelines)
-    //console.log(animateId)
-
+//game over
 if (gameOver === true) {
     cancelAnimationFrame(animateId)
     game.style.display ="none"
@@ -331,12 +443,8 @@ if (gameOver === true) {
   
 }
 
+//Start game
 const startGame = () => {
-
-    
-    console.log("game started")
-
-
     /* let skipIntervalId =  */setTimeout(()=>{
     gameIntro.style.display = "none"  
     game.style.display = "block" 
@@ -346,9 +454,12 @@ const startGame = () => {
     animate()
 }
 
+//ON LOAD
 
 window.addEventListener('load', () => {
-
+  
+  //EVENT LISTENERS
+//Start button
 
     btnStart.onclick = () => {
         if(document.forms["nameForHighestScore"]["name"].value !== ""){
@@ -356,83 +467,86 @@ window.addEventListener('load', () => {
         gameIntro.style.display = "block"
         startGame()
         }
-        else{
+        /* else{
             let x = document.forms["nameForHighestScore"]["name"].value
             if (x == "") {
             alert("Please type in your name to play the game")
               return false;
             }
-          }
+          } */
     }
-    btnRestart.onclick = () => {
+
+
+    
+    //skip intro button
+    btnSkip.addEventListener('click', () => {
+      gameIntro.style.display = "none"
+      game.style.display = "block"
+        })
+    
+        //key Q - secret button - skip game
         
-        game.style.display = "block"
-        startGame()
+    document.addEventListener('keydown',event => {
+      if((event.code == "KeyQ" || event.key=="q") && game.style.display === "block" ){
+        console.log("Q", event)
+        gameOver = true
+      }
+    })
+
+
+    //Restart button
+    btnRestart.onclick = () => {
+      game.style.display = "block"
+      startGame()
     }
 
-
-
-
-
-//add key event listeners here
-
-//arrow keys
-//keydown
+        //arrow keys
+        //keydown
     document.addEventListener('keydown',event => {
         if(event.key === "ArrowRight"){
-        isMovingRight = true
-        document.querySelector("#keys-right").classList.add("keys-pushed")
+          isMovingRight = true
+          document.querySelector("#keys-right").classList.add("keys-pushed")
         }
         if(event.key === "ArrowLeft"){
-        isMovingLeft = true
-        document.querySelector("#keys-left").classList.add("keys-pushed")
+          isMovingLeft = true
+          document.querySelector("#keys-left").classList.add("keys-pushed")
         }
         if(event.key === "ArrowUp"){
-        isMovingUp = true
-        document.querySelector("#keys-up").classList.add("keys-pushed")
+          isMovingUp = true
+          document.querySelector("#keys-up").classList.add("keys-pushed")
         }
         if(event.key === "ArrowDown"){
-        isMovingDown = true
-        document.querySelector("#keys-down").classList.add("keys-pushed")
-        }
+          isMovingDown = true
+          document.querySelector("#keys-down").classList.add("keys-pushed")
+      }
     })
-//keyup
+    //arrow keys
+    
+    //keyup
     document.addEventListener('keyup',event => {
-        if(event.key === "ArrowRight"){
-            isMovingRight = false
-            document.querySelector("#keys-right").classList.remove("keys-pushed")
+      if(event.key === "ArrowRight"){
+        isMovingRight = false
+        document.querySelector("#keys-right").classList.remove("keys-pushed") 
+      }
 
-        }
-        if(event.key === "ArrowLeft"){
-            isMovingLeft = false
-            document.querySelector("#keys-left").classList.remove("keys-pushed")
+      if(event.key === "ArrowLeft"){
+        isMovingLeft = false
+        document.querySelector("#keys-left").classList.remove("keys-pushed")
+      }
 
-        }
-        if(event.key === "ArrowUp"){
-            isMovingUp = false
-            document.querySelector("#keys-up").classList.remove("keys-pushed")
+      if(event.key === "ArrowUp"){
+        isMovingUp = false
+        document.querySelector("#keys-up").classList.remove("keys-pushed")
+      }
 
-        }
-        if(event.key === "ArrowDown"){
-            isMovingDown = false
-            document.querySelector("#keys-down").classList.remove("keys-pushed")
-
-            }
+      if(event.key === "ArrowDown"){
+        isMovingDown = false
+        document.querySelector("#keys-down").classList.remove("keys-pushed")
+      }
     })
-
-
-    document.addEventListener('keydown',event => {
-        if((event.code == "KeyQ" || event.key=="q") && game.style.display === "block" ){
-            console.log("Q", event)
-            gameOver = true
-        }
-    })
+        
  
-
-
-
-
-    //toggle button
+    //TOGGLE BUTTON - SPOILER VERSION
     btnToggleSpoilerVersion.addEventListener('click', () => {
         if(isSpoilerVersion === false){
             isSpoilerVersion = true
@@ -445,10 +559,10 @@ window.addEventListener('load', () => {
              //Intro
             document.querySelector('#intro-image-ctn img').src = "./images/ref-images/gif-gays.gif"
              //Game
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
-            ctx.drawImage(gameBackgroundSpoiler, 0, 0, canvas.width, canvas.height)
-            
-        } else{
+            gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
+
+    //TOGGLE BUTTON - SPOILER-FREE VERSION
+  } else{
             isSpoilerVersion = false
              //Splash
             document.querySelector('#name-of-game h1').innerText = "Please, These Guys, They're Trying To Rob Me"
@@ -458,15 +572,14 @@ window.addEventListener('load', () => {
             document.querySelector('#main-image-ctn img').src = "https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-10/aubrey-plaza-adam-dimarco-the-white-lotus-zz-221026-06-cf4122.jpg"
              //Intro
             document.querySelector('#intro-image-ctn img').src = "./images/ref-images/gif-guys.gif"
-        }
+            //game
+            gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
+
+          }
 
     })
-    btnSkip.addEventListener('click', () => {
-        console.log("skip Btn")
-        gameIntro.style.display = "none"
-        game.style.display = "block"
-        })
+
+
 
 
 })
-
