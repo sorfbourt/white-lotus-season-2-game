@@ -7,37 +7,37 @@
 ## Description
 "Please, These Gays, They're Trying To Murder Me" is a HTML/CSS/Javascript game, based on the quote Jennifer Coolidge's character in White Lotus Season 2. 
 
->"These Gays, They’re Trying To Murder Me" is a phrase said by Tanya in the finale of the 2022 HBO show The White Lotus. The phrase has become a sarcastic expression and image macro used by fans and the LGBTQ+ community on Twitter. - **From [Know Your MeMe](https://knowyourmeme.com/memes/these-gays-theyre-trying-to-murder-me)**
+>"These Gays, They’re Trying To Murder Me" is a phrase said by Tanya in the finale of the 2022 HBO show The White Lotus. The phrase has become a sarcastic expression and image macro used by fans and the LGBTQ+ community on Twitter. [^1] 
 
 In the game, the player (Tanya Mcquoid) controlled by keyboard arrows has to move horizontally and vertically to avoid the high-end gay characters. Tanya starts with 3 chances but she can gain lives and extra points by collecting certain objects. The gam ends when Tanya has lost all her chances. After that, a score is calucated based on the objects collected and the amount of time the game lasted.
 
 
 ## MVP
 _MVP definition here, list of minimum features_
-###Player functionality and collisions
+### Player functionality and collisions
 - Player moves in all directions
 - Player must avoid at least 2 different classes of collisions
 - If hit 3 times, you lose 
-###Player functionality
+### Player functionality
 - As time goes on, gets faster
-###Score calculation
+### Score calculation
 - After game ends, score is based on duration of game
-###Spoiler / Spoiler-free version
+### Spoiler / Spoiler-free version
 - Toggle to change to spoiler-free version ("These Guys, They're Trying To Rob Me") (Same game that can be changed anytime during the game)
 
 
 ## Backlog
 _List of features you might implement after the MVP_
-###Collecting extra points and lives
+### Collecting extra points and lives
 - Player can prolong the game and get more points if collecting certain objects
 - Scorebar reflects the addition above
 - Lives left shown visually in score panel
-###Local storage
+### Local storage
 - Player must input name on splash page
 - High scores are shown on game over page
-###Extra design
+### Extra design
 - Keyboard on splash page changes colour based key presses
-###Easter eggs
+### Easter eggs
 - Press Q to force end of game
 - Aadhoc fun ideas
 
@@ -80,6 +80,6 @@ _List of tasks in order of priority_
 
 ## Context Links
 - [IronHack Web Development Bootcamp Brief](https://docs.google.com/presentation/d/1_mVDkbM7i0YFSzImKCzcmYNInOa2v9Cj/edit#slide=id.p1)
-- [Know Your Meme - These Gays, They’re Trying To Murder Me](https://knowyourmeme.com/memes/these-gays-theyre-trying-to-murder-me)
 - [YouTube Clip - "Please, these gays are trying to murder me! - Tanya The White Lotus S2 E7"](https://www.youtube.com/watch?v=Sbt-N9IOPfc)
 
+[^1]: [Know Your Meme - These Gays, They’re Trying To Murder Me](https://knowyourmeme.com/memes/these-gays-theyre-trying-to-murder-me)
