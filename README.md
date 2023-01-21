@@ -36,6 +36,7 @@ _List of features you might implement after the MVP_
 - Player must input name on splash page
 - High scores are shown on game over page
 ### Extra design
+- Player animated as walks
 - Keyboard on splash page changes colour based key presses
 ### Easter eggs
 - Press Q to force end of game
