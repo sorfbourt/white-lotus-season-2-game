@@ -158,4 +158,14 @@ body {
   .toggle {
     background-color: #138C7F;
   }
+
+
+  /* GAME */
+
+#scoreBar{
+    background-color: #5CD2A1;
+    padding: 20px;
+    display:flex;
+    justify-content: space-between;
+}
   

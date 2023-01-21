@@ -7,6 +7,13 @@ game.style.display ="none"
 gameIntro.style.display ="none"
 gameOver.style.display ="none"
 
+let animateId
+let livesLeft = 3
+let scoring = 0
+
+//let gameOver = false
+
+
 
 
 
@@ -31,8 +38,8 @@ const mainImageCtn = document.querySelector('#main-image-ctn img').src
 
 
 //game variables
-let animateId
-//let gameOver = false
+
+
 isMovingLeft = false
 isMovingRight = false
 isMovingUp = false
@@ -70,18 +77,19 @@ const generateRandomNumber = () => {
 }
 
 class Attackers {
-  constructor(xPos, yPos, width, height) {
+  constructor(xPos, yPos, width, height, speed) {
     this.xPos = xPos
     this.yPos = yPos
     this.width = width
     this.height = height
+    this.speed = speed
   }
 
   draw() {
 
     ctx.beginPath()
     ctx.drawImage(attacker1Img, this.xPos, this.yPos, this.width, this.height)
-    this.xPos -= 1
+    this.xPos -= this.speed
     ctx.closePath()
   }
 
@@ -92,7 +100,10 @@ class Attackers {
         playerY < this.yPos + this.height &&
       playerHeight + playerY > this.yPos
     ) {
-      gameOver = true
+        
+    livesLeft = livesLeft - 1
+
+     /*  gameOver = true */
     }
   }
 }
@@ -113,6 +124,7 @@ const animate = () => {
       })
     
       attackers = attackers.filter(attackers => attackers.xPos > 0)
+      
 
     
     if (isMovingLeft && playerX > canvasBorder) {
@@ -133,11 +145,18 @@ const animate = () => {
     if (animateId > 0 && animateId < 2000) {
         //every 200 frames, add random attacker
         if (animateId % 200 === 0) {
-            attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50))
+            attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 1))
         }
     
   
     }
+
+
+    //score bar
+
+    document.querySelector('#score').innerText = scoring
+    document.querySelector('#lives').innerText = livesLeft
+    scoring = parseInt(animateId * 0.1)
     
     console.log(attackers)
     console.log(animateId)
