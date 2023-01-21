@@ -10,6 +10,7 @@ gameOverScreen.style.display ="none"
 let animateId
 let livesLeft = 3
 let scoring = 0
+let extraPointsScoring = 0
 let gameNotes = ""
 
 let gameOver = false
@@ -64,10 +65,13 @@ attacker1Img.src = '../images/attacker-quentin.png'
 const lifeline1Img = new Image()
 lifeline1Img.src = 'https://img.nauticexpo.com/images_ne/photo-g/21536-12316846.jpg'
 
+const extraPoints1Img = new Image()
+extraPoints1Img.src = 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-with-Meat-Sauce-Recipe-1-1200.jpg'
+
 const playerWidth = 60
 const playerHeight = 80
 
-let playerX = 40
+let playerX = canvas.width / 2 - playerWidth
 let playerY = 400
 
 let canvasBorder = 20
@@ -76,11 +80,7 @@ let canvasBorder = 20
 //Attackers
 let attackers = []
 let lifelines = []
-
-const generateRandomNumber = () => {
-  const randomAttackerX = Math.floor(100 + Math.random() * (canvas.width - 100))
-  return randomAttackerX
-}
+let extraPoints = []
 
 class Attackers {
   constructor(xPos, yPos, width, height, speed) {
@@ -136,12 +136,8 @@ class Lifelines extends Attackers {
   
       ctx.beginPath()
       ctx.drawImage(lifeline1Img, this.xPos, this.yPos, this.width, this.height)
-      console.log("ONE", this.xPos, this.yPos)
       this.yPos += this.speed
-      console.log("TWO", this.xPos, this.yPos)
-
       ctx.closePath()
-      console.log("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
     }
   
     checkCollision() {
@@ -154,8 +150,43 @@ class Lifelines extends Attackers {
           this.collided = true    
           lifelines = lifelines.filter(lifelines => lifelines.collided === false) 
           livesLeft = livesLeft + 1
-          gameNotes = "YAY"
+          gameNotes = "YAY, you got a ladder! You gained a life!"
           playerImg.src = 'https://www.shutterstock.com/image-vector/yay-vector-handdrawn-lettering-banner-260nw-1323618563.jpg'
+          setTimeout(()=>{
+              playerImg.src = '../images/player-tanya.png'
+              gameNotes = ""}, 1000)
+        
+  
+      }
+    }
+  }
+
+  class ExtraPoints extends Lifelines {
+    constructor(xPos, yPos, width, height, speed) {
+        super(xPos, yPos, width, height, speed)
+
+    }
+  
+    draw() {
+  
+      ctx.beginPath()
+      ctx.drawImage(extraPoints1Img, this.xPos, this.yPos, this.width, this.height)
+      this.yPos += this.speed
+      ctx.closePath()
+    }
+  
+    checkCollision() {
+      if (
+          playerX < this.xPos + this.width &&
+          playerX + playerWidth > this.xPos &&
+          playerY < this.yPos + this.height &&
+        playerHeight + playerY > this.yPos
+      ) {
+          this.collided = true    
+          extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
+          extraPointsScoring = extraPointsScoring + 1000
+          gameNotes = "YAY, you got some xxxxxxx! you get an extra 1000 points"
+          playerImg.src = 'https://media.istockphoto.com/id/1341530063/de/vektor/yay-vektor-schriftzug-banner.jpg?s=612x612&w=0&k=20&c=9zJgLD7bhUqptpVWnVwoNBx6c90hutxsMePi5_bJ-wo='
           setTimeout(()=>{
               playerImg.src = '../images/player-tanya.png'
               gameNotes = ""}, 1000)
@@ -189,6 +220,14 @@ const animate = () => {
       })
     
       lifelines = lifelines.filter(lifelines => lifelines.yPos < canvas.height)
+      
+
+      extraPoints.forEach(extraPoint => {
+        extraPoint.draw()
+        extraPoint.checkCollision()
+      })
+    
+      extraPoints = extraPoints.filter(extraPoints => extraPoints.yPos < canvas.height)
       
 
     
@@ -238,19 +277,31 @@ const animate = () => {
     }
 //LIFELINES
 
-        if (animateId === 200 || animateId % 2000 === 0) {
-            lifelines.push(new Lifelines(canvas.width * Math.random(), 0, 30, 50, 8))
-            gameNotes = "Look a ladder! Collect the ladders to gain more lives!"
-        }
+if (animateId === 1000 || animateId % 2000 === 0) {
+    lifelines.push(new Lifelines(canvas.width * Math.random(), 0, 30, 50, 8))
+    gameNotes = "Look a ladder! Collect the ladders to gain more lives!"
+}
+
+
+//EXTRA POINTS
+
+if (animateId === 500 || animateId % 1000 === 0) {
+    extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 4))
+    gameNotes = "Look! Some amazing italian spaghetti! Get it to gain more points!"
+}
 
 
     //game notes
     document.querySelector('#gameNotes').innerText = gameNotes
 
     //score bar
-        document.querySelector('#score').innerText = scoring
+    document.querySelector('#score').innerText = scoring
     document.querySelector('#lives').innerText = livesLeft
+    document.querySelector('#extraPoints').innerText = extraPointsScoring
     scoring = parseInt(animateId * 0.1)
+ 
+
+
     
     //console.log(attackers)
      //console.log(lifelines)
@@ -260,7 +311,7 @@ if (gameOver === true) {
     cancelAnimationFrame(animateId)
     game.style.display ="none"
     gameOverScreen.style.display ="block"
-    document.querySelector('#final-score').innerText = scoring
+    document.querySelector('#final-score').innerText = scoring + extraPointsScoring
 
   } else {
     animateId = requestAnimationFrame(animate)
