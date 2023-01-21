@@ -19,6 +19,7 @@ let gameOver = false
 
 
 const btnStart = document.querySelector('#btnStart')
+const btnRestart = document.querySelector('#btnRestart')
 const btnToggleSpoilerVersion = document.querySelector('#btnToggleSpoilerVersion')
 
 
@@ -217,6 +218,7 @@ const startGame = () => {
     /* let skipIntervalId =  */setTimeout(()=>{
     gameIntro.style.display = "none"  
     game.style.display = "block" 
+    gameOverScreen.style.display = "none"
     // audioIntro.play();
     }, 3000)
     animate()
@@ -229,6 +231,11 @@ window.addEventListener('load', () => {
     btnStart.onclick = () => {
         gameSplash.style.display = "none"
         gameIntro.style.display = "block"
+        startGame()
+    }
+    btnRestart.onclick = () => {
+        
+        game.style.display = "block"
         startGame()
     }
 
@@ -301,7 +308,7 @@ window.addEventListener('load', () => {
 
 
 
-    //space bar
+    //toggle button
     btnToggleSpoilerVersion.addEventListener('click', () => {
         if(isSpoilerVersion === false){
             isSpoilerVersion = true
