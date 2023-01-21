@@ -10,6 +10,7 @@ gameOverScreen.style.display ="none"
 let animateId
 let livesLeft = 3
 let scoring = 0
+let gameNotes = ""
 
 let gameOver = false
 
@@ -104,6 +105,12 @@ class Attackers {
         this.collided = true    
         attackers = attackers.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
+        gameNotes = "OUCH!!! Be careful!"
+        playerImg.src = 'https://thumbs.dreamstime.com/b/ouch-red-rubber-stamp-over-white-background-88001039.jpg'
+        setTimeout(()=>{
+            playerImg.src = '../images/player-tanya.png'
+            gameNotes = ""}, 1000)
+        
     if(livesLeft === 0){
         console.log("YOU ARE DEAD")
         gameOver = true
@@ -148,7 +155,8 @@ const animate = () => {
 
     //in first 2000 frames
     if (animateId > 0 && animateId < 2000) {
-        //every 200 frames, add random attacker
+        //every 200 frames, add random attacker at speed 1
+        
         if (animateId % 200 === 0) {
             attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 1))
         }
@@ -157,18 +165,30 @@ const animate = () => {
     }
      //in next 2000 frames
      if (animateId > 2000 && animateId < 4000) {
-        //every 200 frames, add random attacker
+        //every 200 frames, add random attacker at speed 2
+        gameNotes = "Uh oh! These high-end gays are coming in faster!"
         if (animateId % 150 === 0) {
             attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 2))
         }
     
   
     }
+      //in next 2000 frames
+      if (animateId > 4000 && animateId < 6000) {
+        //every 200 frames, add random attacker at speed 3
+        gameNotes = "Oh my gosh! Here they come!!!!"
+        if (animateId % 100 === 0) {
+            attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 3))
+        }
+    
+  
+    }
 
+    //game notes
+    document.querySelector('#gameNotes').innerText = gameNotes
 
     //score bar
-
-    document.querySelector('#score').innerText = scoring
+        document.querySelector('#score').innerText = scoring
     document.querySelector('#lives').innerText = livesLeft
     scoring = parseInt(animateId * 0.1)
     
@@ -179,6 +199,7 @@ if (gameOver === true) {
     cancelAnimationFrame(animateId)
     game.style.display ="none"
     gameOverScreen.style.display ="block"
+    document.querySelector('#final-score').innerText = scoring
 
   } else {
     animateId = requestAnimationFrame(animate)
