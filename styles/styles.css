@@ -153,10 +153,12 @@ body {
     box-shadow: 0;
     border-radius: 5px;
     margin-bottom: 20px;
+    border: #138C7F solid 1px;
   }
   
   .toggle {
     background-color: #138C7F;
+    border: #5CD2A1 solid 1px;
   }
 
 

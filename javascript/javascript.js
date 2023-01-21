@@ -15,8 +15,8 @@ let gameNotes = ""
 
 let gameOver = false
 
-
-
+let nameForHighestScore = document.forms["nameForHighestScore"]["name"].value
+    
 
 
 const btnStart = document.querySelector('#btnStart')
@@ -299,6 +299,9 @@ if (animateId === 500 || animateId % 1000 === 0) {
     document.querySelector('#lives').innerText = livesLeft
     document.querySelector('#extraPoints').innerText = extraPointsScoring
     scoring = parseInt(animateId * 0.1)
+
+    //game over
+     /* document.querySelector('#nameForHighestScore') = "5" */
     
 /*     const person = {
         name: "Obaseki Nosa",

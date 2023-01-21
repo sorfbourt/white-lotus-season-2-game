@@ -9,7 +9,9 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 </head>
 <body>
-    <button id="btnToggleSpoilerVersion">Toggle Spoiler version</button>
+    <div id="toggle-ctn">
+        <button id="btnToggleSpoilerVersion">Toggle Spoiler version</button>
+    </div>
 <!-- SPLASH PAGE -->
     <section id="game-splash">
 
@@ -135,6 +137,7 @@
         <div style="font-size:50px;">
             GAME OVER!!!!!!!!!
             <br/>
+            WELL DONE, <span id="nameForHighestScore"></span><br/>
             FINAL SCORE: <span id="final-score"></span>
             <br/>
             <button id="btnRestart">Restart Game</button>
