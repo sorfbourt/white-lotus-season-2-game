@@ -83,6 +83,7 @@ class Attackers {
     this.width = width
     this.height = height
     this.speed = speed
+    this.collided = false
   }
 
   draw() {
@@ -100,7 +101,8 @@ class Attackers {
         playerY < this.yPos + this.height &&
       playerHeight + playerY > this.yPos
     ) {
-        
+    this.collided = true    
+    attackers = attackers.filter(attackers => attackers.collided === false) 
     livesLeft = livesLeft - 1
 
      /*  gameOver = true */
@@ -158,8 +160,8 @@ const animate = () => {
     document.querySelector('#lives').innerText = livesLeft
     scoring = parseInt(animateId * 0.1)
     
-    console.log(attackers)
-    console.log(animateId)
+    //console.log(attackers)
+    //console.log(animateId)
 
 if (gameOver === true) {
     cancelAnimationFrame(animateId)
