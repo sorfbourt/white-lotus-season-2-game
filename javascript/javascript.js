@@ -155,6 +155,15 @@ const animate = () => {
     
   
     }
+     //in next 2000 frames
+     if (animateId > 2000 && animateId < 4000) {
+        //every 200 frames, add random attacker
+        if (animateId % 150 === 0) {
+            attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 2))
+        }
+    
+  
+    }
 
 
     //score bar
@@ -164,7 +173,7 @@ const animate = () => {
     scoring = parseInt(animateId * 0.1)
     
     //console.log(attackers)
-    //console.log(animateId)
+    console.log(animateId)
 
 if (gameOver === true) {
     cancelAnimationFrame(animateId)
