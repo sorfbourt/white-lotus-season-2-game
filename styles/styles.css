@@ -26,7 +26,7 @@ body {
   
   #game-splash, #game, #game-over, #game-intro {
     width:600px;
-    height:500px;
+    height:600px;
     padding: 20% 10%;
     margin: 0 auto;
   }
@@ -85,7 +85,7 @@ body {
     justify-content: center;
   }
   
-  #game-splash p {
+  #game-splash p, #pointsInfo {
     font-size: 12px;
     font-family: "Verdana"
   }

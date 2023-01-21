@@ -362,22 +362,18 @@ window.addEventListener('load', () => {
         if(event.key === "ArrowRight"){
         isMovingRight = true
         document.querySelector("#keys-right").classList.add("keys-pushed")
-        console.log("right", "isMovingRight:", isMovingRight, event)
         }
         if(event.key === "ArrowLeft"){
         isMovingLeft = true
         document.querySelector("#keys-left").classList.add("keys-pushed")
-        console.log("left", "isMovingLeft:", isMovingLeft, event)
         }
         if(event.key === "ArrowUp"){
         isMovingUp = true
         document.querySelector("#keys-up").classList.add("keys-pushed")
-        console.log("right", "isMovingUp:", isMovingUp, event)
         }
         if(event.key === "ArrowDown"){
         isMovingDown = true
         document.querySelector("#keys-down").classList.add("keys-pushed")
-        console.log("left", "isMovingDown:", isMovingDown, event)
         }
     })
 //keyup
@@ -385,22 +381,22 @@ window.addEventListener('load', () => {
         if(event.key === "ArrowRight"){
             isMovingRight = false
             document.querySelector("#keys-right").classList.remove("keys-pushed")
-            console.log("right", "isMovingRight:", isMovingRight, event)
+
         }
         if(event.key === "ArrowLeft"){
             isMovingLeft = false
             document.querySelector("#keys-left").classList.remove("keys-pushed")
-            console.log("left", "isMovingLeft:", isMovingLeft, event)
+
         }
         if(event.key === "ArrowUp"){
             isMovingUp = false
             document.querySelector("#keys-up").classList.remove("keys-pushed")
-            console.log("right", "isMovingUp:", isMovingUp, event)
+
         }
         if(event.key === "ArrowDown"){
             isMovingDown = false
             document.querySelector("#keys-down").classList.remove("keys-pushed")
-            console.log("left", "isMovingDown:", isMovingDown, event)
+
             }
     })
 
