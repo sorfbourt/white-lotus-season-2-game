@@ -10,12 +10,12 @@ body {
 
 
 
-    border: 1px solid black;
+    /* border: 1px solid grey; */
     
   }
   
   div, section, footer {
-    border: 1px solid black;
+    /* border: 1px solid grey; */
   }
 
 
@@ -94,9 +94,34 @@ body {
 
 
 
-  #keyboard-arrows-img {
-    width: 150px;
+  .keys{
+    width:50px;
+    height:50px;
+    margin:1px;
+    text-align: center;
+}
+.keys-real{
+    background-color: #138C7F;
+    border: 1px solid #5CD2A1;
+    color:#5CD2A1;
+    font-weight: bold;
     
+  }
+
+  .keys-pushed{
+    background-color: #5CD2A1;
+    border: 1px solid #138C7F;
+    color:#138C7F;
+  }
+
+  #keys{
+    width:50px;
+    height:50px;
+  }
+  #keys-first-line, #keys-second-line{
+    display:flex;
+    flex-direction: row;
+    margin:0 10px;
   }
 
 
