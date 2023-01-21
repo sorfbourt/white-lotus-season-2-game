@@ -299,8 +299,16 @@ if (animateId === 500 || animateId % 1000 === 0) {
     document.querySelector('#lives').innerText = livesLeft
     document.querySelector('#extraPoints').innerText = extraPointsScoring
     scoring = parseInt(animateId * 0.1)
- 
+    
+/*     const person = {
+        name: "Obaseki Nosa",
+        location: "Lagos",
+    }
+    
 
+    window.localStorage.setItem('user', JSON.stringify(person));
+https://blog.logrocket.com/localstorage-javascript-complete-guide/
+ */
 
     
     //console.log(attackers)
@@ -338,11 +346,20 @@ const startGame = () => {
 
 window.addEventListener('load', () => {
 
-    
+
     btnStart.onclick = () => {
+        if(document.forms["nameForHighestScore"]["name"].value !== ""){
         gameSplash.style.display = "none"
         gameIntro.style.display = "block"
         startGame()
+        }
+        else{
+            let x = document.forms["nameForHighestScore"]["name"].value
+            if (x == "") {
+            alert("Please type in your name to play the game")
+              return false;
+            }
+          }
     }
     btnRestart.onclick = () => {
         

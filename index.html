@@ -68,8 +68,13 @@
             <div id="main-image-ctn">
 
                 <img src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-10/aubrey-plaza-adam-dimarco-the-white-lotus-zz-221026-06-cf4122.jpg" alt="" width="300px" />
-
-                <button id="btnStart">Start <br/> (Spoiler free version)</button>
+                <br/>
+                    <form name="nameForHighestScore" onsubmit="return validateForm()">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required       minlength="1" width="100%">
+                    </form>
+                    <br/>
+                <button id="btnStart">Start the game!</button>
                 <!-- <button id="btnToggleSpoilerVersion">Toggle Spoiler version</button> -->
             </div>
 
