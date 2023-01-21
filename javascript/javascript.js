@@ -194,7 +194,7 @@ const animate = () => {
     scoring = parseInt(animateId * 0.1)
     
     //console.log(attackers)
-    console.log(animateId)
+    // console.log(animateId)
 
 if (gameOver === true) {
     cancelAnimationFrame(animateId)
@@ -292,18 +292,15 @@ window.addEventListener('load', () => {
             console.log("left", "isMovingDown:", isMovingDown, event)
             }
     })
- /*    document.addEventListener('keydown',event => {
-        if(event.key === "ArrowUp"){
-        isMovingUp = true
-        console.log("up", "isMovingUp:", isMovingUp, event)
+
+
+    document.addEventListener('keydown',event => {
+        if(event.code == "KeyQ" || event.key=="q"){
+            console.log("Q", event)
+            gameOver = true
         }
     })
-    document.addEventListener('keydown',event => {
-        if(event.key === "ArrowDown"){
-        isMovingDown = true
-        console.log("down", "isMovingDown:", isMovingDown, event)
-        }
-    }) */
+ 
 
 
 
