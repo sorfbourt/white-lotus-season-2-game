@@ -1,17 +1,17 @@
 const gameSplash = document.querySelector('#game-splash')
 const gameIntro = document.querySelector('#game-intro')
 const game = document.querySelector('#game')
-const gameOver = document.querySelector('#game-over')
+const gameOverScreen = document.querySelector('#game-over')
 
 game.style.display ="none"
 gameIntro.style.display ="none"
-gameOver.style.display ="none"
+gameOverScreen.style.display ="none"
 
 let animateId
 let livesLeft = 3
 let scoring = 0
 
-//let gameOver = false
+let gameOver = false
 
 
 
@@ -101,11 +101,14 @@ class Attackers {
         playerY < this.yPos + this.height &&
       playerHeight + playerY > this.yPos
     ) {
-    this.collided = true    
-    attackers = attackers.filter(attackers => attackers.collided === false) 
-    livesLeft = livesLeft - 1
+        this.collided = true    
+        attackers = attackers.filter(attackers => attackers.collided === false) 
+        livesLeft = livesLeft - 1
+    if(livesLeft === 0){
+        console.log("YOU ARE DEAD")
+        gameOver = true
+    }
 
-     /*  gameOver = true */
     }
   }
 }
@@ -165,6 +168,9 @@ const animate = () => {
 
 if (gameOver === true) {
     cancelAnimationFrame(animateId)
+    game.style.display ="none"
+    gameOverScreen.style.display ="block"
+
   } else {
     animateId = requestAnimationFrame(animate)
   }
