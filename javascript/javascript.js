@@ -49,6 +49,9 @@ gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3d
 const playerImg = new Image()
 playerImg.src = '../images/player-tanya.png'
 
+const attacker1Img = new Image()
+attacker1Img.src = '../images/attacker-quentin.png'
+
 const playerWidth = 60
 const playerHeight = 80
 
@@ -58,8 +61,41 @@ let playerY = 400
 let canvasBorder = 20
 
 
-//game functionality
+//Attackers
+let attackers = []
 
+const generateRandomNumber = () => {
+  const randomAttackerX = Math.floor(100 + Math.random() * (canvas.width - 100))
+  return randomAttackerX
+}
+
+class Attackers {
+  constructor(xPos, yPos, width, height) {
+    this.xPos = xPos
+    this.yPos = yPos
+    this.width = width
+    this.height = height
+  }
+
+  draw() {
+
+    ctx.beginPath()
+    ctx.drawImage(attacker1Img, this.xPos, this.yPos, this.width, this.height)
+    this.xPos -= 1
+    ctx.closePath()
+  }
+
+  checkCollision() {
+    if (
+        playerX < this.xPos + this.width &&
+        playerX + playerWidth > this.xPos &&
+        playerY < this.yPos + this.height &&
+      playerHeight + playerY > this.yPos
+    ) {
+      gameOver = true
+    }
+  }
+}
 
 
 
@@ -71,7 +107,12 @@ const animate = () => {
 
     ctx.drawImage(playerImg, playerX, playerY, playerWidth, playerHeight)
 
-
+    attackers.forEach(attacker => {
+        attacker.draw()
+        attacker.checkCollision()
+      })
+    
+      attackers = attackers.filter(attackers => attackers.xPos > 0)
 
     
     if (isMovingLeft && playerX > canvasBorder) {
@@ -87,11 +128,26 @@ const animate = () => {
         playerY += 5
     }
 
-    if (gameOver === true) {
-        cancelAnimationFrame(animateId)
-      } else {
-        animateId = requestAnimationFrame(animate)
-      }
+
+    //in first 2000 frames
+    if (animateId > 0 && animateId < 2000) {
+        //every 200 frames, add random attacker
+        if (animateId % 200 === 0) {
+            attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50))
+        }
+    
+  
+    }
+    
+    console.log(attackers)
+    console.log(animateId)
+
+if (gameOver === true) {
+    cancelAnimationFrame(animateId)
+  } else {
+    animateId = requestAnimationFrame(animate)
+  }
+
   
 }
 
