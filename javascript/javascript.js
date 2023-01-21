@@ -13,7 +13,6 @@ let gameOver = false
 let livesLeft = 3
 let scoring = 0
 let extraPointsScoring = 0
-let gameNotes = ""
 let nameForHighestScore = document.forms["nameForHighestScore"]["name"].value
     
 const btnStart = document.querySelector('#btnStart')
@@ -21,9 +20,22 @@ const btnRestart = document.querySelector('#btnRestart')
 const btnToggleSpoilerVersion = document.querySelector('#btnToggleSpoilerVersion')
 
 //audio
-/* const audioIntro = new Audio('./audio/please-these-gays-are-trying-to-murder-me.mp3')
-audioIntro.preload */
-
+const audioIntro = new Audio('./audio/please-these-gays-are-trying-to-murder-me.mp3')
+audioIntro.preload
+const audioCrying = new Audio('./audio/jennifer-coolidge-crying.mp3')
+audioCrying.preload
+const audioOMG = new Audio('./audio/jennifer-coolidge-omg.mp3')
+audioOMG.preload
+const audioOMG2 = new Audio('./audio/jennifer-coolidge-omg-v2.mp3')
+audioOMG2.preload
+const audioOuttaHere = new Audio('./audio/jennifer-coolidge-we-gotta-get-the-fuck-outta-here.mp3')
+audioOuttaHere.preload
+const audioWow = new Audio('./audio/jennifer-coolidge-wow.mp3')
+audioWow.preload
+const audioThemeSong = new Audio('./audio/white-lotus-theme-song.mp3')
+audioThemeSong.preload
+audioThemeSong.volume = 0.2;
+audioThemeSong.play();
 
 //Spoiler version variables
 let isSpoilerVersion = false
@@ -46,9 +58,10 @@ const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
 const gameBackground = new Image()
-gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
+gameBackground.src = 'https://www.luxurychartergroup.com/cms/uploads/luxury-charter-yacht-invader-30.jpg'
+// gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
 const gameBackgroundSpoiler = new Image()
-gameBackgroundSpoiler.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
+gameBackgroundSpoiler.src = 'https://www.luxurychartergroup.com/cms/uploads/luxury-charter-yacht-invader-30.jpg'
 
 const playerImg = new Image()
 playerImg.src = '../images/player-tanya.png'
@@ -57,22 +70,22 @@ const attacker1Img = new Image()
 attacker1Img.src = '../images/attacker-quentin.png'
 
 const attacker2Img = new Image()
-attacker2Img.src = '../images/attacker-didier.jpg'
+attacker2Img.src = '../images/attacker-didier.png'
 
 const attacker3Img = new Image()
-attacker3Img.src = '../images/attacker-matteo.jpg'
+attacker3Img.src = '../images/attacker-matteo.png'
 
 const lifeline1Img = new Image()
-lifeline1Img.src = 'https://img.nauticexpo.com/images_ne/photo-g/21536-12316846.jpg'
+lifeline1Img.src = '../images/ladder.png'
 
 const extraPoints1Img = new Image()
-extraPoints1Img.src = 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-with-Meat-Sauce-Recipe-1-1200.jpg'
+extraPoints1Img.src = '../images/spaghetti.png'
 
 //player variables
 let canvasBorder = 20
 
-const playerWidth = 60
-const playerHeight = 80
+const playerWidth = 80
+const playerHeight = 90
 
 let playerX = canvas.width / 2 - playerWidth
 let playerY = 400
@@ -108,14 +121,14 @@ class Attackers {
       playerY < this.yPos + this.height &&
       playerHeight + playerY > this.yPos
     ) {
-        this.collided = true    
+        this.collided = true
+        audioOuttaHere.play()
         attackers = attackers.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
-        gameNotes = "OUCH!!! Be careful!"
         playerImg.src = 'https://thumbs.dreamstime.com/b/ouch-red-rubber-stamp-over-white-background-88001039.jpg'
         setTimeout(()=>{
             playerImg.src = '../images/player-tanya.png'
-            gameNotes = ""}, 1000)
+            }, 1000)
         
       if(livesLeft === 0){
         gameOver = true
@@ -144,17 +157,16 @@ class Attackers2 extends Attackers {
       playerY < this.yPos + this.height &&
       playerHeight + playerY > this.yPos
     ) {
-        this.collided = true    
+        this.collided = true  
+        audioOMG.play()  
         attackers2 = attackers2.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
-        gameNotes = "OUCH!!! Be careful!"
         playerImg.src = 'https://thumbs.dreamstime.com/b/ouch-red-rubber-stamp-over-white-background-88001039.jpg'
         setTimeout(()=>{
             playerImg.src = '../images/player-tanya.png'
-            gameNotes = ""}, 1000)
+            }, 1000)
         
       if(livesLeft === 0){
-          console.log("YOU ARE DEAD")
           gameOver = true
       }
     }
@@ -180,14 +192,14 @@ class Attackers3 extends Attackers {
       playerY < this.yPos + this.height &&
       playerHeight + playerY > this.yPos
     ) {
-        this.collided = true    
+        this.collided = true  
+        audioOMG2.play()  
         attackers3 = attackers3.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
-        gameNotes = "OUCH!!! Be careful!"
         playerImg.src = 'https://thumbs.dreamstime.com/b/ouch-red-rubber-stamp-over-white-background-88001039.jpg'
         setTimeout(()=>{
             playerImg.src = '../images/player-tanya.png'
-            gameNotes = ""}, 1000)
+            }, 1000)
         
       if(livesLeft === 0){
           console.log("YOU ARE DEAD")
@@ -217,13 +229,13 @@ class Lifelines extends Attackers {
         playerHeight + playerY > this.yPos
       ) {
           this.collided = true    
+          audioWow.play()
           lifelines = lifelines.filter(lifelines => lifelines.collided === false) 
           livesLeft = livesLeft + 1
-          gameNotes = "YAY, you got a ladder! You gained a life!"
           playerImg.src = 'https://www.shutterstock.com/image-vector/yay-vector-handdrawn-lettering-banner-260nw-1323618563.jpg'
           setTimeout(()=>{
               playerImg.src = '../images/player-tanya.png'
-              gameNotes = ""}, 1000)
+              }, 1000)
       }
     }
   }
@@ -249,13 +261,13 @@ class ExtraPoints extends Lifelines {
       playerHeight + playerY > this.yPos
     ) {
         this.collided = true    
+        audioWow.play()
         extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
         extraPointsScoring = extraPointsScoring + 1000
-        gameNotes = "YAY, you got some xxxxxxx! you get an extra 1000 points"
         playerImg.src = 'https://media.istockphoto.com/id/1341530063/de/vektor/yay-vektor-schriftzug-banner.jpg?s=612x612&w=0&k=20&c=9zJgLD7bhUqptpVWnVwoNBx6c90hutxsMePi5_bJ-wo='
         setTimeout(()=>{
             playerImg.src = '../images/player-tanya.png'
-            gameNotes = ""}, 1000)
+            }, 1000)
     }
   }
 }
@@ -267,6 +279,7 @@ const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(gameBackground, 0, 0, canvas.width, canvas.height)
     ctx.drawImage(playerImg, playerX, playerY, playerWidth, playerHeight)
+    
 
     //player controls
         
@@ -347,8 +360,6 @@ const animate = () => {
     
     if (animateId > 2000 && animateId < 4000) {
 
-      gameNotes = "Uh oh! These high-end gays are coming in faster!"
-
       if (animateId % 150 === 0) {
         attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 50, 50, 2))
       }
@@ -363,7 +374,6 @@ const animate = () => {
     }
 
     if (animateId > 4000 && animateId < 6000) {
-      gameNotes = "Oh my gosh! Here they come!!!!"
       if (animateId % 100 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 3))
       }
@@ -374,7 +384,6 @@ const animate = () => {
     }
 
     if (animateId > 6000 && animateId < 50000) {
-        gameNotes = "Uh oh! These high-end gays are coming in faster!"
 
         if (animateId % 150 === 0) {
           attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 50, 50, 5))
@@ -394,7 +403,6 @@ const animate = () => {
 
 if (animateId === 1000 || animateId % 2000 === 0) {
     lifelines.push(new Lifelines(canvas.width * Math.random(), 0, 30, 50, 8))
-    gameNotes = "Look a ladder! Collect the ladders to gain more lives!"
 }
 
 
@@ -402,12 +410,8 @@ if (animateId === 1000 || animateId % 2000 === 0) {
 
 if (animateId === 500 || animateId % 1000 === 0) {
     extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 4))
-    gameNotes = "Look! Some amazing italian spaghetti! Get it to gain more points!"
 }
 
-
-  //game notes
-  document.querySelector('#gameNotes').innerText = gameNotes
 
   //score bar
   document.querySelector('#score').innerText = scoring
@@ -431,6 +435,7 @@ if (animateId === 500 || animateId % 1000 === 0) {
     
 //game over
 if (gameOver === true) {
+    audioCrying.play()
     cancelAnimationFrame(animateId)
     game.style.display ="none"
     gameOverScreen.style.display ="block"
@@ -445,11 +450,12 @@ if (gameOver === true) {
 
 //Start game
 const startGame = () => {
+    
     /* let skipIntervalId =  */setTimeout(()=>{
     gameIntro.style.display = "none"  
     game.style.display = "block" 
     gameOverScreen.style.display = "none"
-    // audioIntro.play();
+    audioIntro.play();
     }, 3000)
     animate()
 }
@@ -497,7 +503,7 @@ window.addEventListener('load', () => {
     //Restart button
     btnRestart.onclick = () => {
       game.style.display = "block"
-      startGame()
+      document.reload() 
     }
 
         //arrow keys
@@ -551,8 +557,7 @@ window.addEventListener('load', () => {
         if(isSpoilerVersion === false){
             isSpoilerVersion = true
             //Splash
-            document.querySelector('#name-of-game h1').innerText = "Please, These Gays, They're Trying To Murder Me"
-            document.querySelector('#name-of-game h1').style.color = "red"
+            document.querySelector('#name-of-game h1').innerText = "PLEASE, THESE GAYS, THEY'RE TRYING TO MURDER ME"
             btnToggleSpoilerVersion.classList.toggle("toggle")
             document.querySelector('#instructionsText').innerHTML ="<p><b>Instructions</b></p><p>Use the arrow keys to run away from 'these gays'. They are trying to murder you!</p><p>You have 3 lives. Each time one of 'these are some high-end gays', you'll lose a life.</p><p>See how long you can last before you are murdered. The longer you last, the higher your score.</p>"
             document.querySelector('#main-image-ctn img').src = "https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-10/aubrey-plaza-adam-dimarco-the-white-lotus-zz-221026-06-cf4122.jpg"
@@ -565,7 +570,7 @@ window.addEventListener('load', () => {
   } else{
             isSpoilerVersion = false
              //Splash
-            document.querySelector('#name-of-game h1').innerText = "Please, These Guys, They're Trying To Rob Me"
+            document.querySelector('#name-of-game h1').innerText = "PLEASE, THESE GUYS, THEY'RE TRYING TO ROB ME"
             document.querySelector('#name-of-game h1').style.color = "black"
             btnToggleSpoilerVersion.classList.toggle("toggle")
             document.querySelector('#instructionsText').innerHTML ="<p><b>Instructions</b></p><p>Use the arrow keys to run away from people trying to steal your money.</p><p>You <i>only</i> have 3 billion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 billion dollars.</p><p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>"

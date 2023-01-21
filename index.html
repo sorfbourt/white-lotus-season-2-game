@@ -16,11 +16,9 @@
     <section id="game-splash">
 
         <section id="section-header">
-            <!-- <div id="header-image-ctn">
-            <img src="./images/logo-white-lotus.png" alt="" class="logo" />  
-            </div> -->
+
             <div id="name-of-game">
-                <h1>"Please, these Guys, They're Trying To Rob Me"</h1>
+                <h1>"PLEASE, THESE GUYS, THEY'RE TRYING TO ROB ME"</h1>
             </div>
             
         </section>
@@ -28,59 +26,54 @@
         <section id="section-main">
             
             <div id="instructions">
-            <h1>Welcome to the White Lotus in Sicilly!</h1> 
-            <div id="instructionsText">   
-                <p><b>Instructions</b></p>
-                <p>Use the arrow keys to run away from people trying to steal your money.</p> 
-                <p>You <i>only</i> have 3 billion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 billion dollars.</p>
-                <p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>
-
                 
-                
-                
-            </div>
-            <div id="keys-ctn">
-                <p>Use keys on keyboard to move direction</p>
-                <div id="keys-first-line">
-                    <div class="keys" id=""></div>
-                    <div class="keys keys-real" id="keys-up">↑</div>
-                    <div class="keys" id=""></div>
+                <div id="instructionsText">   
+                    <p>Use the arrow keys to run away from people trying to steal your money.</p> 
+                    <p>You <i>only</i> have 3 billion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 billion dollars.</p>
+                    <p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>
+                    
+                    
                 </div>
-                <div id="keys-second-line">
-                    <div class="keys keys-real" id="keys-left">←</div>
-                    <div class="keys keys-real" id="keys-down">↓</div>
-                    <div class="keys keys-real" id="keys-right">→</div>
+                
+                <div id="pointsInfo" style="background:#ea8e48; padding:20px;">
+                    <p class="pointsObjects negative"><span>High-end gays</span> -1 murderered life</p>
+                    <img src='../images/attacker-quentin.png' width="40px">
+                    <img src='../images/attacker-matteo.png' width="40px">
+                    <img src='../images/attacker-didier.png' width="40px">
+                    <p class="pointsObjects negative"><span>Yacht Ladder</span> +1 life (if you use it right)</p>
+                    
+                    <img src='../images/ladder.png' width="40px">                 
+                    <p class="pointsObjects positive"><span>Spaghetti</span> 1000 extra points</p>
+                    
+                    <img src='../images/spaghetti.png' width="50px">                 
                 </div>
+  
+<!--                 <div id="keys-ctn">
+                    <div id="keys-first-line">
+                        <div class="keys" id=""></div>
+                        <div class="keys keys-real" id="keys-up">↑</div>
+                        <div class="keys" id=""></div>
+                    </div>
+                    <div id="keys-second-line">
+                        <div class="keys keys-real" id="keys-left">←</div>
+                        <div class="keys keys-real" id="keys-down">↓</div>
+                        <div class="keys keys-real" id="keys-right">→</div>
+                    </div>
+                </div>
+             -->
             </div>
-            <div id="pointsInfo">
-                <b>Gain/lose lives</b><br/>
-                <img src='../images/attacker-quentin.png' width="40px">
-                <img src='../images/attacker-matteo.jpg' width="40px">
-                <img src='../images/attacker-didier.jpg' width="40px">
-                 Gays: -1 murderered life<br/>
-                 <img src='https://img.nauticexpo.com/images_ne/photo-g/21536-12316846.jpg' width="40px">                 
-                 Ladder: +1 saved life<br/>
-                 <b>Gain points</b><br/>
-                 <img src='https://www.inspiredtaste.net/wp-content/uploads/2019/03/Spaghetti-with-Meat-Sauce-Recipe-1-1200.jpg' width="40px">                 
-                Spaghetti: 1000 extra points
-
-            </div>
-            
-        </div>
 
            
 
             <div id="main-image-ctn">
 
-                <img src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-10/aubrey-plaza-adam-dimarco-the-white-lotus-zz-221026-06-cf4122.jpg" alt="" width="300px" />
-                <br/>
+                <img src="./images/splash-main-image.jpg" alt="" />
+ 
                     <form name="nameForHighestScore" onsubmit="return validateForm()">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required       minlength="1" width="100%">
+                        <input type="text" id="name" name="name" required       minlength="1" width="100" height="40" size="32" style="font-size:16px" placeholder="Enter your name here...">
                     </form>
-                    <br/>
+    
                 <button id="btnStart">Start the game!</button>
-                <!-- <button id="btnToggleSpoilerVersion">Toggle Spoiler version</button> -->
             </div>
 
 
@@ -93,7 +86,7 @@
 
 <!-- INTRO -->
 <section id="game-intro">
-    <div id="intro-image-ctn">
+    <div id="intro-image-ctn" style="display:flex; flex-direction: column;">
         <img src="./images/ref-images/gif-guys.gif" alt="" width="100%" />
         <button id="btnSkip">Skip intro</button>
     </div>
@@ -110,15 +103,12 @@
 
 <!-- GAME -->
     <section id="game">
-        <div id="gameNotes">
-            Notes for the game will appear here
-          </div>
 
       <canvas id="canvas" width="600" height="500" style="border: 1px solid;"></canvas>
       <div id="scoreBar">
-        <div><b>Time Score:</b> <span id="score"></span></div>
-        <div><b>Extra Points:</b> <span id="extraPoints"></span></div>
-        <div><b>Money/Lives Left:</b> <span id="lives"></span></div>
+        <span><b>Time Score:</b> <span id="score"></span></span>
+        <span><b>Extra Points:</b> <span id="extraPoints"></span></span>
+        <span><b>Money/Lives Left:</b> <span id="lives"></span></span>
       </div>
     </section>
 
@@ -137,22 +127,42 @@
 
     <!-- GAME OVER -->
     <section id="game-over">
-        <div style="font-size:50px;">
-            GAME OVER!!!!!!!!!
-            <br/>
-            WELL DONE, <span id="nameForHighestScore"></span><br/>
-            FINAL SCORE: <span id="final-score"></span>
-            <br/>
-            <button id="btnRestart">Restart Game</button>
-        </div>
         
+            
+        
+            <section id="section-header">
+
+                <div id="name-of-game">
+                    <h1>GAME OVER!!!!!!!!!</h1>
+                </div>
+                
+            </section>
+            
+            <section id="section-game-over-main">
+                
+                <div id="hello">
+                    
+                    
+                    <br/>
+                    WELL DONE, <span id="nameForHighestScore"></span><br/>
+                    FINAL SCORE: <span id="final-score"></span>
+                    <br/>
+                    <button id="btnRestart">Restart Game</button>
+                
+                </div>
+    
+               
+  
+    
+            </section>
+    
+    
     </section>
 
     <!-- FOOTER-->
     <footer id="footer">
         <div>
-            <p><a href="#" style="text-decoration: none;color:black;">Hidden shortcuts</p>
-            <p><a href="https://www.linkedin.com/in/krystinawitt/" target="_blank" style="text-decoration: none;color:black;">Krystina Witt</a> - Built during Ironhack Bootcamp January 2023 </p>
+            <p><a href="https://www.linkedin.com/in/krystinawitt/" target="_blank" style="text-decoration: none;color:black;">Krystina Witt</a> - Built during Ironhack Web Development Bootcamp January 2023 </p>
         </div>
         
     </footer>

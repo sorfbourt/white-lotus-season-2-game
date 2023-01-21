@@ -2,7 +2,8 @@ body {
     padding: 0;
     text-align: left;
     background-image: url(https://www.sky.at/static/img/serienhighlights/sky_22-10_the_white_lotus_S2_sub_l.jpg);
-    background-position: top left;
+    background-position-x: center;
+    background-position-y: -10px;
     background-repeat: no-repeat;
     background-size: 100vw;
     background-color: #F3740D;
@@ -27,7 +28,7 @@ body {
   #game-splash, #game, #game-over, #game-intro {
     width:600px;
     height:600px;
-    padding: 20% 10%;
+    padding: 15% 0% 20%;
     margin: 0 auto;
   }
 
@@ -43,7 +44,7 @@ body {
     text-align: center;
   }
 
-  #section-header, #section-main{
+  #section-header, #section-main, #section-game-over-main{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
@@ -65,7 +66,8 @@ body {
   }
 
   #name-of-game{
-    padding:20px;
+    padding:10px 20px;
+    font-size: 18px;
   }
   
   #name-of-game{
@@ -79,26 +81,50 @@ body {
     background-color: #f28735;
   }
 
+  #game-over{
+    background-color: #f28735;
+    height:500px;
+    padding:20px;
+  }
+
   #main-image-ctn{
+    width:300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #f28735;
   }
   
   #game-splash p, #pointsInfo {
     font-size: 12px;
-    font-family: "Verdana"
+    font-family: 'Roboto';
   }
   
- 
+  .pointsObjects{
+    background-color: white;
+    padding: 6px 0;
+    
+  }
 
+  .pointsObjects span{
+    background-color: #138c7f;
+    color:white;
+    padding: 6px;
+  }
+ 
+#keys-ctn{
+  float: right;
+  padding: 25px;
+}
 
 
   .keys{
-    width:50px;
-    height:50px;
+    width:25px;
+    height:25px;
     margin:1px;
     text-align: center;
+    font-size: 8px;
+    font-weight: bold;
 }
 .keys-real{
     background-color: #138C7F;
@@ -114,10 +140,7 @@ body {
     color:#138C7F;
   }
 
-  #keys{
-    width:50px;
-    height:50px;
-  }
+
   #keys-first-line, #keys-second-line{
     display:flex;
     flex-direction: row;
@@ -152,7 +175,7 @@ body {
     border: 0;
     box-shadow: 0;
     border-radius: 5px;
-    margin-bottom: 20px;
+
     border: #138C7F solid 1px;
   }
   
@@ -169,5 +192,6 @@ body {
     padding: 20px;
     display:flex;
     justify-content: space-between;
+    font-size:14px;
 }
   
