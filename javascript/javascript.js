@@ -61,6 +61,9 @@ playerImg.src = '../images/player-tanya.png'
 const attacker1Img = new Image()
 attacker1Img.src = '../images/attacker-quentin.png'
 
+const lifeline1Img = new Image()
+lifeline1Img.src = 'https://img.nauticexpo.com/images_ne/photo-g/21536-12316846.jpg'
+
 const playerWidth = 60
 const playerHeight = 80
 
@@ -72,6 +75,7 @@ let canvasBorder = 20
 
 //Attackers
 let attackers = []
+let lifelines = []
 
 const generateRandomNumber = () => {
   const randomAttackerX = Math.floor(100 + Math.random() * (canvas.width - 100))
@@ -122,6 +126,46 @@ class Attackers {
 }
 
 
+class Lifelines extends Attackers {
+    constructor(xPos, yPos, width, height, speed) {
+        super(xPos, yPos, width, height, speed)
+
+    }
+  
+    draw() {
+  
+      ctx.beginPath()
+      ctx.drawImage(lifeline1Img, this.xPos, this.yPos, this.width, this.height)
+      console.log("ONE", this.xPos, this.yPos)
+      this.yPos += this.speed
+      console.log("TWO", this.xPos, this.yPos)
+
+      ctx.closePath()
+      console.log("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
+    }
+  
+    checkCollision() {
+      if (
+          playerX < this.xPos + this.width &&
+          playerX + playerWidth > this.xPos &&
+          playerY < this.yPos + this.height &&
+        playerHeight + playerY > this.yPos
+      ) {
+          this.collided = true    
+          lifelines = lifelines.filter(lifelines => lifelines.collided === false) 
+          livesLeft = livesLeft + 1
+          gameNotes = "YAY"
+          playerImg.src = 'https://www.shutterstock.com/image-vector/yay-vector-handdrawn-lettering-banner-260nw-1323618563.jpg'
+          setTimeout(()=>{
+              playerImg.src = '../images/player-tanya.png'
+              gameNotes = ""}, 1000)
+        
+  
+      }
+    }
+  }
+
+
 
 
 
@@ -139,6 +183,14 @@ const animate = () => {
       attackers = attackers.filter(attackers => attackers.xPos > 0)
       
 
+      lifelines.forEach(lifeline => {
+        lifeline.draw()
+        lifeline.checkCollision()
+      })
+    
+      lifelines = lifelines.filter(lifelines => lifelines.yPos < canvas.height)
+      
+
     
     if (isMovingLeft && playerX > canvasBorder) {
         playerX -= 5
@@ -153,7 +205,7 @@ const animate = () => {
         playerY += 5
     }
 
-
+//ATTACKERS
     //in first 2000 frames
     if (animateId > 0 && animateId < 2000) {
         //every 200 frames, add random attacker at speed 1
@@ -184,6 +236,13 @@ const animate = () => {
     
   
     }
+//LIFELINES
+
+        if (animateId === 200 || animateId % 2000 === 0) {
+            lifelines.push(new Lifelines(canvas.width * Math.random(), 0, 30, 50, 8))
+            gameNotes = "Look a ladder! Collect the ladders to gain more lives!"
+        }
+
 
     //game notes
     document.querySelector('#gameNotes').innerText = gameNotes
@@ -194,7 +253,8 @@ const animate = () => {
     scoring = parseInt(animateId * 0.1)
     
     //console.log(attackers)
-    // console.log(animateId)
+     //console.log(lifelines)
+    //console.log(animateId)
 
 if (gameOver === true) {
     cancelAnimationFrame(animateId)
@@ -295,7 +355,7 @@ window.addEventListener('load', () => {
 
 
     document.addEventListener('keydown',event => {
-        if(event.code == "KeyQ" || event.key=="q"){
+        if((event.code == "KeyQ" || event.key=="q") && game.style.display === "block" ){
             console.log("Q", event)
             gameOver = true
         }
