@@ -459,7 +459,7 @@ window.localStorage.setItem('highScores', JSON.stringify(highScores))
 
 }
 
- //Save score
+ //Show high scores
 
  const showHighScores =()=>{
   console.log("helllllo")
