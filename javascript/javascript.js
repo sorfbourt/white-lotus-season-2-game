@@ -34,8 +34,8 @@ const audioWow = new Audio('./audio/jennifer-coolidge-wow.mp3')
 audioWow.preload
 const audioThemeSong = new Audio('./audio/white-lotus-theme-song.mp3')
 audioThemeSong.preload
-audioThemeSong.volume = 0.2;
-audioThemeSong.play();
+audioThemeSong.volume = 0.2
+audioThemeSong.play()
 
 //Spoiler version variables
 let isSpoilerVersion = false
@@ -81,8 +81,11 @@ lifeline1Img.src = '../images/ladder.png'
 const extraPoints1Img = new Image()
 extraPoints1Img.src = '../images/spaghetti.png'
 
+const extraPoints2Img = new Image()
+extraPoints2Img.src = '../images/wine.png'
+
 //player variables
-let canvasBorder = 20
+let canvasBorder = 0
 
 const playerWidth = 80
 const playerHeight = 90
@@ -95,6 +98,7 @@ let attackers2 = []
 let attackers3 = []
 let lifelines = []
 let extraPoints = []
+let extraPoints2 = []
 
 //Attackers - Quentin
 class Attackers {
@@ -273,6 +277,39 @@ class ExtraPoints extends Lifelines {
   }
 }
 
+//Extra points - wine
+class ExtraPoints2 extends ExtraPoints {
+  constructor(xPos, yPos, width, height, speed) {
+      super(xPos, yPos, width, height, speed)
+  }
+
+  draw() {
+    ctx.beginPath()
+    ctx.drawImage(extraPoints2Img, this.xPos, this.yPos, this.width, this.height)
+    this.yPos += this.speed
+    ctx.closePath()
+  }
+
+  checkCollision() {
+    if (
+      playerX < this.xPos + this.width &&
+      playerX + playerWidth > this.xPos &&
+      playerY < this.yPos + this.height &&
+      playerHeight + playerY > this.yPos
+    ) {
+        this.collided = true    
+        audioWow.play()
+        extraPoints2 = extraPoints2.filter(extraPoints => extraPoints.collided === false) 
+        extraPointsScoring = extraPointsScoring + 250
+        playerImg.src = '../images/player-tanya-wow.png'
+
+        setTimeout(()=>{
+            playerImg.src = '../images/player-tanya.png'
+            }, 1000)
+    }
+  }
+}
+
 
 //ANIMATION
 const animate = () => {
@@ -333,6 +370,13 @@ const animate = () => {
     })
     
     extraPoints = extraPoints.filter(extraPoints => extraPoints.yPos < canvas.height)
+    
+    extraPoints2.forEach(extraPoint => {
+      extraPoint.draw()
+      extraPoint.checkCollision()
+    })
+    
+    extraPoints2 = extraPoints2.filter(extraPoints => extraPoints.yPos < canvas.height)
     
     //console.log(attackers)
     //console.log(attackers2)
@@ -410,7 +454,11 @@ if (animateId === 1000 || animateId % 2000 === 0) {
 //EXTRA POINTS timings
 
 if (animateId === 500 || animateId % 1000 === 0) {
-    extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 4))
+  extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 4))
+}
+
+if (animateId === 20 || animateId % 500 === 0) {
+  extraPoints2.push(new ExtraPoints2(canvas.width * Math.random(), 0, 50, 50, 4))
 }
 
 
@@ -463,7 +511,6 @@ window.localStorage.setItem('highScores', JSON.stringify(highScores))
  //Show high scores
 
  const showHighScores =()=>{
-  console.log("helllllo")
   const highScoresList = document.querySelector('#high-score-list')
   const highScores = JSON.parse(window.localStorage.getItem('highScores')) || []
 
