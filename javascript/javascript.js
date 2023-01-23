@@ -13,7 +13,7 @@ let gameOver = false
 let livesLeft = 3
 let scoring = 0
 let extraPointsScoring = 0
-let nameForHighestScore = document.forms["nameForHighestScore"]["name"].value
+let nameForCurrentGame = ''
     
 const btnStart = document.querySelector('#btnStart')
 const btnRestart = document.querySelector('#btnRestart')
@@ -82,7 +82,7 @@ const extraPoints1Img = new Image()
 extraPoints1Img.src = '../images/spaghetti.png'
 
 //player variables
-let canvasBorder = 20
+let canvasBorder = 0
 
 const playerWidth = 80
 const playerHeight = 90
@@ -419,22 +419,10 @@ if (animateId === 500 || animateId % 1000 === 0) {
   document.querySelector('#extraPoints').innerText = extraPointsScoring
   scoring = parseInt(animateId * 0.1)
 
-  //game over - local storage
-/*   document.querySelector('#nameForHighestScore') = "5"
-    
-  const person = {
-    name: "Obaseki Nosa",
-    location: "Lagos",
-  }
-    
 
-  window.localStorage.setItem('high', JSON.stringify(person));
-  https://blog.logrocket.com/localstorage-javascript-complete-guide/
-  */
-  window.localStorage.setItem('name', 'Krystina Witt')
-    
 //game over
 if (gameOver === true) {
+    calulateHighScores()
     audioCrying.play()
     cancelAnimationFrame(animateId)
     game.style.display ="none"
@@ -448,6 +436,30 @@ if (gameOver === true) {
   
 }
 
+ //game over - local storage
+
+ const calulateHighScores =()=>{
+  console.log("helllllo")
+  nameForCurrentGame = document.forms["nameForHighestScore"]["name"].value
+  document.querySelector('#nameForHighestScore').innerText = document.forms["nameForHighestScore"]["name"].value
+
+  const maxHighScores = 5
+  const highScores = JSON.parse(window.localStorage.getItem('highScores')) || []
+
+const mostRecentScore = {
+  name: nameForCurrentGame,
+  score: scoring + extraPointsScoring
+}
+
+highScores.push(mostRecentScore)
+highScores.sort((a, b)=>b.score - a.score)
+highScores.splice(maxHighScores)
+
+window.localStorage.setItem('highScores', JSON.stringify(highScores))
+
+}
+ 
+
 //Start game
 const startGame = () => {
     
@@ -460,6 +472,7 @@ const startGame = () => {
     animate()
 }
 
+
 //ON LOAD
 
 window.addEventListener('load', () => {
@@ -468,18 +481,21 @@ window.addEventListener('load', () => {
 //Start button
 
     btnStart.onclick = () => {
-        if(document.forms["nameForHighestScore"]["name"].value !== ""){
+        let nameForCurrentGame = document.forms["nameForHighestScore"]["name"].value
+        
+
+        if(nameForCurrentGame !== ""){
         gameSplash.style.display = "none"
         gameIntro.style.display = "block"
         startGame()
         }
-        /* else{
-            let x = document.forms["nameForHighestScore"]["name"].value
-            if (x == "") {
+         else{
+
+            if (nameForCurrentGame == "") {
             alert("Please type in your name to play the game")
               return false;
             }
-          } */
+          } 
     }
 
 
@@ -511,19 +527,19 @@ window.addEventListener('load', () => {
     document.addEventListener('keydown',event => {
         if(event.key === "ArrowRight"){
           isMovingRight = true
-          document.querySelector("#keys-right").classList.add("keys-pushed")
+          //document.querySelector("#keys-right").classList.add("keys-pushed")
         }
         if(event.key === "ArrowLeft"){
           isMovingLeft = true
-          document.querySelector("#keys-left").classList.add("keys-pushed")
+          //document.querySelector("#keys-left").classList.add("keys-pushed")
         }
         if(event.key === "ArrowUp"){
           isMovingUp = true
-          document.querySelector("#keys-up").classList.add("keys-pushed")
+          //document.querySelector("#keys-up").classList.add("keys-pushed")
         }
         if(event.key === "ArrowDown"){
           isMovingDown = true
-          document.querySelector("#keys-down").classList.add("keys-pushed")
+          //document.querySelector("#keys-down").classList.add("keys-pushed")
       }
     })
     //arrow keys
@@ -532,22 +548,22 @@ window.addEventListener('load', () => {
     document.addEventListener('keyup',event => {
       if(event.key === "ArrowRight"){
         isMovingRight = false
-        document.querySelector("#keys-right").classList.remove("keys-pushed") 
+        //document.querySelector("#keys-right").classList.remove("keys-pushed") 
       }
 
       if(event.key === "ArrowLeft"){
         isMovingLeft = false
-        document.querySelector("#keys-left").classList.remove("keys-pushed")
+        //document.querySelector("#keys-left").classList.remove("keys-pushed")
       }
 
       if(event.key === "ArrowUp"){
         isMovingUp = false
-        document.querySelector("#keys-up").classList.remove("keys-pushed")
+        //document.querySelector("#keys-up").classList.remove("keys-pushed")
       }
 
       if(event.key === "ArrowDown"){
         isMovingDown = false
-        document.querySelector("#keys-down").classList.remove("keys-pushed")
+        //document.querySelector("#keys-down").classList.remove("keys-pushed")
       }
     })
         
