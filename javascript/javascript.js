@@ -526,7 +526,7 @@ window.localStorage.setItem('highScores', JSON.stringify(highScores))
 const startGame = () => {
     
     /* let skipIntervalId =  */setTimeout(()=>{
-    gameIntro.style.display = "none"  
+      gameIntro.style.display = "none"  
     game.style.display = "block" 
     gameOverScreen.style.display = "none"
     audioIntro.play();
@@ -543,17 +543,10 @@ window.addEventListener('load', () => {
 
     btnStart.onclick = () => {
         if(document.forms["nameForHighestScore"]["name"].value !== ""){
-        gameSplash.style.display = "none"
-        gameIntro.style.display = "block"
-        startGame()
+          gameSplash.style.display = "none"
+          gameIntro.style.display = "block"
+          startGame()
         }
-        /* else{
-            let x = document.forms["nameForHighestScore"]["name"].value
-            if (x == "") {
-            alert("Please type in your name to play the game")
-              return false;
-            }
-          } */
     }
 
 
@@ -564,12 +557,12 @@ window.addEventListener('load', () => {
       game.style.display = "block"
         })
     
-        //key Q - secret button - skip game
+        //key p - secret button - peppapig
         
     document.addEventListener('keydown',event => {
-      if((event.code == "KeyQ" || event.key=="q") && game.style.display === "block" ){
-        console.log("Q", event)
-        gameOver = true
+      if((event.code == "KeyP" || event.key=="p") && game.style.display === "block" ){
+        console.log("P", event)
+        playerImg.src = '../images/peppapig.png'
       }
     })
 
@@ -577,7 +570,9 @@ window.addEventListener('load', () => {
     //Restart button
     btnRestart.onclick = () => {
       game.style.display = "block"
-      document.reload() 
+      //window.location.reload();
+      //ctx.clearRect(0, 0, canvas.width, canvas.height)
+      startGame()
     }
 
         //arrow keys
