@@ -422,8 +422,9 @@ if (animateId === 500 || animateId % 1000 === 0) {
 
 //game over
 if (gameOver === true) {
-    calulateHighScores()
     audioCrying.play()
+    saveScore()
+    showHighScores()
     cancelAnimationFrame(animateId)
     game.style.display ="none"
     gameOverScreen.style.display ="block"
@@ -436,10 +437,9 @@ if (gameOver === true) {
   
 }
 
- //game over - local storage
+ //Save score
 
- const calulateHighScores =()=>{
-  console.log("helllllo")
+ const saveScore =()=>{
   nameForCurrentGame = document.forms["nameForHighestScore"]["name"].value
   document.querySelector('#nameForHighestScore').innerText = document.forms["nameForHighestScore"]["name"].value
 
@@ -457,6 +457,20 @@ highScores.splice(maxHighScores)
 
 window.localStorage.setItem('highScores', JSON.stringify(highScores))
 
+}
+
+ //Save score
+
+ const showHighScores =()=>{
+  console.log("helllllo")
+  const highScoresList = document.querySelector('#high-score-list')
+  const highScores = JSON.parse(window.localStorage.getItem('highScores')) || []
+
+  document.querySelector('#high-score-list').innerHTML = 
+  (highScores.map(score =>{
+    return `<li class="high-score">${score.name} - ${score.score}</li>`
+
+  }).join(""))
 }
  
 
