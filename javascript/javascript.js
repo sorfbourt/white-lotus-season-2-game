@@ -125,7 +125,7 @@ class Attackers {
         audioOuttaHere.play()
         attackers = attackers.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
-        playerImg.src = 'https://thumbs.dreamstime.com/b/ouch-red-rubber-stamp-over-white-background-88001039.jpg'
+        playerImg.src = '../images/player-tanya-omg.png'
         setTimeout(()=>{
             playerImg.src = '../images/player-tanya.png'
             }, 1000)
@@ -161,7 +161,7 @@ class Attackers2 extends Attackers {
         audioOMG.play()  
         attackers2 = attackers2.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
-        playerImg.src = 'https://thumbs.dreamstime.com/b/ouch-red-rubber-stamp-over-white-background-88001039.jpg'
+        playerImg.src = '../images/player-tanya-omg.png'
         setTimeout(()=>{
             playerImg.src = '../images/player-tanya.png'
             }, 1000)
@@ -196,7 +196,7 @@ class Attackers3 extends Attackers {
         audioOMG2.play()  
         attackers3 = attackers3.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
-        playerImg.src = 'https://thumbs.dreamstime.com/b/ouch-red-rubber-stamp-over-white-background-88001039.jpg'
+        playerImg.src = '../images/player-tanya-omg.png'
         setTimeout(()=>{
             playerImg.src = '../images/player-tanya.png'
             }, 1000)
@@ -232,7 +232,7 @@ class Lifelines extends Attackers {
           audioWow.play()
           lifelines = lifelines.filter(lifelines => lifelines.collided === false) 
           livesLeft = livesLeft + 1
-          playerImg.src = 'https://www.shutterstock.com/image-vector/yay-vector-handdrawn-lettering-banner-260nw-1323618563.jpg'
+          playerImg.src = '../images/player-tanya-wow.png'
           setTimeout(()=>{
               playerImg.src = '../images/player-tanya.png'
               }, 1000)
@@ -264,7 +264,7 @@ class ExtraPoints extends Lifelines {
         audioWow.play()
         extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
         extraPointsScoring = extraPointsScoring + 1000
-        playerImg.src = 'https://media.istockphoto.com/id/1341530063/de/vektor/yay-vektor-schriftzug-banner.jpg?s=612x612&w=0&k=20&c=9zJgLD7bhUqptpVWnVwoNBx6c90hutxsMePi5_bJ-wo='
+        playerImg.src = '../images/player-tanya-wow.png'
         setTimeout(()=>{
             playerImg.src = '../images/player-tanya.png'
             }, 1000)
@@ -428,10 +428,10 @@ if (animateId === 500 || animateId % 1000 === 0) {
   }
     
 
-  window.localStorage.setItem('user', JSON.stringify(person));
+  window.localStorage.setItem('high', JSON.stringify(person));
   https://blog.logrocket.com/localstorage-javascript-complete-guide/
   */
-
+  window.localStorage.setItem('name', 'Krystina Witt')
     
 //game over
 if (gameOver === true) {
