@@ -1,4 +1,4 @@
-# "Please, These Gays, They're Trying To Murder Me"
+# "Please, These Gays, They're Trying To Murder Me
 ![image](https://user-images.githubusercontent.com/120404332/213864371-a10e3a21-74e0-4091-b50f-73dc657e5af9.png)
 
 [Click here to see deployed game](http://github.com)
