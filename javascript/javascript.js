@@ -125,7 +125,7 @@ class Attackers {
         audioOuttaHere.play()
         attackers = attackers.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
-        playerImg.src = 'https://thumbs.dreamstime.com/b/ouch-red-rubber-stamp-over-white-background-88001039.jpg'
+        playerImg.src = '../images/player-tanya-omg.png'
         setTimeout(()=>{
             playerImg.src = '../images/player-tanya.png'
             }, 1000)
@@ -161,7 +161,7 @@ class Attackers2 extends Attackers {
         audioOMG.play()  
         attackers2 = attackers2.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
-        playerImg.src = 'https://thumbs.dreamstime.com/b/ouch-red-rubber-stamp-over-white-background-88001039.jpg'
+        playerImg.src = '../images/player-tanya-omg.png'
         setTimeout(()=>{
             playerImg.src = '../images/player-tanya.png'
             }, 1000)
@@ -196,7 +196,7 @@ class Attackers3 extends Attackers {
         audioOMG2.play()  
         attackers3 = attackers3.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
-        playerImg.src = 'https://thumbs.dreamstime.com/b/ouch-red-rubber-stamp-over-white-background-88001039.jpg'
+        playerImg.src = '../images/player-tanya-omg.png'
         setTimeout(()=>{
             playerImg.src = '../images/player-tanya.png'
             }, 1000)
@@ -232,7 +232,7 @@ class Lifelines extends Attackers {
           audioWow.play()
           lifelines = lifelines.filter(lifelines => lifelines.collided === false) 
           livesLeft = livesLeft + 1
-          playerImg.src = 'https://www.shutterstock.com/image-vector/yay-vector-handdrawn-lettering-banner-260nw-1323618563.jpg'
+          playerImg.src = '../images/player-tanya-wow.png'
           setTimeout(()=>{
               playerImg.src = '../images/player-tanya.png'
               }, 1000)
@@ -264,7 +264,8 @@ class ExtraPoints extends Lifelines {
         audioWow.play()
         extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
         extraPointsScoring = extraPointsScoring + 1000
-        playerImg.src = 'https://media.istockphoto.com/id/1341530063/de/vektor/yay-vektor-schriftzug-banner.jpg?s=612x612&w=0&k=20&c=9zJgLD7bhUqptpVWnVwoNBx6c90hutxsMePi5_bJ-wo='
+        playerImg.src = '../images/player-tanya-wow.png'
+
         setTimeout(()=>{
             playerImg.src = '../images/player-tanya.png'
             }, 1000)
@@ -419,23 +420,12 @@ if (animateId === 500 || animateId % 1000 === 0) {
   document.querySelector('#extraPoints').innerText = extraPointsScoring
   scoring = parseInt(animateId * 0.1)
 
-  //game over - local storage
-/*   document.querySelector('#nameForHighestScore') = "5"
-    
-  const person = {
-    name: "Obaseki Nosa",
-    location: "Lagos",
-  }
-    
-
-  window.localStorage.setItem('user', JSON.stringify(person));
-  https://blog.logrocket.com/localstorage-javascript-complete-guide/
-  */
-
     
 //game over
 if (gameOver === true) {
     audioCrying.play()
+    saveScore()
+    showHighScores()
     cancelAnimationFrame(animateId)
     game.style.display ="none"
     gameOverScreen.style.display ="block"
@@ -448,7 +438,6 @@ if (gameOver === true) {
   
 }
 
-<<<<<<< HEAD
  //Save score
 
  const saveScore =()=>{
@@ -486,8 +475,6 @@ window.localStorage.setItem('highScores', JSON.stringify(highScores))
 }
  
 
-=======
->>>>>>> 69408c2c60d3d84fe09edded502005daf7101dbb
 //Start game
 const startGame = () => {
     
@@ -551,19 +538,19 @@ window.addEventListener('load', () => {
     document.addEventListener('keydown',event => {
         if(event.key === "ArrowRight"){
           isMovingRight = true
-          document.querySelector("#keys-right").classList.add("keys-pushed")
+          //document.querySelector("#keys-right").classList.add("keys-pushed")
         }
         if(event.key === "ArrowLeft"){
           isMovingLeft = true
-          document.querySelector("#keys-left").classList.add("keys-pushed")
+         // document.querySelector("#keys-left").classList.add("keys-pushed")
         }
         if(event.key === "ArrowUp"){
           isMovingUp = true
-          document.querySelector("#keys-up").classList.add("keys-pushed")
+         // document.querySelector("#keys-up").classList.add("keys-pushed")
         }
         if(event.key === "ArrowDown"){
           isMovingDown = true
-          document.querySelector("#keys-down").classList.add("keys-pushed")
+          //document.querySelector("#keys-down").classList.add("keys-pushed")
       }
     })
     //arrow keys
@@ -572,22 +559,22 @@ window.addEventListener('load', () => {
     document.addEventListener('keyup',event => {
       if(event.key === "ArrowRight"){
         isMovingRight = false
-        document.querySelector("#keys-right").classList.remove("keys-pushed") 
+        //document.querySelector("#keys-right").classList.remove("keys-pushed") 
       }
 
       if(event.key === "ArrowLeft"){
         isMovingLeft = false
-        document.querySelector("#keys-left").classList.remove("keys-pushed")
+        //document.querySelector("#keys-left").classList.remove("keys-pushed")
       }
 
       if(event.key === "ArrowUp"){
         isMovingUp = false
-        document.querySelector("#keys-up").classList.remove("keys-pushed")
+        //document.querySelector("#keys-up").classList.remove("keys-pushed")
       }
 
       if(event.key === "ArrowDown"){
         isMovingDown = false
-        document.querySelector("#keys-down").classList.remove("keys-pushed")
+        //document.querySelector("#keys-down").classList.remove("keys-pushed")
       }
     })
         
