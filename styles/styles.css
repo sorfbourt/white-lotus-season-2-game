@@ -95,7 +95,7 @@ body {
     background-color: #f28735;
   }
   
-  #game-splash p, #pointsInfo {
+  #game-splash p, #pointsInfo, #game-over {
     font-size: 12px;
     font-family: 'Roboto';
   }
@@ -195,3 +195,35 @@ body {
     font-size:14px;
 }
   
+
+/* GAME OVER */
+
+#high-score-list{
+  list-style:none;
+  padding-left:0;
+  margin-bottom:10px;
+}
+
+.high-score{
+
+  color:black;
+  background-color: #a9d8c4;
+  padding:20px
+}
+
+.high-score:nth-child(2n){
+  background-color: #f4d7b5;
+}
+
+#game-over-image{
+  width:400px;
+  padding-bottom:20px;
+}
+
+#final-score{
+  font-size: 20px;
+  line-height: 20px;
+  background-color: #138c7f;
+  padding:10px 30px;
+  color:#fff;
+}
