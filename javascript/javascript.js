@@ -55,28 +55,28 @@ const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
 const gameBackground = new Image()
-gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
+gameBackground.src = './images/game-background.jpeg' // credit: architecturaldigest.com
 
 const playerImg = new Image()
-playerImg.src = '../images/player-tanya.png'
+playerImg.src = './images/player-tanya.png'
 
 const attacker1Img = new Image()
-attacker1Img.src = '../images/attacker-1.png'
+attacker1Img.src = './images/attacker-1.png'
 
 const attacker2Img = new Image()
-attacker2Img.src = '../images/attacker-2.png'
+attacker2Img.src = './images/attacker-2.png'
 
 const attacker3Img = new Image()
-attacker3Img.src = '../images/attacker-3.png'
+attacker3Img.src = './images/attacker-3.png'
 
 const lifeline1Img = new Image()
-lifeline1Img.src = '../images/extralife.png'
+lifeline1Img.src = './images/extralife.png'
 
 const extraPoints1Img = new Image()
-extraPoints1Img.src = '../images/spaghetti.png'
+extraPoints1Img.src = './images/spaghetti.png'
 
 const extraPoints2Img = new Image()
-extraPoints2Img.src = '../images/wine.png'
+extraPoints2Img.src = './images/wine.png'
 
 //player variables
 let canvasBorder = 0
@@ -465,7 +465,10 @@ if (animateId === 20 || animateId % 500 === 0) {
     
 //game over
 if (gameOver === true) {
-    audioCrying.play()
+    if(isSpoilerVersion === true){
+      audioCrying.play()
+    }
+    
     saveScore()
     showHighScores()
     cancelAnimationFrame(animateId)
@@ -523,7 +526,9 @@ const startGame = () => {
     gameIntro.style.display = "none"  
     game.style.display = "block" 
     gameOverScreen.style.display = "none"
-    audioIntro.play();
+    if(isSpoilerVersion === true){
+      audioIntro.play();
+    }
     }, 3000)
     animate()
 }
@@ -650,11 +655,11 @@ window.addEventListener('load', () => {
 
     //game
 
-    gameBackgroundSpoiler = 'https://www.luxurychartergroup.com/cms/uploads/luxury-charter-yacht-invader-30.jpg'
-    gameBackgroundSpoilerFree = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
+    gameBackgroundSpoiler = './images/game-background-spoiler.jpg' // credit: https://www.luxurychartergroup.com/cms/uploads/luxury-charter-yacht-invader-30.jpg
+    gameBackgroundSpoilerFree = './images/game-background.jpeg' // credit: https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg
 
-/*     playerImgSpoiler ='../images/player-tanya.png'
-    playerImgSpoilerFree = '../images/player-tanya.png' */
+/*     playerImgSpoiler ='./images/player-tanya.png'
+    playerImgSpoilerFree = './images/player-tanya.png' */
 
     attacker1ImgSpoiler =GameSplashAttacker1ImageSpoiler
     attacker1ImgSpoilerFree =GameSplashAttacker1ImageSpoilerFree
@@ -671,11 +676,11 @@ window.addEventListener('load', () => {
     lifelineImgSpoilerFree =GameSplashExtraLifeImageSpoilerFree
 
     
-  /*   extraPoints1ImgSpoiler ='../images/spaghetti.png'
-    extraPoints1ImgSpoilerFree ='../images/spaghetti.png'
+  /*   extraPoints1ImgSpoiler ='./images/spaghetti.png'
+    extraPoints1ImgSpoilerFree ='./images/spaghetti.png'
 
-    extraPoints2ImgSpoiler = '../images/wine.png'
-    extraPoints2ImgSpoilerFree ='../images/wine.png' */
+    extraPoints2ImgSpoiler = './images/wine.png'
+    extraPoints2ImgSpoilerFree ='./images/wine.png' */
 
     
 
@@ -744,10 +749,10 @@ window.addEventListener('load', () => {
           console.log("P", event)
 
           if(isPeppaPigVersion == false){
-            playerImg.src = '../images/peppapig.png'
+            playerImg.src = './images/peppapig.png'
 
           } else {
-            playerImg.src = '../images/player-tanya.png'
+            playerImg.src = './images/player-tanya.png'
           }
         }
       })
