@@ -525,7 +525,7 @@ window.localStorage.setItem('highScores', JSON.stringify(highScores))
 
   document.querySelector('#high-score-list').innerHTML = 
   (highScores.map(score =>{
-    return `<li class="high-score">${score.name}: ${score.score.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</li>`
+    return `<li class="high-score"><b>${score.name}: </b>${score.score.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</li>`
 
   }).join(""))
 }
