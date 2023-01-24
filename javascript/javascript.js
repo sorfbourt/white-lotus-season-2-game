@@ -8,6 +8,7 @@ game.style.display ="none"
 gameIntro.style.display ="none"
 gameOverScreen.style.display ="none"
 
+let firstAttempt = true
 let animateId
 let gameOver = false
 
@@ -539,7 +540,7 @@ const startGame = () => {
     if(isSpoilerVersion === true){
       audioIntro.play();
     }
-    }, 3000)
+    }, firstAttempt? 3000 : 0)
     animate()
 }
 
@@ -570,7 +571,7 @@ window.addEventListener('load', () => {
 
     //Restart button
     btnRestart.onclick = () => {
-
+      firstAttempt = false
       animateId = 0
       gameOver = false
 
