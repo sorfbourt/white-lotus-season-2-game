@@ -200,9 +200,9 @@ body {
 }
 
 #high-score-list{
-  list-style:none;
-  padding-left:0;
-  margin-bottom:10px;
+  /* list-style:none; 
+  padding-left:0;*/
+  margin-bottom:5px;
 }
 
 .high-score{
@@ -237,3 +237,17 @@ body {
   width:400px;
   padding-bottom:25px;
 }
+
+#collisions img{
+  width:30px;
+}
+
+#collisions{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color:#EA8E48;
+  padding:20px;
+}
+

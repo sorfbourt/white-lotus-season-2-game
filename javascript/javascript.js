@@ -10,6 +10,8 @@ gameOverScreen.style.display ="none"
 
 let firstAttempt = true
 let animateId
+let pizzaId
+
 let gameOver = false
 
 let livesLeft = 3
@@ -478,8 +480,7 @@ if (gameOver === true) {
     if(isSpoilerVersion === true){
       audioCrying.play()
     }
-    document.querySelector('#collisions').innerHTML = collisions.reduce((acc, image) => {acc + "<img src='"+ image + "'>"},"")
-    console.log(collisions)
+    document.querySelector('#collisions').innerHTML = collisions.reduce((acc, image) => {return acc + "<img src='"+ image + "'>"},"")
     saveScore()
     showHighScores()
     cancelAnimationFrame(animateId)
@@ -500,7 +501,7 @@ if (gameOver === true) {
   nameForCurrentGame = document.forms["nameForHighestScore"]["name"].value
   document.querySelector('#nameForHighestScore').innerText = document.forms["nameForHighestScore"]["name"].value
 
-  const maxHighScores = 5
+  const maxHighScores = 10
   const highScores = JSON.parse(window.localStorage.getItem('highScores')) || []
 
 const mostRecentScore = {
