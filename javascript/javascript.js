@@ -485,7 +485,7 @@ if (gameOver === true) {
     cancelAnimationFrame(animateId)
     game.style.display ="none"
     gameOverScreen.style.display ="block"
-    document.querySelector('#final-score').innerText = scoring + extraPointsScoring
+    document.querySelector('#final-score').innerText = (scoring + extraPointsScoring).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
   } else {
     animateId = requestAnimationFrame(animate)
@@ -524,7 +524,7 @@ window.localStorage.setItem('highScores', JSON.stringify(highScores))
 
   document.querySelector('#high-score-list').innerHTML = 
   (highScores.map(score =>{
-    return `<li class="high-score">${score.name} - ${score.score}</li>`
+    return `<li class="high-score">${score.name}: ${score.score.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</li>`
 
   }).join(""))
 }
