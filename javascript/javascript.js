@@ -39,7 +39,9 @@ audioWow.preload
 const audioThemeSong = new Audio('./audio/white-lotus-theme-song.mp3')
 audioThemeSong.preload
 audioThemeSong.volume = 0.2
-audioThemeSong.play()
+const audioPeppaPig = new Audio('./audio/peppapig.mp3')
+audioPeppaPig.preload
+
 
 //Spoiler version variables
 let isSpoilerVersion = false
@@ -321,6 +323,7 @@ class ExtraPoints2 extends ExtraPoints {
 
 
 //ANIMATION
+audioThemeSong.play()
 const animate = () => {
   //draw player, background
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -784,6 +787,7 @@ window.addEventListener('load', () => {
           console.log("P", event)
 
           if(isPeppaPigVersion == false){
+            audioPeppaPig.play()
             playerImg.src = './images/peppapig.png'
 
           } else {
