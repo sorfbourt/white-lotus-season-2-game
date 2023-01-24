@@ -7,9 +7,9 @@
 ## Description
 "Please, These Gays, They're Trying To Murder Me" is a HTML/CSS/Javascript game, based on the quote Jennifer Coolidge's character in White Lotus Season 2. 
 
->"These Gays, They’re Trying To Murder Me" is a phrase said by Tanya in the finale of the 2022 HBO show The White Lotus. The phrase has become a sarcastic expression and image macro used by fans and the LGBTQ+ community on Twitter. [^1] 
+>"These Gays, They’re Trying To Murder Me" is a phrase said by Tanya in the finale of the 2022 HBO show The White Lotus. The phrase has become a sarcastic expression and image macro used by fans and the LGBTQ+ community on Twitter. ([Know Your Meme - These Gays, They’re Trying To Murder Me](https://knowyourmeme.com/memes/these-gays-theyre-trying-to-murder-me)[^1])
 
-In the game, the player (Tanya Mcquoid) controlled by keyboard arrows has to move horizontally and vertically to avoid the high-end gay characters. Tanya starts with 3 chances but she can gain lives and extra points by collecting certain objects. The gam ends when Tanya has lost all her chances. After that, a score is calucated based on the objects collected and the amount of time the game lasted.
+In the game, the player (Tanya Mcquoid) controlled by keyboard arrows has to move horizontally and vertically to avoid the ["high-end gays"](https://www.tiktok.com/@gr1ndr/video/7173059119690124550?lang=en). Tanya starts with 3 chances but she can gain lives and extra points by collecting certain objects. The game ends when Tanya has lost all her chances. After that, a score is calucated based on the objects collected and the amount of time the game lasted.
 
 
 ## MVP
