@@ -54,25 +54,22 @@ const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
 const gameBackground = new Image()
-gameBackground.src = 'https://www.luxurychartergroup.com/cms/uploads/luxury-charter-yacht-invader-30.jpg'
-// gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
-const gameBackgroundSpoiler = new Image()
-gameBackgroundSpoiler.src = 'https://www.luxurychartergroup.com/cms/uploads/luxury-charter-yacht-invader-30.jpg'
+gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
 
 const playerImg = new Image()
 playerImg.src = '../images/player-tanya.png'
 
 const attacker1Img = new Image()
-attacker1Img.src = '../images/attacker-quentin.png'
+attacker1Img.src = '../images/attacker-1.png'
 
 const attacker2Img = new Image()
-attacker2Img.src = '../images/attacker-didier.png'
+attacker2Img.src = '../images/attacker-2.png'
 
 const attacker3Img = new Image()
-attacker3Img.src = '../images/attacker-matteo.png'
+attacker3Img.src = '../images/attacker-3.png'
 
 const lifeline1Img = new Image()
-lifeline1Img.src = '../images/ladder.png'
+lifeline1Img.src = '../images/extralife.png'
 
 const extraPoints1Img = new Image()
 extraPoints1Img.src = '../images/spaghetti.png'
@@ -657,6 +654,36 @@ window.addEventListener('load', () => {
     // intro
     GameIntroImageSpoiler = "./images/gif-gays.gif"
     GameIntroImageSpoilerFree = "./images/gif-guys.gif"
+
+    //game
+
+    gameBackgroundSpoiler = 'https://www.luxurychartergroup.com/cms/uploads/luxury-charter-yacht-invader-30.jpg'
+    gameBackgroundSpoilerFree = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
+
+/*     playerImgSpoiler ='../images/player-tanya.png'
+    playerImgSpoilerFree = '../images/player-tanya.png' */
+
+    attacker1ImgSpoiler =GameSplashAttacker1ImageSpoiler
+    attacker1ImgSpoilerFree =GameSplashAttacker1ImageSpoilerFree
+
+    attacker2ImgSpoiler =GameSplashAttacker2ImageSpoiler
+    attacker2ImgSpoilerFree =GameSplashAttacker2ImageSpoilerFree
+
+    
+    attacker3ImgSpoiler =GameSplashAttacker3ImageSpoiler
+    attacker3ImgSpoilerFree =GameSplashAttacker3ImageSpoilerFree
+
+  
+    lifelineImgSpoiler =GameSplashExtraLifeImageSpoiler
+    lifelineImgSpoilerFree =GameSplashExtraLifeImageSpoilerFree
+
+    
+  /*   extraPoints1ImgSpoiler ='../images/spaghetti.png'
+    extraPoints1ImgSpoilerFree ='../images/spaghetti.png'
+
+    extraPoints2ImgSpoiler = '../images/wine.png'
+    extraPoints2ImgSpoilerFree ='../images/wine.png' */
+
     
 
     const SpoilerVersion = () =>{
@@ -677,6 +704,16 @@ window.addEventListener('load', () => {
       document.querySelector('#extraLifeImg').src = GameSplashExtraLifeImageSpoiler
        //intro
        document.querySelector('#intro-image-ctn img').src = GameIntroImageSpoiler
+       //game
+       gameBackground.src = gameBackgroundSpoiler
+      /*  playerImg.src = playerImgSpoiler */
+      attacker1Img.src = attacker1ImgSpoiler
+      attacker2Img.src = attacker2ImgSpoiler
+      attacker3Img.src = attacker3ImgSpoiler
+
+      lifeline1Img.src = lifelineImgSpoiler
+/*       extraPoints1Img.src = 
+      extraPoints2Img.src =  */
 
     }
 
@@ -697,7 +734,13 @@ window.addEventListener('load', () => {
       document.querySelector('#extraLifeImg').src = GameSplashExtraLifeImageSpoilerFree
         //intro
         document.querySelector('#intro-image-ctn img').src = GameIntroImageSpoilerFree
-
+        //game
+       gameBackground.src = gameBackgroundSpoilerFree
+       /* playerImg.src = playerImgSpoilerFree */
+      attacker1Img.src = attacker1ImgSpoilerFree
+      attacker2Img.src = attacker2ImgSpoilerFree
+      attacker3Img.src = attacker3ImgSpoilerFree
+      lifeline1Img.src = lifelineImgSpoilerFree
 
     }
 
@@ -710,23 +753,11 @@ window.addEventListener('load', () => {
     btnToggleSpoilerVersion.addEventListener('click', () => {
         if(isSpoilerVersion === false){
             isSpoilerVersion = true
-            //Splash
             SpoilerVersion()
-            
-           
-    
-             //Game
-            gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
-
     //TOGGLE BUTTON - SPOILER-FREE VERSION
   } else{
             isSpoilerVersion = false
-             //Splash
              SpoilerFreeVersion()
-
-            //game
-            gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
-
           }
 
     })
