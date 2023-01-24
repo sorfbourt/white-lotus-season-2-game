@@ -93,6 +93,7 @@ let attackers3 = []
 let lifelines = []
 let extraPoints = []
 let extraPoints2 = []
+let collisions = []
 
 //Attackers - Quentin
 class Attackers {
@@ -119,7 +120,8 @@ class Attackers {
       playerY < this.yPos + this.height &&
       playerHeight + playerY > this.yPos
     ) {
-        this.collided = true
+      this.collided = true
+      collisions.push(this)  
         audioOuttaHere.play()
         attackers = attackers.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
@@ -156,6 +158,7 @@ class Attackers2 extends Attackers {
       playerHeight + playerY > this.yPos
     ) {
         this.collided = true  
+        collisions.push(this)  
         audioOMG.play()  
         attackers2 = attackers2.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
@@ -191,6 +194,7 @@ class Attackers3 extends Attackers {
       playerHeight + playerY > this.yPos
     ) {
         this.collided = true  
+        collisions.push(this)  
         audioOMG2.play()  
         attackers3 = attackers3.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
@@ -200,7 +204,6 @@ class Attackers3 extends Attackers {
             }, 1000)
         
       if(livesLeft === 0){
-          console.log("YOU ARE DEAD")
           gameOver = true
       }
     }
@@ -258,7 +261,8 @@ class ExtraPoints extends Lifelines {
       playerY < this.yPos + this.height &&
       playerHeight + playerY > this.yPos
     ) {
-        this.collided = true    
+        this.collided = true  
+        collisions.push(this)   
         audioWow.play()
         extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
         extraPointsScoring = extraPointsScoring + 1000
@@ -292,6 +296,7 @@ class ExtraPoints2 extends ExtraPoints {
       playerHeight + playerY > this.yPos
     ) {
         this.collided = true    
+        collisions.push(this)  
         audioWow.play()
         extraPoints2 = extraPoints2.filter(extraPoints => extraPoints.collided === false) 
         extraPointsScoring = extraPointsScoring + 250
@@ -469,6 +474,7 @@ if (gameOver === true) {
       audioCrying.play()
     }
     
+    console.log(collisions)
     saveScore()
     showHighScores()
     cancelAnimationFrame(animateId)
@@ -561,7 +567,7 @@ window.addEventListener('load', () => {
     //Restart button
     btnRestart.onclick = () => {
       game.style.display = "block"
-      //window.location.reload();
+      window.location.reload();
       //ctx.clearRect(0, 0, canvas.width, canvas.height)
       startGame()
     }
