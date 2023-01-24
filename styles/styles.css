@@ -28,7 +28,7 @@ body {
   #game-splash, #game, #game-over, #game-intro {
     width:600px;
     height:600px;
-    padding: 15% 0% 20%;
+    padding: 200px 0% 20%;
     margin: 0 auto;
   }
 

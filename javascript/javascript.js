@@ -480,7 +480,7 @@ if (gameOver === true) {
     if(isSpoilerVersion === true){
       audioCrying.play()
     }
-    //document.querySelector('#collisions').innerHTML = collisions.forEach(image => {`<img src='${image}'>`})
+    document.querySelector('#collisions').innerHTML = collisions.reduce((acc, image) => {acc + "<img src='"+ image + "'>"},"")
     console.log(collisions)
     saveScore()
     showHighScores()
