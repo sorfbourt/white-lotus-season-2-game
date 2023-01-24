@@ -573,9 +573,30 @@ window.addEventListener('load', () => {
 
     //Restart button
     btnRestart.onclick = () => {
-      game.style.display = "block"
-      window.location.reload();
-      //ctx.clearRect(0, 0, canvas.width, canvas.height)
+  
+      animateId
+      gameOver = false
+
+      livesLeft = 3
+      scoring = 0
+      extraPointsScoring = 0
+
+      isMovingLeft = false
+      isMovingRight = false
+      isMovingUp = false
+      isMovingDown = false
+
+      playerX = canvas.width / 2 - playerWidth
+      playerY = 400
+
+      attackers = []
+      attackers2 = []
+      attackers3 = []
+      lifelines = []
+      extraPoints = []
+      extraPoints2 = []
+      collisions = []
+      //window.location.reload();
       startGame()
     }
 
