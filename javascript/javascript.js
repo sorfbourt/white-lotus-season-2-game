@@ -384,10 +384,7 @@ const animate = () => {
     
     extraPoints2 = extraPoints2.filter(extraPoints => extraPoints.yPos < canvas.height)
     
-    //console.log(attackers)
-    //console.log(attackers2)
-    //console.log(lifelines)
-    //console.log(animateId)
+    console.log(animateId)
 
 //ATTACKERS timings
 
@@ -573,8 +570,8 @@ window.addEventListener('load', () => {
 
     //Restart button
     btnRestart.onclick = () => {
-  
-      animateId
+
+      animateId = 0
       gameOver = false
 
       livesLeft = 3
