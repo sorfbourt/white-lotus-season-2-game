@@ -526,7 +526,7 @@ window.localStorage.setItem('highScores', JSON.stringify(highScores))
 const startGame = () => {
     
     /* let skipIntervalId =  */setTimeout(()=>{
-      gameIntro.style.display = "none"  
+    gameIntro.style.display = "none"  
     game.style.display = "block" 
     gameOverScreen.style.display = "none"
     audioIntro.play();
@@ -620,16 +620,88 @@ window.addEventListener('load', () => {
       }
     })
         
+    //Spoiler variables
+
+    GameSplashNameOfGameSpoiler = "PLEASE, THESE GAYS, THEY'RE TRYING TO MURDER ME"
+    GameSplashNameOfGameSpoilerFree = "PLEASE, THESE GUYS, THEY'RE TRYING TO ROB ME"
+
+    GameSplashInstructionsSpoiler = "<p><b>Instructions</b></p><p>Use the arrow keys to run away from 'these gays'. They are trying to murder you!</p><p>You have 3 lives. Each time one of 'these are some high-end gays', you'll lose a life.</p><p>See how long you can last before you are murdered. The longer you last, the higher your score.</p>"
+
+    GameSplashInstructionsSpoilerFree = "<p><b>Instructions</b></p><p>Use the arrow keys to run away from people trying to steal your money.</p><p>You <i>only</i> have 3 billion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 billion dollars.</p><p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>"
+
+    GameSplashAttackersSpoiler = '"High-End Gays"'
+    GameSplashAttackersSpoilerFree = 'Robbers'
+
+    GameSplashAttackersWorthSpoiler = '-1 murdered life'
+    GameSplashAttackersWorthSpoilerFree = '-1 trillion dollars'
+
+    GameSplashAttacker1ImageSpoiler = './images/attacker-quentin.png'
+    GameSplashAttacker1ImageSpoilerFree = './images/attacker-1.png'
+
+    GameSplashAttacker2ImageSpoiler = './images/attacker-matteo.png'
+    GameSplashAttacker2ImageSpoilerFree = './images/attacker-2.png'
+
+    GameSplashAttacker3ImageSpoiler = './images/attacker-didier.png'
+    GameSplashAttacker3ImageSpoilerFree = './images/attacker-3.png'
+
+    GameSplashExtraLifeSpoiler = 'Yacht Ladder'
+    GameSplashExtraLifeSpoilerFree = 'Hearts'
+
+    GameSplashExtraLifeWorthSpoiler = '+1 life (if you use it right)'
+    GameSplashExtraLifeWorthSpoilerFree = '+1 life'
+
+    GameSplashExtraLifeImageSpoiler = './images/ladder.png'
+    GameSplashExtraLifeImageSpoilerFree = './images/extralife.png'
+
+    
+
+    const SpoilerVersion = () =>{
+      console.log("SPOILER VERSION")
+      //Intro
+      document.querySelector('#name-of-game h1').innerText = GameSplashNameOfGameSpoiler
+      btnToggleSpoilerVersion.classList.toggle("toggle")
+      document.querySelector('#instructionsText').innerHTML = GameSplashInstructionsSpoiler
+      document.querySelector('.pointsObjects#attackers span').innerText = GameSplashAttackersSpoiler
+      document.querySelector('.pointsObjects#attackers span:nth-of-type(2)').innerText = GameSplashAttackersWorthSpoiler
+      document.querySelector('#attacker1Img').src = GameSplashAttacker1ImageSpoiler
+      document.querySelector('#attacker2Img').src = GameSplashAttacker2ImageSpoiler
+      document.querySelector('#attacker3Img').src = GameSplashAttacker3ImageSpoiler
+
+      document.querySelector('.pointsObjects#extraLife span').innerText = GameSplashExtraLifeSpoiler
+      document.querySelector('.pointsObjects#extraLife span:nth-of-type(2)').innerText = GameSplashExtraLifeWorthSpoiler
+      document.querySelector('#extraLifeImg').src = GameSplashExtraLifeImageSpoiler
+    }
+
+    const SpoilerFreeVersion = () =>{
+      //Intro
+      console.log("SPOILER FREE VERSION")
+      document.querySelector('#name-of-game h1').innerText = GameSplashNameOfGameSpoilerFree
+      btnToggleSpoilerVersion.classList.toggle("toggle")
+      document.querySelector('#instructionsText').innerHTML = GameSplashInstructionsSpoilerFree
+      document.querySelector('.pointsObjects#attackers span').innerText = GameSplashAttackersSpoilerFree
+      document.querySelector('.pointsObjects#attackers span:nth-of-type(2)').innerText = GameSplashAttackersWorthSpoilerFree
+      document.querySelector('#attacker1Img').src = GameSplashAttacker1ImageSpoilerFree
+      document.querySelector('#attacker2Img').src = GameSplashAttacker2ImageSpoilerFree
+      document.querySelector('#attacker3Img').src = GameSplashAttacker3ImageSpoilerFree
+      document.querySelector('.pointsObjects#extraLife span').innerText = GameSplashExtraLifeSpoilerFree
+      document.querySelector('.pointsObjects#extraLife span:nth-of-type(2)').innerText = GameSplashExtraLifeWorthSpoilerFree
+      document.querySelector('#extraLifeImg').src = GameSplashExtraLifeImageSpoilerFree
+    }
+
+    const PepperPigVersion = () =>{
+      console.log("Peppa VERSION")
+      document.querySelector('#main-image-ctn img').src = "Peppapigimage link"
+    }
  
     //TOGGLE BUTTON - SPOILER VERSION
     btnToggleSpoilerVersion.addEventListener('click', () => {
         if(isSpoilerVersion === false){
             isSpoilerVersion = true
             //Splash
-            document.querySelector('#name-of-game h1').innerText = "PLEASE, THESE GAYS, THEY'RE TRYING TO MURDER ME"
-            btnToggleSpoilerVersion.classList.toggle("toggle")
-            document.querySelector('#instructionsText').innerHTML ="<p><b>Instructions</b></p><p>Use the arrow keys to run away from 'these gays'. They are trying to murder you!</p><p>You have 3 lives. Each time one of 'these are some high-end gays', you'll lose a life.</p><p>See how long you can last before you are murdered. The longer you last, the higher your score.</p>"
-            document.querySelector('#main-image-ctn img').src = "https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-10/aubrey-plaza-adam-dimarco-the-white-lotus-zz-221026-06-cf4122.jpg"
+            SpoilerVersion()
+            
+           
+            
              //Intro
             document.querySelector('#intro-image-ctn img').src = "./images/ref-images/gif-gays.gif"
              //Game
@@ -639,11 +711,8 @@ window.addEventListener('load', () => {
   } else{
             isSpoilerVersion = false
              //Splash
-            document.querySelector('#name-of-game h1').innerText = "PLEASE, THESE GUYS, THEY'RE TRYING TO ROB ME"
-            document.querySelector('#name-of-game h1').style.color = "black"
-            btnToggleSpoilerVersion.classList.toggle("toggle")
-            document.querySelector('#instructionsText').innerHTML ="<p><b>Instructions</b></p><p>Use the arrow keys to run away from people trying to steal your money.</p><p>You <i>only</i> have 3 billion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 billion dollars.</p><p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>"
-            document.querySelector('#main-image-ctn img').src = "https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-10/aubrey-plaza-adam-dimarco-the-white-lotus-zz-221026-06-cf4122.jpg"
+             SpoilerFreeVersion()
+
              //Intro
             document.querySelector('#intro-image-ctn img').src = "./images/ref-images/gif-guys.gif"
             //game

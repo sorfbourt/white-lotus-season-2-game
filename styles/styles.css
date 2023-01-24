@@ -106,7 +106,7 @@ body {
     
   }
 
-  .pointsObjects span{
+  .pointsObjects span:first-of-type{
     background-color: #138c7f;
     color:white;
     padding: 6px;
