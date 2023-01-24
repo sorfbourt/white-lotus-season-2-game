@@ -44,7 +44,7 @@ body {
     text-align: center;
   }
 
-  #section-header, #section-main, #section-game-over-main{
+  #section-header, #section-main, #section-game-over-main, #game-over-ctn{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
@@ -81,11 +81,7 @@ body {
     background-color: #f28735;
   }
 
-  #game-over{
-    background-color: #f28735;
-    height:500px;
-    padding:20px;
-  }
+ 
 
   #main-image-ctn{
     width:300px;
@@ -196,6 +192,12 @@ body {
 }
   
 /* GAME OVER */
+
+#game-over-ctn{
+ background-color: #f28735;
+ padding:20px;
+ width:600px;
+}
 
 #high-score-list{
   list-style:none;
