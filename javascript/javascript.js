@@ -720,7 +720,6 @@ window.addEventListener('load', () => {
     
 
     const SpoilerVersion = () =>{
-      console.log("SPOILER VERSION")
       document.querySelector('title').innerText = gameTitleSpoiler
       //splash
       document.querySelector('#name-of-game h1').innerText = GameSplashNameOfGameSpoiler
@@ -752,7 +751,6 @@ window.addEventListener('load', () => {
     }
 
     const SpoilerFreeVersion = () =>{
-      console.log("SPOILER FREE VERSION")
       document.querySelector('title').innerText = gameTitleSpoilerFree
       //splash
       document.querySelector('#name-of-game h1').innerText = GameSplashNameOfGameSpoilerFree
