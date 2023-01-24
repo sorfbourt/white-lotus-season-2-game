@@ -467,9 +467,9 @@ if (animateId === 20 || animateId % 500 === 0) {
 
 
   //score bar
-  document.querySelector('#score').innerText = scoring
+  document.querySelector('#score').innerText = scoring.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   document.querySelector('#lives').innerText = livesLeft
-  document.querySelector('#extraPoints').innerText = extraPointsScoring
+  document.querySelector('#extraPoints').innerText = extraPointsScoring.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   scoring = parseInt(animateId * 0.1)
 
     
@@ -532,7 +532,7 @@ window.localStorage.setItem('highScores', JSON.stringify(highScores))
 
 //Start game
 const startGame = () => {
-    
+    animateId = 0
     /* let skipIntervalId =  */setTimeout(()=>{
     gameIntro.style.display = "none"  
     game.style.display = "block" 
@@ -714,6 +714,8 @@ window.addEventListener('load', () => {
     extraPoints2ImgSpoiler = './images/wine.png'
     extraPoints2ImgSpoilerFree ='./images/wine.png' */
 
+    GameLivesLeftSpoiler = "<b>Lives Left: </b>"
+    GameLivesLeftSpoilerFree = "<b>Triillion $ Left: </b>"
     
 
     const SpoilerVersion = () =>{
@@ -736,6 +738,7 @@ window.addEventListener('load', () => {
        document.querySelector('#intro-image-ctn img').src = GameIntroImageSpoiler
        //game
        gameBackground.src = gameBackgroundSpoiler
+       document.querySelector('#livesleft').innerHTML = GameLivesLeftSpoiler
       /*  playerImg.src = playerImgSpoiler */
       attacker1Img.src = attacker1ImgSpoiler
       attacker2Img.src = attacker2ImgSpoiler
@@ -766,6 +769,7 @@ window.addEventListener('load', () => {
         document.querySelector('#intro-image-ctn img').src = GameIntroImageSpoilerFree
         //game
        gameBackground.src = gameBackgroundSpoilerFree
+       document.querySelector('#livesleft').innerHTML = GameLivesLeftSpoilerFree
        /* playerImg.src = playerImgSpoilerFree */
       attacker1Img.src = attacker1ImgSpoilerFree
       attacker2Img.src = attacker2ImgSpoilerFree
