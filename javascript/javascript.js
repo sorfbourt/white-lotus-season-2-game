@@ -97,18 +97,19 @@ let collisions = []
 
 //Attackers - Quentin
 class Attackers {
-  constructor(xPos, yPos, width, height, speed) {
+  constructor(xPos, yPos, width, height, speed, image=attacker1Img) {
     this.xPos = xPos
     this.yPos = yPos
     this.width = width
     this.height = height
     this.speed = speed
     this.collided = false
+    this.image = image
   }
 
   draw() {
     ctx.beginPath()
-    ctx.drawImage(attacker1Img, this.xPos, this.yPos, this.width, this.height)
+    ctx.drawImage(this.image, this.xPos, this.yPos, this.width, this.height)
     this.xPos -= this.speed
     ctx.closePath()
   }
@@ -121,7 +122,7 @@ class Attackers {
       playerHeight + playerY > this.yPos
     ) {
       this.collided = true
-      collisions.push(this)  
+      collisions.push(this.image.src)  
         audioOuttaHere.play()
         attackers = attackers.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
@@ -139,13 +140,14 @@ class Attackers {
 
 //Attackers - Didier
 class Attackers2 extends Attackers {
-  constructor(xPos, yPos, width, height, speed) {
+  constructor(xPos, yPos, width, height, speed, image=attacker2Img) {
     super(xPos, yPos, width, height, speed)
+    this.image = image
   }
 
   draw() {
     ctx.beginPath()
-    ctx.drawImage(attacker2Img, this.xPos, this.yPos, this.width, this.height)
+    ctx.drawImage(this.image, this.xPos, this.yPos, this.width, this.height)
     this.xPos -= this.speed
     ctx.closePath()
   }
@@ -158,7 +160,7 @@ class Attackers2 extends Attackers {
       playerHeight + playerY > this.yPos
     ) {
         this.collided = true  
-        collisions.push(this)  
+        collisions.push(this.image.src)  
         audioOMG.play()  
         attackers2 = attackers2.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
@@ -175,13 +177,14 @@ class Attackers2 extends Attackers {
 }
 //Attackers - Matteo
 class Attackers3 extends Attackers {
-  constructor(xPos, yPos, width, height, speed) {
+  constructor(xPos, yPos, width, height, speed, image=attacker3Img) {
     super(xPos, yPos, width, height, speed)
+    this.image = image
   }
 
   draw() {
     ctx.beginPath()
-    ctx.drawImage(attacker3Img, this.xPos, this.yPos, this.width, this.height)
+    ctx.drawImage(this.image, this.xPos, this.yPos, this.width, this.height)
     this.xPos -= this.speed
     ctx.closePath()
   }
@@ -194,7 +197,7 @@ class Attackers3 extends Attackers {
       playerHeight + playerY > this.yPos
     ) {
         this.collided = true  
-        collisions.push(this)  
+        collisions.push(this.image.src)  
         audioOMG2.play()  
         attackers3 = attackers3.filter(attackers => attackers.collided === false) 
         livesLeft = livesLeft - 1
@@ -209,15 +212,16 @@ class Attackers3 extends Attackers {
     }
   }
 }
-//Lifelines - ladders
+//Lifelines - ladders/money
 class Lifelines extends Attackers {
-    constructor(xPos, yPos, width, height, speed) {
+    constructor(xPos, yPos, width, height, speed, image=lifeline1Img) {
         super(xPos, yPos, width, height, speed)
+        this.image = image
     }
   
     draw() {
       ctx.beginPath()
-      ctx.drawImage(lifeline1Img, this.xPos, this.yPos, this.width, this.height)
+      ctx.drawImage(this.image, this.xPos, this.yPos, this.width, this.height)
       this.yPos += this.speed
       ctx.closePath()
     }
@@ -229,7 +233,8 @@ class Lifelines extends Attackers {
         playerY < this.yPos + this.height &&
         playerHeight + playerY > this.yPos
       ) {
-          this.collided = true    
+          this.collided = true  
+          collisions.push(this.image.src)    
           audioWow.play()
           lifelines = lifelines.filter(lifelines => lifelines.collided === false) 
           livesLeft = livesLeft + 1
@@ -243,13 +248,14 @@ class Lifelines extends Attackers {
 
 //Extra points - spaghetti
 class ExtraPoints extends Lifelines {
-  constructor(xPos, yPos, width, height, speed) {
+  constructor(xPos, yPos, width, height, speed, image=extraPoints1Img) {
       super(xPos, yPos, width, height, speed)
+      this.image = image
   }
 
   draw() {
     ctx.beginPath()
-    ctx.drawImage(extraPoints1Img, this.xPos, this.yPos, this.width, this.height)
+    ctx.drawImage(this.image, this.xPos, this.yPos, this.width, this.height)
     this.yPos += this.speed
     ctx.closePath()
   }
@@ -262,7 +268,7 @@ class ExtraPoints extends Lifelines {
       playerHeight + playerY > this.yPos
     ) {
         this.collided = true  
-        collisions.push(this)   
+        collisions.push(this.image.src)    
         audioWow.play()
         extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
         extraPointsScoring = extraPointsScoring + 1000
@@ -277,13 +283,14 @@ class ExtraPoints extends Lifelines {
 
 //Extra points - wine
 class ExtraPoints2 extends ExtraPoints {
-  constructor(xPos, yPos, width, height, speed) {
+  constructor(xPos, yPos, width, height, speed, image=extraPoints2Img) {
       super(xPos, yPos, width, height, speed)
+      this.image = image
   }
 
   draw() {
     ctx.beginPath()
-    ctx.drawImage(extraPoints2Img, this.xPos, this.yPos, this.width, this.height)
+    ctx.drawImage(this.image, this.xPos, this.yPos, this.width, this.height)
     this.yPos += this.speed
     ctx.closePath()
   }
@@ -296,7 +303,7 @@ class ExtraPoints2 extends ExtraPoints {
       playerHeight + playerY > this.yPos
     ) {
         this.collided = true    
-        collisions.push(this)  
+        collisions.push(this.image.src)  
         audioWow.play()
         extraPoints2 = extraPoints2.filter(extraPoints => extraPoints.collided === false) 
         extraPointsScoring = extraPointsScoring + 250
@@ -473,7 +480,7 @@ if (gameOver === true) {
     if(isSpoilerVersion === true){
       audioCrying.play()
     }
-    
+    //document.querySelector('#collisions').innerHTML = collisions.forEach(image => {`<img src='${image}'>`})
     console.log(collisions)
     saveScore()
     showHighScores()
