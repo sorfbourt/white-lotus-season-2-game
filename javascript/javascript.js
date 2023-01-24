@@ -40,6 +40,7 @@ audioThemeSong.play()
 
 //Spoiler version variables
 let isSpoilerVersion = false
+let isPeppaPigVersion = false
 
 
 
@@ -550,15 +551,7 @@ window.addEventListener('load', () => {
       game.style.display = "block"
         })
     
-        //key p - secret button - peppapig
-        
-    document.addEventListener('keydown',event => {
-      if((event.code == "KeyP" || event.key=="p") && game.style.display === "block" ){
-        console.log("P", event)
-        playerImg.src = '../images/peppapig.png'
-      }
-    })
-
+      
 
     //Restart button
     btnRestart.onclick = () => {
@@ -741,13 +734,25 @@ window.addEventListener('load', () => {
       attacker2Img.src = attacker2ImgSpoilerFree
       attacker3Img.src = attacker3ImgSpoilerFree
       lifeline1Img.src = lifelineImgSpoilerFree
-
+      /*       extraPoints1Img.src = 
+      extraPoints2Img.src =  */
     }
+      //key p - secret button - peppapig
+        
+      document.addEventListener('keydown',event => {
+        if((event.code == "KeyP" || event.key=="p") && game.style.display === "block" ){
+          console.log("P", event)
 
-    const PepperPigVersion = () =>{
-      console.log("Peppa VERSION")
-      document.querySelector('#main-image-ctn img').src = "Peppapigimage link"
-    }
+          if(isPeppaPigVersion == false){
+            playerImg.src = '../images/peppapig.png'
+
+          } else {
+            playerImg.src = '../images/player-tanya.png'
+          }
+        }
+      })
+
+      
  
     //TOGGLE BUTTON - SPOILER VERSION
     btnToggleSpoilerVersion.addEventListener('click', () => {
@@ -761,8 +766,5 @@ window.addEventListener('load', () => {
           }
 
     })
-
-
-
 
 })
