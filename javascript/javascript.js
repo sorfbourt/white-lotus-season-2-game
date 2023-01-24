@@ -3,6 +3,7 @@ const gameIntro = document.querySelector('#game-intro')
 const game = document.querySelector('#game')
 const gameOverScreen = document.querySelector('#game-over')
 
+
 game.style.display ="none"
 gameIntro.style.display ="none"
 gameOverScreen.style.display ="none"
@@ -622,12 +623,13 @@ window.addEventListener('load', () => {
         
     //Spoiler variables
 
+    //splash
     GameSplashNameOfGameSpoiler = "PLEASE, THESE GAYS, THEY'RE TRYING TO MURDER ME"
     GameSplashNameOfGameSpoilerFree = "PLEASE, THESE GUYS, THEY'RE TRYING TO ROB ME"
 
     GameSplashInstructionsSpoiler = "<p><b>Instructions</b></p><p>Use the arrow keys to run away from 'these gays'. They are trying to murder you!</p><p>You have 3 lives. Each time one of 'these are some high-end gays', you'll lose a life.</p><p>See how long you can last before you are murdered. The longer you last, the higher your score.</p>"
 
-    GameSplashInstructionsSpoilerFree = "<p><b>Instructions</b></p><p>Use the arrow keys to run away from people trying to steal your money.</p><p>You <i>only</i> have 3 billion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 billion dollars.</p><p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>"
+    GameSplashInstructionsSpoilerFree = "<p><b>Instructions</b></p><p>Use the arrow keys to run away from robbers trying to steal your money.</p><p>You <i>only</i> have 3 trillion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 trillion dollars.</p><p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>"
 
     GameSplashAttackersSpoiler = '"High-End Gays"'
     GameSplashAttackersSpoilerFree = 'Robbers'
@@ -645,19 +647,22 @@ window.addEventListener('load', () => {
     GameSplashAttacker3ImageSpoilerFree = './images/attacker-3.png'
 
     GameSplashExtraLifeSpoiler = 'Yacht Ladder'
-    GameSplashExtraLifeSpoilerFree = 'Hearts'
+    GameSplashExtraLifeSpoilerFree = 'Money'
 
     GameSplashExtraLifeWorthSpoiler = '+1 life (if you use it right)'
-    GameSplashExtraLifeWorthSpoilerFree = '+1 life'
+    GameSplashExtraLifeWorthSpoilerFree = '+1 trillion dollars'
 
     GameSplashExtraLifeImageSpoiler = './images/ladder.png'
     GameSplashExtraLifeImageSpoilerFree = './images/extralife.png'
 
+    // intro
+    GameIntroImageSpoiler = "./images/gif-gays.gif"
+    GameIntroImageSpoilerFree = "./images/gif-guys.gif"
     
 
     const SpoilerVersion = () =>{
       console.log("SPOILER VERSION")
-      //Intro
+      //splash
       document.querySelector('#name-of-game h1').innerText = GameSplashNameOfGameSpoiler
       btnToggleSpoilerVersion.classList.toggle("toggle")
       document.querySelector('#instructionsText').innerHTML = GameSplashInstructionsSpoiler
@@ -670,10 +675,13 @@ window.addEventListener('load', () => {
       document.querySelector('.pointsObjects#extraLife span').innerText = GameSplashExtraLifeSpoiler
       document.querySelector('.pointsObjects#extraLife span:nth-of-type(2)').innerText = GameSplashExtraLifeWorthSpoiler
       document.querySelector('#extraLifeImg').src = GameSplashExtraLifeImageSpoiler
+       //intro
+       document.querySelector('#intro-image-ctn img').src = GameIntroImageSpoiler
+
     }
 
     const SpoilerFreeVersion = () =>{
-      //Intro
+      //splash
       console.log("SPOILER FREE VERSION")
       document.querySelector('#name-of-game h1').innerText = GameSplashNameOfGameSpoilerFree
       btnToggleSpoilerVersion.classList.toggle("toggle")
@@ -686,6 +694,10 @@ window.addEventListener('load', () => {
       document.querySelector('.pointsObjects#extraLife span').innerText = GameSplashExtraLifeSpoilerFree
       document.querySelector('.pointsObjects#extraLife span:nth-of-type(2)').innerText = GameSplashExtraLifeWorthSpoilerFree
       document.querySelector('#extraLifeImg').src = GameSplashExtraLifeImageSpoilerFree
+        //intro
+        document.querySelector('#intro-image-ctn img').src = GameIntroImageSpoilerFree
+
+
     }
 
     const PepperPigVersion = () =>{
@@ -701,9 +713,7 @@ window.addEventListener('load', () => {
             SpoilerVersion()
             
            
-            
-             //Intro
-            document.querySelector('#intro-image-ctn img').src = "./images/ref-images/gif-gays.gif"
+    
              //Game
             gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
 
@@ -713,8 +723,6 @@ window.addEventListener('load', () => {
              //Splash
              SpoilerFreeVersion()
 
-             //Intro
-            document.querySelector('#intro-image-ctn img').src = "./images/ref-images/gif-guys.gif"
             //game
             gameBackground.src = 'https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg'
 
