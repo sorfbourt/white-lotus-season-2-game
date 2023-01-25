@@ -199,6 +199,16 @@ body {
  width:600px;
 }
 
+#score-ctn{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-text{
+  font-size:22px;
+}
+
 #high-score-list{
   /* list-style:none; 
   padding-left:0;*/
@@ -221,6 +231,13 @@ body {
   padding-bottom:20px;
 }
 
+.score-acc{
+  font-size: 20px;
+  line-height: 20px;
+  background-color: #a9d8c4;
+  padding:10px 30px;
+  color:#138c7f;
+}
 #final-score{
   font-size: 20px;
   line-height: 20px;

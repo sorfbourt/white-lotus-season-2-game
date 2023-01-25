@@ -97,7 +97,7 @@ let lifelines = []
 let extraPoints = []
 let collisions = []
 
-//Attackers
+//Attackers - horizontal - remove life
 class Attackers {
   constructor(xPos, yPos, width, height, speed, image=attacker1Img) {
     this.xPos = xPos
@@ -128,10 +128,10 @@ class Attackers {
       if(this.image === attacker1Img){
         audioOuttaHere.play()
       }
-      if(this.image === attacker1Img){
+      if(this.image === attacker2Img){
         audioOMG.play()
       }
-      if(this.image === attacker1Img){
+      if(this.image === attacker3Img){
         audioOMG2.play()
       }
       attackers = attackers.filter(attackers => attackers.collided === false) 
@@ -149,7 +149,7 @@ class Attackers {
 }
 
 
-//Lifelines - ladders/money
+//Lifelines - ladders/money - vertical - add life
 class Lifelines extends Attackers {
     constructor(xPos, yPos, width, height, speed, image=lifeline1Img) {
         super(xPos, yPos, width, height, speed)
@@ -183,7 +183,7 @@ class Lifelines extends Attackers {
     }
   }
 
-//Extra points
+//Extra points - spaghetti/wine - vertical - add points
 class ExtraPoints extends Lifelines {
   constructor(xPos, yPos, width, height, speed, image=extraPoints1Img, points) {
       super(xPos, yPos, width, height, speed)
@@ -257,7 +257,6 @@ const animate = () => {
       lifeline.checkCollision()
     })
   
-
     lifelines = lifelines.filter(lifelines => lifelines.yPos < canvas.height)
     
     extraPoints.forEach(extraPoint => {
@@ -347,6 +346,8 @@ if (gameOver === true) {
     cancelAnimationFrame(animateId)
     game.style.display ="none"
     gameOverScreen.style.display ="block"
+    document.querySelector('#time-score').innerText = (scoring).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    document.querySelector('#extra-score').innerText = (extraPointsScoring).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     document.querySelector('#final-score').innerText = (scoring + extraPointsScoring).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
   } else {
