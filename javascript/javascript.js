@@ -340,7 +340,7 @@ if (animateId === 500 || animateId % 1200 === 0) {
 
 //wine
 if (animateId === 20 || animateId % 500 === 0) {
-  extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 4, extraPoints2Img, 250))
+  extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 70, 4, extraPoints2Img, 250))
 }
 
 
@@ -375,17 +375,6 @@ if (gameOver === true) {
 }
 
 
-
-const update =()=>{
-  
-
-  
-  animateId = 0
-  
-
-    requestAnimationFrame(update);
-
-}
  //Save score
 
  const saveScore =()=>{
@@ -486,7 +475,7 @@ window.addEventListener('load', () => {
       extraPoints = []
       collisions = []
       //window.location.reload();
-      update()
+
       startGame()
     }
 
