@@ -12,6 +12,7 @@ let firstAttempt = true
 let animateId
 let pizzaId = 0
 
+
 let gameOver = false
 
 let livesLeft = 3
@@ -222,6 +223,7 @@ class ExtraPoints extends Lifelines {
 //ANIMATION
 
 const animate = () => {
+  
   //draw player, background
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(gameBackground, 0, 0, canvas.width, canvas.height)
@@ -311,7 +313,7 @@ const animate = () => {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 8, attacker1Img))
       }
 
-      if (animateId % 200 === 0) {
+      if (animateId % 150 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 5, attacker2Img))
       }
 
@@ -357,7 +359,7 @@ if (gameOver === true) {
     document.querySelector('#collisions').innerHTML = collisions.reduce((acc, image) => {return acc + "<img src='"+ image + "'>"},"")
     saveScore()
     showHighScores()
-    animateId = 0
+    //animateId = 0
     cancelAnimationFrame(animateId)
     game.style.display ="none"
     gameOverScreen.style.display ="block"
@@ -372,6 +374,18 @@ if (gameOver === true) {
   
 }
 
+
+
+const update =()=>{
+  
+
+  
+  animateId = 0
+  
+
+    requestAnimationFrame(update);
+
+}
  //Save score
 
  const saveScore =()=>{
@@ -472,6 +486,7 @@ window.addEventListener('load', () => {
       extraPoints = []
       collisions = []
       //window.location.reload();
+      update()
       startGame()
     }
 
@@ -653,6 +668,7 @@ window.addEventListener('load', () => {
           }
         }
       })
+ 
 
       
  
