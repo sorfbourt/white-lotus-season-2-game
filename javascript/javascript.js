@@ -10,7 +10,8 @@ gameOverScreen.style.display ="none"
 
 let firstAttempt = true
 let animateId
-let pizzaId = 0
+let gameId = 0
+
 
 
 let gameOver = false
@@ -98,126 +99,6 @@ let lifelines = []
 let extraPoints = []
 let collisions = []
 
-//Attackers - horizontal - remove life
-class Attackers {
-  constructor(xPos, yPos, width, height, speed, image=attacker1Img) {
-    this.xPos = xPos
-    this.yPos = yPos
-    this.width = width
-    this.height = height
-    this.speed = speed
-    this.collided = false
-    this.image = image
-  }
-
-  draw() {
-    ctx.beginPath()
-    ctx.drawImage(this.image, this.xPos, this.yPos, this.width, this.height)
-    this.xPos -= this.speed
-    ctx.closePath()
-  }
-
-  checkCollision() {
-    if (
-      playerX < this.xPos + this.width &&
-      playerX + playerWidth > this.xPos &&
-      playerY < this.yPos + this.height &&
-      playerHeight + playerY > this.yPos
-    ) {
-      this.collided = true
-      collisions.push(this.image.src)  
-      if(this.image === attacker1Img){
-        audioOuttaHere.play()
-      }
-      if(this.image === attacker2Img){
-        audioOMG.play()
-      }
-      if(this.image === attacker3Img){
-        audioOMG2.play()
-      }
-      attackers = attackers.filter(attackers => attackers.collided === false) 
-      livesLeft = livesLeft - 1
-      playerImg.src = '../images/player-tanya-omg.png'
-      setTimeout(()=>{
-          playerImg.src = '../images/player-tanya.png'
-          }, 1000)
-        
-      if(livesLeft === 0){
-        gameOver = true
-      }
-    }
-  }
-}
-
-
-//Lifelines - ladders/money - vertical - add life
-class Lifelines extends Attackers {
-    constructor(xPos, yPos, width, height, speed, image=lifeline1Img) {
-        super(xPos, yPos, width, height, speed)
-        this.image = image
-    }
-  
-    draw() {
-      ctx.beginPath()
-      ctx.drawImage(this.image, this.xPos, this.yPos, this.width, this.height)
-      this.yPos += this.speed
-      ctx.closePath()
-    }
-  
-    checkCollision() {
-      if (
-        playerX < this.xPos + this.width &&
-        playerX + playerWidth > this.xPos &&
-        playerY < this.yPos + this.height &&
-        playerHeight + playerY > this.yPos
-      ) {
-          this.collided = true  
-          collisions.push(this.image.src)    
-          audioWow.play()
-          lifelines = lifelines.filter(lifelines => lifelines.collided === false) 
-          livesLeft = livesLeft + 1
-          playerImg.src = '../images/player-tanya-wow.png'
-          setTimeout(()=>{
-              playerImg.src = '../images/player-tanya.png'
-              }, 1000)
-      }
-    }
-  }
-
-//Extra points - spaghetti/wine - vertical - add points
-class ExtraPoints extends Lifelines {
-  constructor(xPos, yPos, width, height, speed, image=extraPoints1Img, points) {
-      super(xPos, yPos, width, height, speed)
-      this.image = image
-      this.points = points
-  }
-
-  draw() {
-    ctx.beginPath()
-    ctx.drawImage(this.image, this.xPos, this.yPos, this.width, this.height)
-    this.yPos += this.speed
-    ctx.closePath()
-  }
-
-  checkCollision() {
-    if (
-      playerX < this.xPos + this.width &&
-      playerX + playerWidth > this.xPos &&
-      playerY < this.yPos + this.height &&
-      playerHeight + playerY > this.yPos
-    ) {
-        this.collided = true  
-        collisions.push(this.image.src)    
-        extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
-        extraPointsScoring = extraPointsScoring + this.points
-        playerImg.src = '../images/player-tanya-wow.png'
-
-        setTimeout(()=>{
-            playerImg.src = '../images/player-tanya.png'
-            }, 1000)
-    }
-  }
-}
 
 
 //ANIMATION
@@ -268,57 +149,66 @@ const animate = () => {
     
     extraPoints = extraPoints.filter(extraPoints => extraPoints.yPos < canvas.height)
     
-    console.log(animateId, "---", pizzaId)
+    console.log(animateId, "---", gameId)
 
 //ATTACKERS timings
 
-    if (animateId > 0 && animateId < 2000) {
+    if (gameId > 0 && gameId < 2000) {
       
-      if (animateId % 500 === 0) {
+      if (gameId % 500 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 1, attacker1Img))
+        console.log(animateId, "---", gameId, "---", "ONE")
       }
 
-      if (animateId % 200 === 0) {
+      if (gameId % 200 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 1, attacker2Img))
+        console.log(animateId, "---", gameId, "---", "TWO")
       }
     }
 
-    if (animateId > 499 && animateId < 2000) {
+    if (gameId > 499 && gameId < 2000) {
       
-      if (animateId % 500 === 0) {
+      if (gameId % 500 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 2, attacker3Img))
+        console.log(animateId, "---", gameId, "---", "THREE")
       }
     }
 
 
 
-    if (animateId > 2000 && animateId < 5000) {
+    if (gameId > 2000 && gameId < 5000) {
       
-      if (animateId % 500 === 0) {
+      if (gameId % 500 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 3, attacker1Img))
+        console.log(animateId, "---", gameId, "---", "4")
       }
 
-      if (animateId % 200 === 0) {
+      if (gameId % 200 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 3, attacker2Img))
+        console.log(animateId, "---", gameId, "---", "5")
       }
 
-      if (animateId % 100 === 0) {
+      if (gameId % 100 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 5, attacker3Img))
+        console.log(animateId, "---", gameId, "---", "6")
       }
     }
 
-    if (animateId > 5000) {
+    if (gameId > 5000) {
       
-      if (animateId % 250 === 0) {
+      if (gameId % 250 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 8, attacker1Img))
+        console.log(animateId, "---", gameId, "---", "7")
       }
 
-      if (animateId % 150 === 0) {
+      if (gameId % 150 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 5, attacker2Img))
+        console.log(animateId, "---", gameId, "---", "8")
       }
 
-      if (animateId % 100 === 0) {
+      if (gameId % 100 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 7, attacker3Img))
+        console.log(animateId, "---", gameId, "---", "9")
       }
     }
 
@@ -326,21 +216,24 @@ const animate = () => {
     
 //LIFELINES timings
 
-if (animateId === 1250 || animateId % 2200 === 0) {
+if (gameId === 1250 || gameId % 2200 === 0) {
     lifelines.push(new Lifelines(canvas.width * Math.random(), 0, 30, 50, 8))
+    console.log(animateId, "---", gameId, "---", "10")
 }
 
 
 //EXTRA POINTS timings
 
 //spaghetti
-if (animateId === 500 || animateId % 1200 === 0) {
+if (gameId === 500 || gameId % 1200 === 0) {
   extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 5, extraPoints1Img, 1000))
+  console.log(animateId, "---", gameId, "---", "11")
 }
 
 //wine
-if (animateId === 20 || animateId % 500 === 0) {
+if (gameId === 20 || gameId % 750 === 0) {
   extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 70, 4, extraPoints2Img, 250))
+  console.log(animateId, "---", gameId, "---", "12")
 }
 
 
@@ -348,7 +241,7 @@ if (animateId === 20 || animateId % 500 === 0) {
   document.querySelector('#score').innerText = scoring.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   document.querySelector('#lives').innerText = livesLeft
   document.querySelector('#extraPoints').innerText = extraPointsScoring.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  scoring = parseInt(animateId * 0.1)
+  scoring = parseInt(gameId * 0.1)
 
     
 //game over
@@ -360,6 +253,7 @@ if (gameOver === true) {
     saveScore()
     showHighScores()
     //animateId = 0
+    gameId = 0
     cancelAnimationFrame(animateId)
     game.style.display ="none"
     gameOverScreen.style.display ="block"
@@ -411,9 +305,17 @@ window.localStorage.setItem('highScores', JSON.stringify(highScores))
 }
  
 
+//could not make animateId = 0 on restart so created this as a workaround but seems each time restart it gets harder the first restart and then obstacles don't come at all. - if i want to revert, game gameId to animateID in the obstacle creation
+function addSeconds(){
+  gameId = gameId + 1
+}
+
+
 //Start game
 const startGame = () => {
-    animateId = 0
+  setInterval(addSeconds, 16)
+
+  gameId = 0
     audioThemeSong.play()
     /* let skipIntervalId =  */setTimeout(()=>{
     gameIntro.style.display = "none"  
@@ -454,7 +356,6 @@ window.addEventListener('load', () => {
     //Restart button
     btnRestart.onclick = () => {
       firstAttempt = false
-      animateId = 0
       gameOver = false
 
       livesLeft = 3
@@ -470,12 +371,11 @@ window.addEventListener('load', () => {
       playerY = 400
 
       attackers = []
-    
       lifelines = []
       extraPoints = []
       collisions = []
       //window.location.reload();
-
+      animate()
       startGame()
     }
 
@@ -643,6 +543,18 @@ window.addEventListener('load', () => {
       /*       extraPoints1Img.src = 
       extraPoints2Img.src =  */
     }
+    //TOGGLE BUTTON - SPOILER VERSION
+    btnToggleSpoilerVersion.addEventListener('click', () => {
+        if(isSpoilerVersion === false){
+            isSpoilerVersion = true
+            SpoilerVersion()
+    //TOGGLE BUTTON - SPOILER-FREE VERSION
+  } else{
+            isSpoilerVersion = false
+             SpoilerFreeVersion()
+          }
+
+    })
       //key p - secret button - peppapig
         
       document.addEventListener('keydown',event => {
@@ -661,17 +573,5 @@ window.addEventListener('load', () => {
 
       
  
-    //TOGGLE BUTTON - SPOILER VERSION
-    btnToggleSpoilerVersion.addEventListener('click', () => {
-        if(isSpoilerVersion === false){
-            isSpoilerVersion = true
-            SpoilerVersion()
-    //TOGGLE BUTTON - SPOILER-FREE VERSION
-  } else{
-            isSpoilerVersion = false
-             SpoilerFreeVersion()
-          }
-
-    })
 
 })
