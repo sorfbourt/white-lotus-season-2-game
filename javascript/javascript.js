@@ -62,28 +62,28 @@ const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
 const gameBackground = new Image()
-gameBackground.src = './images/game-background.jpeg' // credit: architecturaldigest.com
+gameBackground.src = '/images/game-background.jpeg' // credit: architecturaldigest.com
 
 const playerImg = new Image()
-playerImg.src = './images/player-tanya.png'
+playerImg.src = '/images/player-tanya.png'
 
 const attacker1Img = new Image()
-attacker1Img.src = './images/attacker-1.png'
+attacker1Img.src = '/images/attacker-1.png'
 
 const attacker2Img = new Image()
-attacker2Img.src = './images/attacker-2.png'
+attacker2Img.src = '/images/attacker-2.png'
 
 const attacker3Img = new Image()
-attacker3Img.src = './images/attacker-3.png'
+attacker3Img.src = '/images/attacker-3.png'
 
 const lifeline1Img = new Image()
-lifeline1Img.src = './images/extralife.png'
+lifeline1Img.src = '/images/extralife.png'
 
 const extraPoints1Img = new Image()
-extraPoints1Img.src = './images/spaghetti.png'
+extraPoints1Img.src = '/images/spaghetti.png'
 
 const extraPoints2Img = new Image()
-extraPoints2Img.src = './images/wine.png'
+extraPoints2Img.src = '/images/wine.png'
 
 //player variables
 let canvasBorder = 1
