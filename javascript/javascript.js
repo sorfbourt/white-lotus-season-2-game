@@ -343,7 +343,7 @@ window.addEventListener('load', () => {
 
     //Restart button
     btnRestart.onclick = () => {
-      firstAttempt = false
+/*       firstAttempt = false
       gameOver = false
 
       livesLeft = 3
@@ -362,8 +362,7 @@ window.addEventListener('load', () => {
       lifelines = []
       extraPoints = []
       collisions = []
-      animate()
-      startGame()
+      startGame() */
       window.location.reload();
     }
 
