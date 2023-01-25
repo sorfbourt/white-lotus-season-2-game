@@ -149,7 +149,7 @@ const animate = () => {
     
     extraPoints = extraPoints.filter(extraPoints => extraPoints.yPos < canvas.height)
     
-    console.log("animateId: ", animateId, "gameId: ", gameId)
+    //console.log("animateId: ", animateId, "gameId: ", gameId)
 
 //ATTACKERS timings
 
@@ -192,17 +192,14 @@ const animate = () => {
       
       if (gameId % 250 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 8, attacker1Img))
-        console.log(animateId, "---", gameId, "---", "7")
       }
 
       if (gameId % 150 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 5, attacker2Img))
-        console.log(animateId, "---", gameId, "---", "8")
       }
 
       if (gameId % 100 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 7, attacker3Img))
-        console.log(animateId, "---", gameId, "---", "9")
       }
     }
 
@@ -212,7 +209,6 @@ const animate = () => {
 
 if (gameId === 1250 || gameId % 2200 === 0) {
     lifelines.push(new Lifelines(canvas.width * Math.random(), 0, 30, 50, 8))
-    console.log(animateId, "---", gameId, "---", "10")
 }
 
 
@@ -221,13 +217,11 @@ if (gameId === 1250 || gameId % 2200 === 0) {
 //spaghetti
 if (gameId === 500 || gameId % 1200 === 0) {
   extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 5, extraPoints1Img, 1000))
-  console.log(animateId, "---", gameId, "---", "11")
 }
 
 //wine
 if (gameId === 20 || gameId % 750 === 0) {
   extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 70, 4, extraPoints2Img, 250))
-  console.log(animateId, "---", gameId, "---", "12")
 }
 
 
