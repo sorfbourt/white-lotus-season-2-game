@@ -364,7 +364,7 @@ window.addEventListener('load', () => {
       collisions = []
       animate()
       startGame()
-      //window.location.reload();
+      window.location.reload();
     }
 
         //arrow keys
