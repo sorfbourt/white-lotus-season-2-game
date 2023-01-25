@@ -107,7 +107,8 @@ class ExtraPoints extends Lifelines {
       playerHeight + playerY > this.yPos
     ) {
         this.collided = true  
-        collisions.push(this.image.src)    
+        collisions.push(this.image.src)   
+        audioWow.play() 
         extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
         extraPointsScoring = extraPointsScoring + this.points
         playerImg.src = './images/player-tanya-wow.png'
