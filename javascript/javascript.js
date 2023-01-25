@@ -475,6 +475,7 @@ window.addEventListener('load', () => {
     
 
     const SpoilerVersion = () =>{
+      audioIntro.play();
       document.querySelector('title').innerText = gameTitleSpoiler
       //splash
       document.querySelector('#name-of-game h1').innerText = GameSplashNameOfGameSpoiler
