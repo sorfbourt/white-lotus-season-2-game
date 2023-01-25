@@ -397,59 +397,59 @@ const animate = () => {
     if (animateId > 0 && animateId < 2000) {
       
       if (animateId % 500 === 0) {
-        attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 50, 50, 1))
+        attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 60, 60, 1))
       }
 
       if (animateId % 200 === 0) {
-        attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 50, 50, 1))
+        attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 60, 60, 1))
       }
     }
 
     if (animateId > 499 && animateId < 2000) {
       
       if (animateId % 500 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 1))
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 2))
       }
     }
     
     if (animateId > 2000 && animateId < 4000) {
 
       if (animateId % 150 === 0) {
-        attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 50, 50, 2))
+        attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 60, 60, 2))
       }
 
       if (animateId % 300 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 2))
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 2))
       }
 
       if (animateId % 300 === 0) {
-        attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 50, 50, 2))
+        attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 60, 60, 2))
       }
     }
 
     if (animateId > 4000 && animateId < 6000) {
       if (animateId % 100 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 3))
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 3))
       }
 
       if (animateId % 300 === 0) {
-        attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 50, 50, 3))
+        attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 60, 60, 3))
       }
     }
 
     if (animateId > 6000 && animateId < 50000) {
 
         if (animateId % 150 === 0) {
-          attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 50, 50, 5))
+          attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 60, 60, 5))
         }
         if (animateId % 300 === 0) {
-          attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 50, 50, 5))
+          attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 5))
         }   
         if (animateId % 700 === 0) {
-          attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 50, 50, 8))
+          attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 60, 60, 8))
         }   
         if (animateId % 1000 === 0) {
-          attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 50, 50, 12))
+          attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 60, 60, 12))
         }      
     }
     
