@@ -10,7 +10,7 @@ gameOverScreen.style.display ="none"
 
 let firstAttempt = true
 let animateId
-let pizzaId
+let pizzaId = 0
 
 let gameOver = false
 
@@ -84,7 +84,7 @@ const extraPoints2Img = new Image()
 extraPoints2Img.src = './images/wine.png'
 
 //player variables
-let canvasBorder = 0
+let canvasBorder = 1
 
 const playerWidth = 80
 const playerHeight = 90
@@ -220,7 +220,7 @@ class ExtraPoints extends Lifelines {
 
 
 //ANIMATION
-audioThemeSong.play()
+
 const animate = () => {
   //draw player, background
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -266,7 +266,7 @@ const animate = () => {
     
     extraPoints = extraPoints.filter(extraPoints => extraPoints.yPos < canvas.height)
     
-    console.log(animateId)
+    console.log(animateId, "---", pizzaId)
 
 //ATTACKERS timings
 
@@ -305,11 +305,26 @@ const animate = () => {
       }
     }
 
+    if (animateId > 5000) {
+      
+      if (animateId % 250 === 0) {
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 8, attacker1Img))
+      }
+
+      if (animateId % 200 === 0) {
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 5, attacker2Img))
+      }
+
+      if (animateId % 100 === 0) {
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 7, attacker3Img))
+      }
+    }
+
 
     
 //LIFELINES timings
 
-if (animateId === 1000 || animateId % 2000 === 0) {
+if (animateId === 1250 || animateId % 2200 === 0) {
     lifelines.push(new Lifelines(canvas.width * Math.random(), 0, 30, 50, 8))
 }
 
@@ -317,7 +332,7 @@ if (animateId === 1000 || animateId % 2000 === 0) {
 //EXTRA POINTS timings
 
 //spaghetti
-if (animateId === 500 || animateId % 1000 === 0) {
+if (animateId === 500 || animateId % 1200 === 0) {
   extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 5, extraPoints1Img, 1000))
 }
 
@@ -396,6 +411,7 @@ window.localStorage.setItem('highScores', JSON.stringify(highScores))
 //Start game
 const startGame = () => {
     animateId = 0
+    audioThemeSong.play()
     /* let skipIntervalId =  */setTimeout(()=>{
     gameIntro.style.display = "none"  
     game.style.display = "block" 
@@ -464,19 +480,15 @@ window.addEventListener('load', () => {
     document.addEventListener('keydown',event => {
         if(event.key === "ArrowRight"){
           isMovingRight = true
-          //document.querySelector("#keys-right").classList.add("keys-pushed")
         }
         if(event.key === "ArrowLeft"){
           isMovingLeft = true
-         // document.querySelector("#keys-left").classList.add("keys-pushed")
         }
         if(event.key === "ArrowUp"){
           isMovingUp = true
-         // document.querySelector("#keys-up").classList.add("keys-pushed")
         }
         if(event.key === "ArrowDown"){
           isMovingDown = true
-          //document.querySelector("#keys-down").classList.add("keys-pushed")
       }
     })
     //arrow keys
@@ -485,22 +497,18 @@ window.addEventListener('load', () => {
     document.addEventListener('keyup',event => {
       if(event.key === "ArrowRight"){
         isMovingRight = false
-        //document.querySelector("#keys-right").classList.remove("keys-pushed") 
       }
 
       if(event.key === "ArrowLeft"){
         isMovingLeft = false
-        //document.querySelector("#keys-left").classList.remove("keys-pushed")
       }
 
       if(event.key === "ArrowUp"){
         isMovingUp = false
-        //document.querySelector("#keys-up").classList.remove("keys-pushed")
       }
 
       if(event.key === "ArrowDown"){
         isMovingDown = false
-        //document.querySelector("#keys-down").classList.remove("keys-pushed")
       }
     })
         
@@ -551,20 +559,15 @@ window.addEventListener('load', () => {
     gameBackgroundSpoiler = './images/game-background-spoiler.jpg' // credit: https://www.luxurychartergroup.com/cms/uploads/luxury-charter-yacht-invader-30.jpg
     gameBackgroundSpoilerFree = './images/game-background.jpeg' // credit: https://media.architecturaldigest.com/photos/6386579956d3de6551010f47/master/w_1600%2Cc_limit/AD090119_GARCIA_03.jpg
 
-/*     playerImgSpoiler ='./images/player-tanya.png'
-    playerImgSpoilerFree = './images/player-tanya.png' */
-
     attacker1ImgSpoiler =GameSplashAttacker1ImageSpoiler
     attacker1ImgSpoilerFree =GameSplashAttacker1ImageSpoilerFree
 
     attacker2ImgSpoiler =GameSplashAttacker2ImageSpoiler
     attacker2ImgSpoilerFree =GameSplashAttacker2ImageSpoilerFree
 
-    
     attacker3ImgSpoiler =GameSplashAttacker3ImageSpoiler
     attacker3ImgSpoilerFree =GameSplashAttacker3ImageSpoilerFree
 
-  
     lifelineImgSpoiler =GameSplashExtraLifeImageSpoiler
     lifelineImgSpoilerFree =GameSplashExtraLifeImageSpoilerFree
 
@@ -599,7 +602,6 @@ window.addEventListener('load', () => {
        //game
        gameBackground.src = gameBackgroundSpoiler
        document.querySelector('#livesleft').innerHTML = GameLivesLeftSpoiler
-      /*  playerImg.src = playerImgSpoiler */
       attacker1Img.src = attacker1ImgSpoiler
       attacker2Img.src = attacker2ImgSpoiler
       attacker3Img.src = attacker3ImgSpoiler
@@ -641,7 +643,6 @@ window.addEventListener('load', () => {
         
       document.addEventListener('keydown',event => {
         if((event.code == "KeyP" || event.key=="p") && game.style.display === "block" ){
-          console.log("P", event)
 
           if(isPeppaPigVersion == false){
             audioPeppaPig.play()

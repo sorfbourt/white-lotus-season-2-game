@@ -215,6 +215,9 @@ body {
   margin-bottom:5px;
 }
 
+#high-scores{
+  padding: 0px 0px 0px 10px;
+}
 .high-score{
 
   color:black;
