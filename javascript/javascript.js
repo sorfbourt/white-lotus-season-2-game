@@ -99,7 +99,90 @@ let lifelines = []
 let extraPoints = []
 let collisions = []
 
+//ATTACKERS timings
 
+if (gameId > 0 && gameId < 2000) {
+      
+  if (gameId % 500 === 0) {
+    attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 1, attacker1Img))
+    console.log(animateId, "---", gameId, "---", "1")
+  }
+
+  if (gameId % 200 === 0) {
+    attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 1, attacker2Img))
+    console.log(animateId, "---", gameId, "---", "2")
+  }
+}
+
+if (gameId > 499 && gameId < 2000) {
+  
+  if (gameId % 500 === 0) {
+    attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 2, attacker3Img))
+    console.log(animateId, "---", gameId, "---", "3")
+  }
+}
+
+
+
+if (gameId > 2000 && gameId < 5000) {
+  
+  if (gameId % 500 === 0) {
+    attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 3, attacker1Img))
+    console.log(animateId, "---", gameId, "---", "4")
+  }
+
+  if (gameId % 200 === 0) {
+    attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 3, attacker2Img))
+    console.log(animateId, "---", gameId, "---", "5")
+  }
+
+  if (gameId % 100 === 0) {
+    attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 5, attacker3Img))
+    console.log(animateId, "---", gameId, "---", "6")
+  }
+}
+
+if (gameId > 5000) {
+  
+  if (gameId % 250 === 0) {
+    attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 8, attacker1Img))
+    console.log(animateId, "---", gameId, "---", "7")
+  }
+
+  if (gameId % 150 === 0) {
+    attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 5, attacker2Img))
+    console.log(animateId, "---", gameId, "---", "8")
+  }
+
+  if (gameId % 100 === 0) {
+    attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 7, attacker3Img))
+    console.log(animateId, "---", gameId, "---", "9")
+  }
+}
+
+
+
+//LIFELINES timings
+
+if (gameId === 1250 || gameId % 2200 === 0) {
+lifelines.push(new Lifelines(canvas.width * Math.random(), 0, 30, 50, 8))
+console.log(animateId, "---", gameId, "---", "10")
+}
+
+
+//EXTRA POINTS timings
+
+//spaghetti
+if (gameId === 500 || gameId % 1200 === 0) {
+extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 5, extraPoints1Img, 1000))
+console.log(animateId, "---", gameId, "---", "11")
+}
+
+//wine
+if (gameId === 20 || gameId % 750 === 0) {
+extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 70, 4, extraPoints2Img, 250))
+console.log(animateId, "---", gameId, "---", "12")
+}
 
 //ANIMATION
 
@@ -151,90 +234,7 @@ const animate = () => {
     
     console.log(animateId, "---", gameId)
 
-//ATTACKERS timings
 
-    if (gameId > 0 && gameId < 2000) {
-      
-      if (gameId % 500 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 1, attacker1Img))
-        console.log(animateId, "---", gameId, "---", "ONE")
-      }
-
-      if (gameId % 200 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 1, attacker2Img))
-        console.log(animateId, "---", gameId, "---", "TWO")
-      }
-    }
-
-    if (gameId > 499 && gameId < 2000) {
-      
-      if (gameId % 500 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 2, attacker3Img))
-        console.log(animateId, "---", gameId, "---", "THREE")
-      }
-    }
-
-
-
-    if (gameId > 2000 && gameId < 5000) {
-      
-      if (gameId % 500 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 3, attacker1Img))
-        console.log(animateId, "---", gameId, "---", "4")
-      }
-
-      if (gameId % 200 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 3, attacker2Img))
-        console.log(animateId, "---", gameId, "---", "5")
-      }
-
-      if (gameId % 100 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 5, attacker3Img))
-        console.log(animateId, "---", gameId, "---", "6")
-      }
-    }
-
-    if (gameId > 5000) {
-      
-      if (gameId % 250 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 8, attacker1Img))
-        console.log(animateId, "---", gameId, "---", "7")
-      }
-
-      if (gameId % 150 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 5, attacker2Img))
-        console.log(animateId, "---", gameId, "---", "8")
-      }
-
-      if (gameId % 100 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 7, attacker3Img))
-        console.log(animateId, "---", gameId, "---", "9")
-      }
-    }
-
-
-    
-//LIFELINES timings
-
-if (gameId === 1250 || gameId % 2200 === 0) {
-    lifelines.push(new Lifelines(canvas.width * Math.random(), 0, 30, 50, 8))
-    console.log(animateId, "---", gameId, "---", "10")
-}
-
-
-//EXTRA POINTS timings
-
-//spaghetti
-if (gameId === 500 || gameId % 1200 === 0) {
-  extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 5, extraPoints1Img, 1000))
-  console.log(animateId, "---", gameId, "---", "11")
-}
-
-//wine
-if (gameId === 20 || gameId % 750 === 0) {
-  extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 70, 4, extraPoints2Img, 250))
-  console.log(animateId, "---", gameId, "---", "12")
-}
 
 
   //score bar
@@ -375,7 +375,6 @@ window.addEventListener('load', () => {
       extraPoints = []
       collisions = []
       //window.location.reload();
-      animate()
       startGame()
     }
 
