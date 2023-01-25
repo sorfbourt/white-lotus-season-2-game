@@ -37,9 +37,9 @@ class Attackers {
       }
       attackers = attackers.filter(attackers => attackers.collided === false) 
       livesLeft = livesLeft - 1
-      playerImg.src = '../images/player-tanya-omg.png'
+      playerImg.src = './images/player-tanya-omg.png'
       setTimeout(()=>{
-          playerImg.src = '../images/player-tanya.png'
+          playerImg.src = './images/player-tanya.png'
           }, 1000)
         
       if(livesLeft === 0){
@@ -76,9 +76,9 @@ class Lifelines extends Attackers {
           audioWow.play()
           lifelines = lifelines.filter(lifelines => lifelines.collided === false) 
           livesLeft = livesLeft + 1
-          playerImg.src = '../images/player-tanya-wow.png'
+          playerImg.src = './images/player-tanya-wow.png'
           setTimeout(()=>{
-              playerImg.src = '../images/player-tanya.png'
+              playerImg.src = './images/player-tanya.png'
               }, 1000)
       }
     }
@@ -110,10 +110,10 @@ class ExtraPoints extends Lifelines {
         collisions.push(this.image.src)    
         extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
         extraPointsScoring = extraPointsScoring + this.points
-        playerImg.src = '../images/player-tanya-wow.png'
+        playerImg.src = './images/player-tanya-wow.png'
 
         setTimeout(()=>{
-            playerImg.src = '../images/player-tanya.png'
+            playerImg.src = './images/player-tanya.png'
             }, 1000)
     }
   }
