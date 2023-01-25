@@ -93,14 +93,11 @@ let playerX = canvas.width / 2 - playerWidth
 let playerY = 400
 
 let attackers = []
-let attackers2 = []
-let attackers3 = []
 let lifelines = []
 let extraPoints = []
-let extraPoints2 = []
 let collisions = []
 
-//Attackers - Quentin
+//Attackers
 class Attackers {
   constructor(xPos, yPos, width, height, speed, image=attacker1Img) {
     this.xPos = xPos
@@ -128,13 +125,21 @@ class Attackers {
     ) {
       this.collided = true
       collisions.push(this.image.src)  
+      if(this.image === attacker1Img){
         audioOuttaHere.play()
-        attackers = attackers.filter(attackers => attackers.collided === false) 
-        livesLeft = livesLeft - 1
-        playerImg.src = '../images/player-tanya-omg.png'
-        setTimeout(()=>{
-            playerImg.src = '../images/player-tanya.png'
-            }, 1000)
+      }
+      if(this.image === attacker1Img){
+        audioOMG.play()
+      }
+      if(this.image === attacker1Img){
+        audioOMG2.play()
+      }
+      attackers = attackers.filter(attackers => attackers.collided === false) 
+      livesLeft = livesLeft - 1
+      playerImg.src = '../images/player-tanya-omg.png'
+      setTimeout(()=>{
+          playerImg.src = '../images/player-tanya.png'
+          }, 1000)
         
       if(livesLeft === 0){
         gameOver = true
@@ -143,80 +148,7 @@ class Attackers {
   }
 }
 
-//Attackers - Didier
-class Attackers2 extends Attackers {
-  constructor(xPos, yPos, width, height, speed, image=attacker2Img) {
-    super(xPos, yPos, width, height, speed)
-    this.image = image
-  }
 
-  draw() {
-    ctx.beginPath()
-    ctx.drawImage(this.image, this.xPos, this.yPos, this.width, this.height)
-    this.xPos -= this.speed
-    ctx.closePath()
-  }
-
-  checkCollision() {
-    if (
-      playerX < this.xPos + this.width &&
-      playerX + playerWidth > this.xPos &&
-      playerY < this.yPos + this.height &&
-      playerHeight + playerY > this.yPos
-    ) {
-        this.collided = true  
-        collisions.push(this.image.src)  
-        audioOMG.play()  
-        attackers2 = attackers2.filter(attackers => attackers.collided === false) 
-        livesLeft = livesLeft - 1
-        playerImg.src = '../images/player-tanya-omg.png'
-        setTimeout(()=>{
-            playerImg.src = '../images/player-tanya.png'
-            }, 1000)
-        
-      if(livesLeft === 0){
-          gameOver = true
-      }
-    }
-  }
-}
-//Attackers - Matteo
-class Attackers3 extends Attackers {
-  constructor(xPos, yPos, width, height, speed, image=attacker3Img) {
-    super(xPos, yPos, width, height, speed)
-    this.image = image
-  }
-
-  draw() {
-    ctx.beginPath()
-    ctx.drawImage(this.image, this.xPos, this.yPos, this.width, this.height)
-    this.xPos -= this.speed
-    ctx.closePath()
-  }
-
-  checkCollision() {
-    if (
-      playerX < this.xPos + this.width &&
-      playerX + playerWidth > this.xPos &&
-      playerY < this.yPos + this.height &&
-      playerHeight + playerY > this.yPos
-    ) {
-        this.collided = true  
-        collisions.push(this.image.src)  
-        audioOMG2.play()  
-        attackers3 = attackers3.filter(attackers => attackers.collided === false) 
-        livesLeft = livesLeft - 1
-        playerImg.src = '../images/player-tanya-omg.png'
-        setTimeout(()=>{
-            playerImg.src = '../images/player-tanya.png'
-            }, 1000)
-        
-      if(livesLeft === 0){
-          gameOver = true
-      }
-    }
-  }
-}
 //Lifelines - ladders/money
 class Lifelines extends Attackers {
     constructor(xPos, yPos, width, height, speed, image=lifeline1Img) {
@@ -251,11 +183,12 @@ class Lifelines extends Attackers {
     }
   }
 
-//Extra points - spaghetti
+//Extra points
 class ExtraPoints extends Lifelines {
-  constructor(xPos, yPos, width, height, speed, image=extraPoints1Img) {
+  constructor(xPos, yPos, width, height, speed, image=extraPoints1Img, points) {
       super(xPos, yPos, width, height, speed)
       this.image = image
+      this.points = points
   }
 
   draw() {
@@ -274,44 +207,8 @@ class ExtraPoints extends Lifelines {
     ) {
         this.collided = true  
         collisions.push(this.image.src)    
-        audioWow.play()
         extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
-        extraPointsScoring = extraPointsScoring + 1000
-        playerImg.src = '../images/player-tanya-wow.png'
-
-        setTimeout(()=>{
-            playerImg.src = '../images/player-tanya.png'
-            }, 1000)
-    }
-  }
-}
-
-//Extra points - wine
-class ExtraPoints2 extends ExtraPoints {
-  constructor(xPos, yPos, width, height, speed, image=extraPoints2Img) {
-      super(xPos, yPos, width, height, speed)
-      this.image = image
-  }
-
-  draw() {
-    ctx.beginPath()
-    ctx.drawImage(this.image, this.xPos, this.yPos, this.width, this.height)
-    this.yPos += this.speed
-    ctx.closePath()
-  }
-
-  checkCollision() {
-    if (
-      playerX < this.xPos + this.width &&
-      playerX + playerWidth > this.xPos &&
-      playerY < this.yPos + this.height &&
-      playerHeight + playerY > this.yPos
-    ) {
-        this.collided = true    
-        collisions.push(this.image.src)  
-        audioWow.play()
-        extraPoints2 = extraPoints2.filter(extraPoints => extraPoints.collided === false) 
-        extraPointsScoring = extraPointsScoring + 250
+        extraPointsScoring = extraPointsScoring + this.points
         playerImg.src = '../images/player-tanya-wow.png'
 
         setTimeout(()=>{
@@ -355,25 +252,12 @@ const animate = () => {
   
     attackers = attackers.filter(attackers => attackers.xPos > 0)
     
-    attackers2.forEach(attacker => {
-      attacker.draw()
-      attacker.checkCollision()
-    })
-  
-    attackers2 = attackers2.filter(attackers => attackers.xPos > 0)
-    
-    attackers3.forEach(attacker => {
-      attacker.draw()
-      attacker.checkCollision()
-    })
-  
-    attackers3 = attackers3.filter(attackers => attackers.xPos > 0) 
-
     lifelines.forEach(lifeline => {
       lifeline.draw()
       lifeline.checkCollision()
     })
-    
+  
+
     lifelines = lifelines.filter(lifelines => lifelines.yPos < canvas.height)
     
     extraPoints.forEach(extraPoint => {
@@ -383,13 +267,6 @@ const animate = () => {
     
     extraPoints = extraPoints.filter(extraPoints => extraPoints.yPos < canvas.height)
     
-    extraPoints2.forEach(extraPoint => {
-      extraPoint.draw()
-      extraPoint.checkCollision()
-    })
-    
-    extraPoints2 = extraPoints2.filter(extraPoints => extraPoints.yPos < canvas.height)
-    
     console.log(animateId)
 
 //ATTACKERS timings
@@ -397,61 +274,39 @@ const animate = () => {
     if (animateId > 0 && animateId < 2000) {
       
       if (animateId % 500 === 0) {
-        attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 60, 60, 1))
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 1, attacker1Img))
       }
 
       if (animateId % 200 === 0) {
-        attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 60, 60, 1))
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 1, attacker2Img))
       }
     }
 
     if (animateId > 499 && animateId < 2000) {
       
       if (animateId % 500 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 2))
-      }
-    }
-    
-    if (animateId > 2000 && animateId < 4000) {
-
-      if (animateId % 150 === 0) {
-        attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 60, 60, 2))
-      }
-
-      if (animateId % 300 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 2))
-      }
-
-      if (animateId % 300 === 0) {
-        attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 60, 60, 2))
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 2, attacker3Img))
       }
     }
 
-    if (animateId > 4000 && animateId < 6000) {
+
+
+    if (animateId > 2000 && animateId < 5000) {
+      
+      if (animateId % 500 === 0) {
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 3, attacker1Img))
+      }
+
+      if (animateId % 200 === 0) {
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 3, attacker2Img))
+      }
+
       if (animateId % 100 === 0) {
-        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 3))
-      }
-
-      if (animateId % 300 === 0) {
-        attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 60, 60, 3))
+        attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 5, attacker3Img))
       }
     }
 
-    if (animateId > 6000 && animateId < 50000) {
 
-        if (animateId % 150 === 0) {
-          attackers2.push(new Attackers2(canvas.width, canvas.height * Math.random(), 60, 60, 5))
-        }
-        if (animateId % 300 === 0) {
-          attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 5))
-        }   
-        if (animateId % 700 === 0) {
-          attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 60, 60, 8))
-        }   
-        if (animateId % 1000 === 0) {
-          attackers3.push(new Attackers3(canvas.width, canvas.height * Math.random(), 60, 60, 12))
-        }      
-    }
     
 //LIFELINES timings
 
@@ -462,12 +317,14 @@ if (animateId === 1000 || animateId % 2000 === 0) {
 
 //EXTRA POINTS timings
 
+//spaghetti
 if (animateId === 500 || animateId % 1000 === 0) {
-  extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 4))
+  extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 5, extraPoints1Img, 1000))
 }
 
+//wine
 if (animateId === 20 || animateId % 500 === 0) {
-  extraPoints2.push(new ExtraPoints2(canvas.width * Math.random(), 0, 50, 50, 4))
+  extraPoints.push(new ExtraPoints(canvas.width * Math.random(), 0, 50, 50, 4, extraPoints2Img, 250))
 }
 
 
@@ -486,6 +343,7 @@ if (gameOver === true) {
     document.querySelector('#collisions').innerHTML = collisions.reduce((acc, image) => {return acc + "<img src='"+ image + "'>"},"")
     saveScore()
     showHighScores()
+    animateId = 0
     cancelAnimationFrame(animateId)
     game.style.display ="none"
     gameOverScreen.style.display ="block"
@@ -592,11 +450,9 @@ window.addEventListener('load', () => {
       playerY = 400
 
       attackers = []
-      attackers2 = []
-      attackers3 = []
+    
       lifelines = []
       extraPoints = []
-      extraPoints2 = []
       collisions = []
       //window.location.reload();
       startGame()
