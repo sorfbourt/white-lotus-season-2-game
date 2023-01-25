@@ -1,7 +1,7 @@
 # "Please, These Gays, They're Trying To Murder Me"
 ![image](https://user-images.githubusercontent.com/120404332/213864371-a10e3a21-74e0-4091-b50f-73dc657e5af9.png)
 
-[Click here to see deployed game](http://github.com)
+[Click here to see deployed game](https://sorfbourt.github.io/white-lotus-season-2-game/)
 
 
 ## Description
@@ -9,7 +9,7 @@
 
 >"These Gays, They’re Trying To Murder Me" is a phrase said by Tanya in the finale of the 2022 HBO show The White Lotus. The phrase has become a sarcastic expression and image macro used by fans and the LGBTQ+ community on Twitter. ([Know Your Meme - These Gays, They’re Trying To Murder Me](https://knowyourmeme.com/memes/these-gays-theyre-trying-to-murder-me)[^1])
 
-In the game, the player (Tanya Mcquoid) controlled by keyboard arrows has to move horizontally and vertically to avoid the ["high-end gays"](https://www.tiktok.com/@gr1ndr/video/7173059119690124550?lang=en). Tanya starts with 3 chances but she can gain lives and extra points by collecting certain objects. The game ends when Tanya has lost all her chances. After that, a score is calucated based on the objects collected and the amount of time the game lasted.
+In the game, the player (Tanya Mcquoid) controlled by keyboard arrows has to move horizontally and vertically to avoid the ["high-end gays"](https://www.tiktok.com/@gr1ndr/video/7173059119690124550?lang=en). Tanya starts with 3 chances but she can gain lives and extra points by collecting certain objects. The game ends when Tanya has lost all her chances. After that, a score is calculated based on the objects collected and the amount of time the game lasted.
 
 
 ## MVP
@@ -40,7 +40,7 @@ _List of features you might implement after the MVP_
 - Keyboard on splash page changes colour based key presses
 ### Easter eggs
 - Press Q to force end of game
-- Aadhoc fun ideas
+- Adhoc fun ideas
 
 
 ## Data structure
@@ -77,7 +77,7 @@ _List of tasks in order of priority_
 - [Trello Link](https://trello.com/b/mq5yk2KP/white-lotus-season-2-game)
 - [Slides Link](https://docs.google.com/presentation/d/1J5lAjnExh4wpC5CnucCLvv1B6jP6P4LnrIo8J4v4d9k/edit?usp=sharing)
 - [Github repository Link](https://github.com/sorfbourt/white-lotus-season-2-game)
-- [Deployment Link ](http://github.com)
+- [Deployment Link ](https://sorfbourt.github.io/white-lotus-season-2-game/)
 
 ## Context Links
 - [IronHack Web Development Bootcamp Brief](https://docs.google.com/presentation/d/1_mVDkbM7i0YFSzImKCzcmYNInOa2v9Cj/edit#slide=id.p1)
