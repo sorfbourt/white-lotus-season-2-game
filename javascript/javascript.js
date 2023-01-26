@@ -3,7 +3,7 @@ const gameIntro = document.querySelector('#game-intro')
 const game = document.querySelector('#game')
 const gameOverScreen = document.querySelector('#game-over')
 
-document.querySelector('#instructionsText').innerHTML = "<p><b>How to play</b></p><p>Use the arrow keys to run away from robbers trying to steal your money.</p><p>You <i>only</i> have 3 trillion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 trillion dollars.</p><p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>"
+document.querySelector('#instructionsText').innerHTML = "<p><b>How to play</b></p><p>Use the arrow keys to run away from robbers trying to steal your money.</p><p>You <i>only</i> have 3 billion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 billion dollars.</p><p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>"
 
 
 game.style.display ="none"
@@ -440,7 +440,7 @@ window.addEventListener('load', () => {
 
     GameSplashInstructionsSpoiler = "<p><b>How to play</b></p><p>Use the arrow keys to run away from 'these gays'. They are trying to murder you!</p><p>You have 3 lives. Each time one of these 'high-end gays' run into you, you'll lose a life.</p><p>See how long you can last before you are murdered. The longer you last, the higher your score.</p>"
 
-    GameSplashInstructionsSpoilerFree = "<p><b>How to play</b></p><p>Use the arrow keys to run away from robbers trying to steal your money.</p><p>You <i>only</i> have 3 trillion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 trillion dollars.</p><p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>"
+    GameSplashInstructionsSpoilerFree = "<p><b>How to play</b></p><p>Use the arrow keys to run away from robbers trying to steal your money.</p><p>You <i>only</i> have 3 billion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 billion dollars.</p><p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>"
 
     gameTitleSpoiler = "These Gays, They're Trying to Murder Me"
     gameTitleSpoilerFree = "These Guys, They're Trying to Rob Me"
@@ -449,7 +449,7 @@ window.addEventListener('load', () => {
     GameSplashAttackersSpoilerFree = 'Robbers'
 
     GameSplashAttackersWorthSpoiler = '-1 murdered life'
-    GameSplashAttackersWorthSpoilerFree = '-1 trillion dollars'
+    GameSplashAttackersWorthSpoilerFree = '-1 billion dollars'
 
     GameSplashAttacker1ImageSpoiler = './images/attacker-quentin.png'
     GameSplashAttacker1ImageSpoilerFree = './images/attacker-1.png'
@@ -464,7 +464,7 @@ window.addEventListener('load', () => {
     GameSplashExtraLifeSpoilerFree = 'Money Bag'
 
     GameSplashExtraLifeWorthSpoiler = '+1 life (if you use it right)'
-    GameSplashExtraLifeWorthSpoilerFree = '+1 trillion dollars'
+    GameSplashExtraLifeWorthSpoilerFree = '+1 billion dollars'
 
     GameSplashExtraLifeImageSpoiler = './images/ladder.png'
     GameSplashExtraLifeImageSpoilerFree = './images/extralife.png'
