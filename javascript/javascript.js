@@ -312,6 +312,7 @@ const startGame = () => {
 
   gameId = 0
     audioThemeSong.play()
+    document.querySelector('body').style.overflow = 'hidden'
     /* let skipIntervalId =  */setTimeout(()=>{
     gameIntro.style.display = "none"  
     game.style.display = "block" 
