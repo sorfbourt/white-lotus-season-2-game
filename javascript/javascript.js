@@ -208,7 +208,7 @@ const animate = () => {
 //LIFELINES timings
 
 if (gameId === 1250 || gameId % 2200 === 0) {
-    lifelines.push(new Lifelines(canvas.width * Math.random(), 0, 30, 50, 8))
+    lifelines.push(new Lifelines(canvas.width * Math.random(), 0, 40, 50, 8))
 }
 
 

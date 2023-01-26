@@ -111,6 +111,8 @@ class ExtraPoints extends Lifelines {
         audioWow.play() 
         extraPoints = extraPoints.filter(extraPoints => extraPoints.collided === false) 
         extraPointsScoring = extraPointsScoring + this.points
+        document.querySelector('#extraPoints').classList.add('score-flash')
+        setTimeout(()=> {document.querySelector('#extraPoints').classList.remove('score-flash')} , 1000)
         playerImg.src = './images/player-tanya-wow.png'
 
         setTimeout(()=>{
