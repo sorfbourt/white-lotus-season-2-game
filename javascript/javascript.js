@@ -3,6 +3,8 @@ const gameIntro = document.querySelector('#game-intro')
 const game = document.querySelector('#game')
 const gameOverScreen = document.querySelector('#game-over')
 
+document.querySelector('#instructionsText').innerHTML = "<p><b>How to play</b></p><p>Use the arrow keys to run away from robbers trying to steal your money.</p><p>You <i>only</i> have 3 trillion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 trillion dollars.</p><p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>"
+
 
 game.style.display ="none"
 gameIntro.style.display ="none"

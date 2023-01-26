@@ -16,175 +16,111 @@
     </div>
 <!-- SPLASH PAGE -->
     <section id="game-splash">
-
         <section id="section-header">
-
             <div id="name-of-game">
                 <h1>"PLEASE, THESE GUYS, THEY'RE TRYING TO ROB ME"</h1>
             </div>
-            
         </section>
         
         <section id="section-main">
             
             <div id="instructions">
-                
                 <div id="instructionsText">   
-                    <p><b>How to play</b></p><p>Use the arrow keys to run away from robbers trying to steal your money.</p><p>You <i>only</i> have 3 trillion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 trillion dollars.</p><p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>
-                    
-                    
                 </div>
                 
-                <div id="pointsInfo" style="background:#ea8e48; padding:20px;">
+                <div id="pointsInfo">
                     <p class="pointsObjects" id="attackers"><span>Robbers</span> <span>-1 trillion dollars</span></p>
-                    <img src='./images/attacker-1.png' width="40px" id="attacker1Img">
-                    <img src='./images/attacker-2.png' width="40px" id="attacker2Img">
-                    <img src='./images/attacker-3.png' width="40px" id="attacker3Img">
+                    <img src='./images/attacker-1.png' class="img40" id="attacker1Img">
+                    <img src='./images/attacker-2.png' class="img40" id="attacker2Img">
+                    <img src='./images/attacker-3.png' class="img40" id="attacker3Img">
+
                     <p class="pointsObjects" id="extraLife"><span>Money Bag</span> <span>+1 trillion dollars</span></p>
                     
-                    <img src='./images/extralife.png' width="40px" id="extraLifeImg">                 
+                    <img src='./images/extralife.png' class="img40" id="extraLifeImg">                 
                     <p class="pointsObjects" id="extraPoints1"><span>Spaghetti</span> 1000 extra points</p>
-                    <img src='./images/spaghetti.png' width="50px" id="extraPoints1">                   
+                    <img src='./images/spaghetti.png'  class="img50" id="extraPoints1">                   
                     <p class="pointsObjects" id="extraPoints2"><span>Wine</span> 250 extra points</p>
                     
-                    <img src='./images/wine.png' width="40px" id="extraPoints2">                 
+                    <img src='./images/wine.png'  class="img40" id="extraPoints2">                 
                 </div>
-  
             </div>
-
-           
-
             <div id="main-image-ctn">
-
-                <img src="./images/splash-main-image.jpg" alt="" id="main-tanya" />
- 
+                <img src="./images/splash-main-image.jpg" alt="Tanya" id="main-tanya" />
                     <form name="nameForHighestScore">
-                        <input type="text" id="name" name="name" required       minlength="1" width="100" height="40" size="32" style="font-size:16px" placeholder="Enter your name here...">
+                        <input type="text" id="name" name="name" required minlength="1" width="100" height="40" size="32" placeholder="Enter your name here...">
                     </form>
-    
                 <a  href="#top"><button id="btnStart">Start the game!</button></a>
             </div>
-
-
-
-
         </section>
-
-
     </section>
 
 <!-- INTRO -->
 <section id="game-intro">
-    <div id="intro-image-ctn" style="display:flex; flex-direction: column;">
+    <div id="intro-image-ctn">
         <img src="./images/gif-guys.gif" alt="" width="100%" />
         <button id="btnSkip">Skip intro</button>
     </div>
-
 </section>
-
-
-
-
-
-
 
 
 
 <!-- GAME -->
     <section id="game">
-
-      <canvas id="canvas" width="600" height="500" style="border: 1px solid;"></canvas>
+      <canvas id="canvas" width="600" height="500"></canvas>
       <div id="scoreBar">
         <span><b>Time Score: </b></span><span id="score"></span>
         <span><b>Extra Points: </b></span><span id="extraPoints"></span>
-        <span id="livesleft"><b>Triillion $ Left: </b></span><span id="lives"></span>
+        <span id="livesleft"><b>Triillion $ Left:</b></span><span id="lives"></span>
       </div>
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- GAME OVER -->
     <section id="game-over">
-        
-            
-        
-            <section id="section-header">
 
+            <section id="section-header">
                 <div id="name-of-game">
                     <h1>Arrivederci, <span id="nameForHighestScore"></span>!</h1>
                 </div>
-                
             </section>
             
             <section id="section-game-over-main">
-                
                 <div id="game-over-ctn">
-                
-                <div id="my-score">
-                    <br/>
-                    <img src='./images/game-over.jpg' id="game-over-img">
+                    <div id="my-score">
+                            <br/>
+                            <img src='./images/game-over.jpg' id="game-over-img">
 
-                <div id="score-ctn">
-                    <div><h1>Time score </h1><span id="time-score" class="score-acc"></span></div>
-
-                    <div class="score-text">+</div>
-
-                    <div> <h1>Extra points </h1><span id="extra-score" class="score-acc"></span></div>
-
-                    <div class="score-text">=</div>
-
-                    <div><h1>Your final score </h1><span id="final-score"></span>
-
+                        <div id="score-ctn">
+                            <div><h1>Time score </h1><span id="time-score" class="score-acc"></span></div>
+                            <div class="score-text">+</div>
+                            <div> <h1>Extra points </h1><span id="extra-score" class="score-acc"></span></div>
+                            <div class="score-text">=</div>
+                            <div><h1>Your final score </h1><span id="final-score"></span>
+                            </div>
+                        </div>
+                        <br/><br/>
+                            <h1>Your collisions</span></h1>
+                            <span id="collisions"></span>
+                            <br/>
+                            <button id="btnRestart">Restart Game</button>
+                            <br/>
                     </div>
-
-                </div>
-                <br/><br/>
-                    <h1>Your collisions</span></h1>
-                    <span id="collisions"></span>
-                    <br/>
-                    <button id="btnRestart">Restart Game</button>
-                    <br/>
-                </div>
-                    
-                  
-
+                        
                     <div id="high-scores">
                         <h1>Top 10 scores</h1>
                         <ol id="high-score-list"></ol>
                     </div>
-
-
-    
-               
                 </div>
-    
             </section>
-    
-    
     </section>
 
     <!-- FOOTER-->
     <footer id="footer">
         <div>
-            <p><a href="https://www.linkedin.com/in/krystinawitt/" target="_blank" style="text-decoration: none;color:black;">Krystina Witt</a> - Built during Ironhack Web Development Bootcamp January 2023 </p>
+            <p><a href="https://www.linkedin.com/in/krystinawitt/" target="_blank">Krystina Witt</a> - Built during Ironhack Web Development Bootcamp January 2023 </p>
         </div>
-        
     </footer>
 
-
-
-
+ <!-- SCRIPTS-->
     <script src="./javascript/javascript.js"></script>
     <script src="./javascript/classes.js"></script>
 </body>

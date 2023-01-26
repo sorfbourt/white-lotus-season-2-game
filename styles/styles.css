@@ -28,6 +28,11 @@ body {
     margin: 0 auto;
   }
 
+  #footer a{
+    text-decoration: none;
+    color:black;
+  }
+
   #footer p{
     font-size:10px;
     text-align: center;
@@ -84,6 +89,17 @@ body {
     font-size: 12px;
     font-family: 'Roboto';
   }
+
+ #pointsInfo{
+  background:#ea8e48;
+  padding:20px;
+ }
+ .img40{
+  width:40px;
+ }
+ .img50{
+  width:50px;
+ }
   
   .pointsObjects{
     background-color: white;
@@ -114,6 +130,8 @@ body {
     background-repeat: none;
     height:100%;
     width:100%;
+    display:flex; 
+    flex-direction: column;
 
     
 }
