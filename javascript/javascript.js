@@ -479,13 +479,6 @@ window.addEventListener('load', () => {
     lifelineImgSpoiler =GameSplashExtraLifeImageSpoiler
     lifelineImgSpoilerFree =GameSplashExtraLifeImageSpoilerFree
 
-    
-  /*   extraPoints1ImgSpoiler ='./images/spaghetti.png'
-    extraPoints1ImgSpoilerFree ='./images/spaghetti.png'
-
-    extraPoints2ImgSpoiler = './images/wine.png'
-    extraPoints2ImgSpoilerFree ='./images/wine.png' */
-
     GameLivesLeftSpoiler = "<b>Lives Left: </b>"
     GameLivesLeftSpoilerFree = "<b>Triillion $ Left: </b>"
     
@@ -514,10 +507,7 @@ window.addEventListener('load', () => {
       attacker1Img.src = attacker1ImgSpoiler
       attacker2Img.src = attacker2ImgSpoiler
       attacker3Img.src = attacker3ImgSpoiler
-
       lifeline1Img.src = lifelineImgSpoiler
-/*       extraPoints1Img.src = 
-      extraPoints2Img.src =  */
 
     }
 
@@ -540,13 +530,10 @@ window.addEventListener('load', () => {
         //game
        gameBackground.src = gameBackgroundSpoilerFree
        document.querySelector('#livesleft').innerHTML = GameLivesLeftSpoilerFree
-       /* playerImg.src = playerImgSpoilerFree */
       attacker1Img.src = attacker1ImgSpoilerFree
       attacker2Img.src = attacker2ImgSpoilerFree
       attacker3Img.src = attacker3ImgSpoilerFree
       lifeline1Img.src = lifelineImgSpoilerFree
-      /*       extraPoints1Img.src = 
-      extraPoints2Img.src =  */
     }
     //TOGGLE BUTTON - SPOILER VERSION
     btnToggleSpoilerVersion.addEventListener('click', () => {

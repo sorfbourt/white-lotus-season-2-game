@@ -1,7 +1,7 @@
 # "Please, These Gays, They're Trying To Murder Me"
 ![image](https://user-images.githubusercontent.com/120404332/213864371-a10e3a21-74e0-4091-b50f-73dc657e5af9.png)
 
-[Click here to see deployed game](https://sorfbourt.github.io/white-lotus-season-2-game/)
+[Click here to see deployed game](https://sorfbourt.github.io/white-lotus-season-2-game/) <-- If you would like to play the SPOILER version, please click on the button at the top left hand corner of the screen. 
 
 
 ## Description
