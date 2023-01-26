@@ -43,6 +43,8 @@ audioThemeSong.preload
 audioThemeSong.volume = 0.2
 const audioPeppaPig = new Audio('./audio/peppapig.mp3')
 audioPeppaPig.preload
+const audioHighEndGays = new Audio('./audio/jennifer-coolidge-high-end-gays.mp3')
+audioHighEndGays.preload
 
 
 //Spoiler version variables
@@ -169,6 +171,11 @@ const animate = () => {
       if (gameId % 500 === 0) {
         attackers.push(new Attackers(canvas.width, canvas.height * Math.random(), 60, 60, 2, attacker3Img))
       }
+    }
+
+    if(isSpoilerVersion === true && gameId === 700){
+      audioHighEndGays.play()
+
     }
 
 
@@ -313,7 +320,11 @@ const startGame = () => {
       audioIntro.play();
     }
     }, firstAttempt? 3000 : 0)
+    
     animate()
+
+
+
 }
 
 //ON LOAD
