@@ -94,11 +94,20 @@ body {
   background:#ea8e48;
   padding:20px;
  }
+ .img20{
+  width:20px;
+  padding:10px;
+ }
  .img40{
   width:40px;
  }
  .img50{
   width:50px;
+ }
+
+ input{
+  font-size:16px;
+  line-height: 16px;
  }
   
   .pointsObjects{
@@ -161,7 +170,8 @@ body {
     padding: 20px;
     display:flex;
     justify-content: space-between;
-    font-size:14px;
+    font-size:16px;
+    align-items: center;
 }
   
 /* GAME OVER */

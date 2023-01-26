@@ -13,9 +13,6 @@ gameOverScreen.style.display ="none"
 let firstAttempt = true
 let animateId
 let gameId = 0
-
-
-
 let gameOver = false
 
 let livesLeft = 3
@@ -48,12 +45,9 @@ audioPeppaPig.preload
 const audioHighEndGays = new Audio('./audio/jennifer-coolidge-high-end-gays.mp3')
 audioHighEndGays.preload
 
-
 //Spoiler version variables
 let isSpoilerVersion = false
 let isPeppaPigVersion = false
-
-
 
 //game variables
 isMovingLeft = false
@@ -104,7 +98,6 @@ let extraPoints = []
 let collisions = []
 
 
-
 //ANIMATION
 
 const animate = () => {
@@ -113,7 +106,6 @@ const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(gameBackground, 0, 0, canvas.width, canvas.height)
     ctx.drawImage(playerImg, playerX, playerY, playerWidth, playerHeight)
-    
 
     //player controls
         
@@ -130,13 +122,12 @@ const animate = () => {
         playerY += 5
     }
 
-
     // draw obstacles and objects
     attackers.forEach(attacker => {
       attacker.draw()
       attacker.checkCollision()
     })
-  
+
     attackers = attackers.filter(attackers => attackers.xPos > 0)
     
     lifelines.forEach(lifeline => {
@@ -236,11 +227,29 @@ if (gameId === 20 || gameId % 750 === 0) {
 
   //score bar
   document.querySelector('#score').innerText = scoring.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  document.querySelector('#lives').innerText = livesLeft
+
   document.querySelector('#extraPoints').innerText = extraPointsScoring.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   scoring = parseInt(gameId * 0.1)
 
-    
+ //update lives images
+
+ function updateLives (number){
+   let imageSource = lifeline1Img.src
+  if(isSpoilerVersion === true){
+    imageSource = './images/heart.png'
+  }
+  else{
+    imageSource = GameSplashExtraLifeImageSpoilerFree
+  }
+  const image = "<img src='"+imageSource+"' class='img20'>"
+  let livesImgs = image.repeat(number)
+  document.querySelector('#lives').innerHTML = livesImgs
+}
+
+updateLives(livesLeft)
+
+  
+
 //game over
 if (gameOver === true) {
     document.querySelector('body').style.overflow = 'visible'
