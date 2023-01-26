@@ -241,6 +241,7 @@ if (gameId === 20 || gameId % 750 === 0) {
     
 //game over
 if (gameOver === true) {
+    document.querySelector('body').style.overflow = 'visible'
     if(isSpoilerVersion === true){
       audioCrying.play()
     }
@@ -320,9 +321,9 @@ const startGame = () => {
     if(isSpoilerVersion === true){
       audioIntro.play();
     }
+    animate()
     }, firstAttempt? 3000 : 0)
     
-    animate()
 
 
 
