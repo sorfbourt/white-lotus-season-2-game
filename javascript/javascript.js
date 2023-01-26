@@ -435,6 +435,9 @@ window.addEventListener('load', () => {
 
 
     //splash
+    GameSplashMainImageSpoiler = "./images/splash-main-image-2.jpg"
+    GameSplashMainImageSpoilerFree = "./images/splash-main-image.jpg"
+
     GameSplashNameOfGameSpoiler = "PLEASE, THESE GAYS, THEY'RE TRYING TO MURDER ME"
     GameSplashNameOfGameSpoilerFree = "PLEASE, THESE GUYS, THEY'RE TRYING TO ROB ME"
 
@@ -496,6 +499,8 @@ window.addEventListener('load', () => {
 
     const SpoilerVersion = () =>{
       audioIntro.play();
+
+      document.querySelector('#main-tanya').src = GameSplashMainImageSpoiler
       document.querySelector('title').innerText = gameTitleSpoiler
       //splash
       document.querySelector('#name-of-game h1').innerText = GameSplashNameOfGameSpoiler
@@ -523,6 +528,7 @@ window.addEventListener('load', () => {
     }
 
     const SpoilerFreeVersion = () =>{
+      document.querySelector('#main-tanya').src = GameSplashMainImageSpoilerFree
       document.querySelector('title').innerText = gameTitleSpoilerFree
       //splash
       document.querySelector('#name-of-game h1').innerText = GameSplashNameOfGameSpoilerFree
