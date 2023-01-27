@@ -3,7 +3,6 @@ const gameIntro = document.querySelector('#game-intro')
 const game = document.querySelector('#game')
 const gameOverScreen = document.querySelector('#game-over')
 
-document.querySelector('#instructionsText').innerHTML = "<p><b>How to play</b></p><p>Use the arrow keys to run away from robbers trying to steal your money.</p><p>You <i>only</i> have 3 billion dollars. Each time a robber runs into you, they'll rob you and you'll lose 1 billion dollars.</p><p>See how long you can last before all your money runs out. The longer you last, the higher your score.</p>"
 
 
 game.style.display ="none"
@@ -499,8 +498,6 @@ window.addEventListener('load', () => {
 
     const SpoilerVersion = () =>{
       audioIntro.play();
-
-      document.querySelector('#main-tanya').src = GameSplashMainImageSpoiler
       document.querySelector('title').innerText = gameTitleSpoiler
       //splash
       document.querySelector('#name-of-game h1').innerText = GameSplashNameOfGameSpoiler
@@ -528,7 +525,6 @@ window.addEventListener('load', () => {
     }
 
     const SpoilerFreeVersion = () =>{
-      document.querySelector('#main-tanya').src = GameSplashMainImageSpoilerFree
       document.querySelector('title').innerText = gameTitleSpoilerFree
       //splash
       document.querySelector('#name-of-game h1').innerText = GameSplashNameOfGameSpoilerFree
