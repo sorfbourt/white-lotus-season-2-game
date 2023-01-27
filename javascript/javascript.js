@@ -359,11 +359,16 @@ window.addEventListener('load', () => {
 //Start button
 
     btnStart.onclick = () => {
-        if(document.forms["nameForHighestScore"]["name"].value !== ""){
-          gameSplash.style.display = "none"
-          gameIntro.style.display = "block"
-          startGame()
-        }
+      if(document.forms["nameForHighestScore"]["name"].value !== ""){
+        gameSplash.style.display = "none"
+        gameIntro.style.display = "block"
+        startGame()
+      }
+
+      if(document.forms["nameForHighestScore"]["name"].value == ""){
+        alert('Please enter your name to start game')
+  
+      }
     }
 
 
