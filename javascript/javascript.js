@@ -26,31 +26,31 @@ const btnToggleSpoilerVersion = document.querySelector('#btnToggleSpoilerVersion
 //audio
 const audioIntro = new Audio('./audio/please-these-gays-are-trying-to-murder-me.mp3')
 audioIntro.preload
-audioIntro.volume = 0.1
+audioIntro.volume = 0.7
 const audioCrying = new Audio('./audio/jennifer-coolidge-crying.mp3')
 audioCrying.preload
-audioCrying.volume = 0.1
+audioCrying.volume = 0.7
 const audioOMG = new Audio('./audio/jennifer-coolidge-omg.mp3')
 audioOMG.preload
-audioOMG.volume = 0.1
+audioOMG.volume = 0.7
 const audioOMG2 = new Audio('./audio/jennifer-coolidge-omg-v2.mp3')
 audioOMG2.preload
-audioOMG2.volume = 0.1
+audioOMG2.volume = 0.7
 const audioOuttaHere = new Audio('./audio/jennifer-coolidge-we-gotta-get-the-fuck-outta-here.mp3')
 audioOuttaHere.preload
-audioOuttaHere.volume = 0.1
+audioOuttaHere.volume = 0.7
 const audioWow = new Audio('./audio/jennifer-coolidge-wow.mp3')
 audioWow.preload
-audioWow.volume = 0.1
+audioWow.volume = 0.7
 const audioThemeSong = new Audio('./audio/white-lotus-theme-song.mp3')
 audioThemeSong.preload
-audioThemeSong.volume = 0.1
+audioThemeSong.volume = 0.7
 const audioPeppaPig = new Audio('./audio/peppapig.mp3')
 audioPeppaPig.preload
-audioPeppaPig.volume = 0.1
+audioPeppaPig.volume = 0.7
 const audioHighEndGays = new Audio('./audio/jennifer-coolidge-high-end-gays.mp3')
 audioHighEndGays.preload
-audioHighEndGays.volume = 0.1
+audioHighEndGays.volume = 0.7
 
 //Spoiler version variables
 let isSpoilerVersion = false
