@@ -173,7 +173,7 @@ const animate = () => {
       }
     }
 
-    if(isSpoilerVersion === true && gameId === 700){
+    if(isSpoilerVersion === true && (gameId % 1000 === 0)){
       audioHighEndGays.play()
 
     }
