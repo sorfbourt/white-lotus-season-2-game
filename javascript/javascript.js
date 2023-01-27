@@ -493,7 +493,7 @@ window.addEventListener('load', () => {
     lifelineImgSpoilerFree =GameSplashExtraLifeImageSpoilerFree
 
     GameLivesLeftSpoiler = "<b>Lives Left: </b>"
-    GameLivesLeftSpoilerFree = "<b>Triillion $ Left: </b>"
+    GameLivesLeftSpoilerFree = "<b>Money Left: </b>"
     
 
     const SpoilerVersion = () =>{
