@@ -438,8 +438,8 @@ window.addEventListener('load', () => {
     GameSplashMainImageSpoiler = "./images/splash-main-image-2.jpg"
     GameSplashMainImageSpoilerFree = "./images/splash-main-image.jpg"
 
-    GameSplashNameOfGameSpoiler = "PLEASE, THESE GAYS, THEY'RE TRYING TO MURDER ME"
-    GameSplashNameOfGameSpoilerFree = "PLEASE, THESE GUYS, THEY'RE TRYING TO ROB ME"
+    GameSplashNameOfGameSpoiler = `"PLEASE, THESE GAYS, THEY'RE TRYING TO MURDER ME"`
+    GameSplashNameOfGameSpoilerFree = `"PLEASE, THESE GUYS, THEY'RE TRYING TO ROB ME"`
 
     GameSplashInstructionsSpoiler = "<p><b>How to play</b></p><p>Use the arrow keys to run away from 'these gays'. They are trying to murder you!</p><p>You have 3 lives. Each time one of these 'high-end gays' run into you, you'll lose a life.</p><p>See how long you can last before you are murdered. The longer you last, the higher your score.</p>"
 

@@ -133,12 +133,6 @@ body {
 /* GAME INTRO */
 
 #intro-image-ctn{
-     /* background-image: url("https://www.sky.at/static/img/serienhighlights/sky_22-10_the_white_lotus_S2_sub_l.jpg") */
-     background-image: url("https://im2.ezgif.com/tmp/ezgif-2-ba55348d5b.webp")
-    background-size:100%;
-    background-repeat: none;
-    height:100%;
-    width:100%;
     display:flex; 
     flex-direction: column;
 
