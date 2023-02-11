@@ -11,6 +11,10 @@
 
 In the game, the player (Tanya Mcquoid) controlled by keyboard arrows has to move horizontally and vertically to avoid the ["high-end gays"](https://www.tiktok.com/@gr1ndr/video/7173059119690124550?lang=en). Tanya starts with 3 chances but she can gain lives and extra points by collecting certain objects. The game ends when Tanya has lost all her chances. After that, a score is calculated based on the objects collected and the amount of time the game lasted.
 
+![image](https://user-images.githubusercontent.com/120404332/218282970-b32c6642-b293-415d-af40-bff7bb5fd870.png)
+![image](https://user-images.githubusercontent.com/120404332/218283001-9db3dbb2-a5b4-4cd0-834b-0b8d9f8927e2.png)
+
+
 
 ## MVP
 _MVP definition here, list of minimum features_
